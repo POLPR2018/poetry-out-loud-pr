@@ -1,0 +1,319 @@
+{{> header }}
+
+<div class="container">
+	<form>
+		<h2>Registration Form</h2>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				School Information
+			</div>
+			<div class="panel-body">
+				<div class="row">
+					<div class="form-group col-md-12">
+					   <label for="schoolName">School Name</label>
+					   <input type="text" class="form-control" id="schoolName" placeholder="Enter school name">
+					</div>
+
+					<div class="form-group col-md-12">
+					   <label for="shippingAddress">Physical Address</label>
+					   <input type="text" class="form-control" id="shippingAddress" placeholder="Enter your school's physical address">
+					</div>
+
+					<div class="form-group col-md-12">
+					    <label for="inputAddress2">Address 2</label>
+					    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+					</div>
+
+					<div class="form-group col-md-6">
+					   <label for="city">City</label>
+					   <input type="text" class="form-control" id="city" placeholder="City">
+					</div>
+
+					<div class="form-group col-md-6">
+					   <label for="zip">Zip Code</label>
+					   <input type="text" class="form-control" id="zip" placeholder="Zip Code">
+					</div>
+
+					<div class="form-check col-md-12">
+					    <input type="checkbox" class="form-check-input" id="addressCheck">
+					    <label class="form-check-label" for="addressCheck">Check if the school's postal address is the same as the physical address</label>
+					</div>
+
+					<!-- This should be hidden if the box above has been checked -->
+					<!-- Postal address, usually a P.O. Box -->
+					<div class="form-group col-md-12">
+					   <label for="postalAddress">Postal Address</label>
+					   <input type="text" class="form-control" id="postalAddress" placeholder="Enter your school's postal address">
+					</div>
+
+					<div class="form-group col-md-6">
+					   <label for="city2">City</label>
+					   <input type="text" class="form-control" id="city2" placeholder="City">
+					</div>
+
+					<div class="form-group col-md-6">
+					   <label for="zip2">Zip Code</label>
+					   <input type="text" class="form-control" id="zip2" placeholder="Zip Code">
+					</div>
+					<!-- End of hidden fields -->
+
+					<div class="form-group col-md-6">
+					   <label for="telephone">Telephone</label>
+					   <input type="text" class="form-control" id="telephone" placeholder="Enter your school's Telephone Number">
+					</div>
+
+					<div class="form-group col-md-6">
+					   <label for="fax">Fax</label>
+					   <input type="text" class="form-control" id="fax" placeholder="Enter your school's Fax Number">
+					</div>
+
+					<div class="form-group col-md-6">
+					    <label for="exampleFormControlInput1">Email address</label>
+					    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+					    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+					</div>
+
+					<div class="form-group col-md-6">
+					    <label for="exampleInputPassword1">Password</label>
+					    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+					</div>
+				</div><!-- row ends -->
+
+			</div><!-- End of panel body -->
+
+		</div><!-- School Information panel ends -->
+
+		<!-- Other School Information -->
+		<div class="panel panel-default">
+
+			<div class="panel-heading">
+				Other School Information
+			</div><!-- Panel heading ends -->
+			<div class="panel-body">
+				<div class="row">
+					<div class="form-group col-md-6">
+					    <label for="schoolTypeControlSelect">Type of School</label>
+					    <select class="form-control" id="schoolTypeControlSelect">
+					      <option>Public</option>
+					      <option>Private</option>
+					      <option>Home School</option>
+					    </select>
+					</div>
+
+					<!-- If Public is selected than the following fields become VISIBLE, otherwise they stay hidden -->
+					<div class="form-group col-md-6">
+					    <label for="districtControlSelect">School District</label>
+					    <select class="form-control" id="districtControlSelect">
+					      <option>Choice 1</option>
+					      <option>Choice 2</option>
+					      <option>Choice 3</option>
+					    </select>
+					</div>
+
+					<div class="form-group col-md-6">
+					    <label for="regionControlSelect">School Region</label>
+					    <select class="form-control" id="regionControlSelect">
+					      <option>Region 1</option>
+					      <option>Region 2</option>
+					      <option>Region 3</option>
+					    </select>
+					</div>
+					<!-- End of hidden fields -->
+
+					<div class="form-group col-md-6">
+					    <label for="curriculumControlSelect">Curriculum</label>
+					    <select class="form-control" id="curriculumControlSelect">
+					      <option>English as a second language</option>
+					      <option>English as a main language</option>
+					      <option>Bilingual</option>
+					      <option>Other</option>
+					    </select>
+					</div>
+
+
+					<p class="col-md-12">Has your school participated in previous years?</p>
+					<div class="col-md-12">
+						<div class="form-check">
+						  <input class="form-check-input" type="radio" name="participationRadio" id="yesRadio" value="yes" checked>
+						  <label class="form-check-label" for="yesRadio">
+						    Yes
+						  </label>
+						</div>
+						<div class="form-check">
+						  <input class="form-check-input" type="radio" name="participationRadio" id="noRadio" value="no">
+						  <label class="form-check-label" for="noRadio">
+					        No
+						  </label>
+						</div>
+					</div>
+
+					<div class="form-group col-md-6">
+					   <label for="years">How many years participating?</label>
+					   <input type="text" class="form-control" id="years" placeholder="If your previous answer is YES, enter the number of years">
+					</div>
+				</div><!-- form-row ends -->
+			</div><!-- Panel body -->
+		</div><!-- Other School panel ends -->
+
+		<!-- School Principal/director information -->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				School Director / Principal Information
+			</div>
+			<div class="panel-body">
+				<div class="form-group">
+				   <label for="directorName">Director's Name</label>
+				   <input type="text" class="form-control" id="directorName" placeholder="Enter the School Director's Name">
+				</div>
+
+				<div class="form-group">
+				   <label for="telephone2">Telephone</label>
+				   <input type="text" class="form-control" id="telephone2" placeholder="Enter your school director's Telephone Number">
+				</div>
+
+				<div class="form-group">
+				    <label for="directorEmail">Email address</label>
+				    <input type="email" class="form-control" id="directorEmail" placeholder="director@example.com">
+				</div>
+			</div><!-- panel body ends -->
+		</div><!-- panel -->
+
+		<!-- The following fields are hidden to users and should ONLY be visible and editable by a site admin-level user. -->
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				Administrators Only
+			</div>
+			<div class="panel-body">
+				<p>Director Attended Rehersal</p>
+				<div class="form-check">
+					  <input class="form-check-input" type="radio" name="attendanceRadio" id="yesRadio2" value="yes">
+					  <label class="form-check-label" for="yesRadio2">
+					    Yes
+					  </label>
+				</div>
+				<div class="form-check">
+					  <input class="form-check-input" type="radio" name="attendanceRadio" id="noRadio2" value="no">
+					  <label class="form-check-label" for="noRadio2">
+					    No
+					  </label>
+				</div>
+
+				<p>Director Attended the Competition Event</p>
+				<div class="form-check">
+					  <input class="form-check-input" type="radio" name="eventRadio" id="yesRadio3" value="yes">
+					  <label class="form-check-label" for="yesRadio3">
+					    Yes
+					  </label>
+				</div>
+				<div class="form-check">
+					  <input class="form-check-input" type="radio" name="eventRadio" id="noRadio3" value="no">
+					  <label class="form-check-label" for="noRadio3">
+					    No
+					  </label>
+				</div>
+			</div>
+		</div>
+		<!-- End of fields hidden to user -->
+
+		<!-- School Liaison Info -->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				School Liaison
+			</div>
+			<div class="panel-body">
+				<div class="form-group">
+				   <label for="liaison">Liaison's Name</label>
+				   <input type="text" class="form-control" id="liaison" placeholder="Enter the School Liaison's Name">
+				</div>
+
+				<div class="form-group">
+				   <label for="telephone3">Telephone</label>
+				   <input type="text" class="form-control" id="telephone3" placeholder="Enter your school liaison's Telephone Number">
+				</div>
+
+				<div class="form-group">
+				    <label for="liaisonEmail">Email address</label>
+				    <input type="email" class="form-control" id="liaisonEmail" placeholder="liaison@example.com">
+				</div>
+
+				<div class="form-group">
+				    <label for="positionControlSelect">Position</label>
+				    <select class="form-control" id="positionControlSelect">
+				      <option>Teacher</option>
+				      <option>Intern</option>
+				      <option>Coordinator</option>
+				      <option>Facilitator</option>
+				      <option>Director</option>
+				      <option>Other</option>
+				    </select>
+				</div>
+
+				<p>If other, specify position</p>
+				<div class="form-group">
+				   <label for="otherPosition">"Other" position</label>
+				   <input type="text" class="form-control" id="otherPosition" placeholder="Position">
+				</div>
+
+				<div class="form-group">
+				    <label for="sizeControlSelect">T-shirt Size</label>
+				    <select class="form-control" id="sizeControlSelect">
+				      <option>Small</option>
+				      <option>Medium</option>
+				      <option>Large</option>
+				      <option>X-Large</option>
+				    </select>
+				</div>
+
+				<div class="form-group">
+				    <label for="mentorControlSelect">Poet Tutor/Mentor</label>
+				    <select class="form-control" id="mentorControlSelect">
+				      <option>Jacqueline Jiang</option>
+				      <option>Mara Pastor</option>
+				      <option>Penelope</option>
+				      <option>Rubén Durán Morales</option>
+				    </select>
+				</div>
+			</div>
+		</div>
+
+		<!-- The following fields are hidden to users and should ONLY be visible and editable by a site admin-level user. -->
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				Administrators Only
+			</div>
+			<div class="panel-body">
+				<p>Attended Rehersal?</p>
+				<div class="form-check">
+					  <input class="form-check-input" type="radio" name="attendanceRadio2" id="yesLiaisonRadio" value="yes">
+					  <label class="form-check-label" for="yesLiaisonRadio">
+					    Yes
+					  </label>
+				</div>
+				<div class="form-check">
+					  <input class="form-check-input" type="radio" name="attendanceRadio2" id="noLiaisonRadio" value="no">
+					  <label class="form-check-label" for="noLiaisonRadio">
+					    No
+					  </label>
+				</div>
+
+				<p>Attended the Competition Event?</p>
+				<div class="form-check">
+					  <input class="form-check-input" type="radio" name="eventRadio2" id="yesLiaisonRadio2" value="yes">
+					  <label class="form-check-label" for="yesLiaisonRadio2">
+					    Yes
+					  </label>
+				</div>
+				<div class="form-check">
+					  <input class="form-check-input" type="radio" name="eventRadio2" id="noLiaisonRadio2" value="no">
+					  <label class="form-check-label" for="noLiaisonRadio2">
+					    No
+					  </label>
+				</div>
+			</div>
+		</div>
+		<!-- End of fields hidden to user -->
+		<button type="submit" class="btn btn-primary">Register</button>
+	</form>
+</div>
+
+{{> footer }}

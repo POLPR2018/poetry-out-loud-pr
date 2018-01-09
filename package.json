@@ -1,0 +1,27 @@
+{
+  "name": "poetry-out-loud",
+  "version": "1.0.0",
+  "description": "Website for Poetry Out Loud",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/benbagley/poetry-out-loud.git"
+  },
+  "author": "Ben Bagley & Jose Ramos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/benbagley/poetry-out-loud/issues"
+  },
+  "homepage": "https://github.com/benbagley/poetry-out-loud#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "hbs": "^4.0.1",
+    "nodemailer": "^4.4.1",
+    "nodemon": "^1.14.9"
+  }
+}
