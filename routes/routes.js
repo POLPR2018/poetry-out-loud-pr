@@ -39,14 +39,14 @@ router.post('/send', (req, res) => {
       host: "smtp.sendgrid.net",
       port: 587,
       auth: {
-        user: "SENDGRID_USERNAME",
-        pass: "SENDGRID_PASSWORD"
+        user: process.env.SENDGRID_USERNAME,
+        pass: process.env.SENDGRID_PASSWORD
       }
     });
     // setup email data with unicode symbols
     let mailOptions = {
       from: `"${req.body.name}" <${req.body.email}>`, // sender address
-      to: 'GLOBAL_EMAIL', // list of receivers
+      to: process.env.GLOBAL_EMAIL, // list of receivers
       subject: 'New contact message', // Subject line
       html: output // html body
     };
