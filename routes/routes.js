@@ -36,17 +36,17 @@ router.post('/send', (req, res) => {
   nodemailer.createTestAccount((err, account) => {
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
-      host: "smtp.mailtrap.io",
-      port: 2525,
+      host: "smtp.sendgrid.net",
+      port: 587,
       auth: {
-        user: "a3ad3f28b0982c",
-        pass: "64f3d499b1d6d2"
+        user: "SENDGRID_USERNAME",
+        pass: "SENDGRID_PASSWORD"
       }
     });
     // setup email data with unicode symbols
     let mailOptions = {
       from: `"${req.body.name}" <${req.body.email}>`, // sender address
-      to: 'poetryoutloudpr.icp@gmail.com', // list of receivers
+      to: 'GLOBAL_EMAIL', // list of receivers
       subject: 'New contact message', // Subject line
       html: output // html body
     };
