@@ -8,25 +8,13 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/registration', (req, res) => {
-  res.render('registration.hbs', {
-    pageTitle: 'Registration'
-  });
-});
-
-router.get('/login', (req, res) => {
-  res.render('login.hbs', {
-    pageTitle: 'Login'
-  });
-});
-
 router.post('/send', (req, res) => {
   const output = `
     <p>You have a new contact request</p>
     <h3>Contact Details</h3>
     <ul>
     <li>Name: ${ req.body.name }</li>
-    <li>Name: ${ req.body.email }</li>
+    <li>Email: ${ req.body.email }</li>
     </ul>
 
     <h3>Message:</h3>
@@ -35,18 +23,29 @@ router.post('/send', (req, res) => {
 
   nodemailer.createTestAccount((err, account) => {
     // create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
-      host: "smtp.sendgrid.net",
-      port: 587,
-      auth: {
-        user: process.env.SENDGRID_USERNAME,
-        pass: process.env.SENDGRID_PASSWORD
-      }
-    });
+    if (process.env.NODE_ENV === 'production') {
+      transporter = nodemailer.createTransport({
+        host: "smtp.sendgrid.net",
+        port: 587,
+        auth: {
+          user: process.env.SENDGRID_USERNAME,
+          pass: process.env.SENDGRID_PASSWORD,
+        }
+      });
+    } else {
+      transporter = nodemailer.createTransport({
+        host: "smtp.ethereal.email",
+        port: 587,
+        auth: {
+          user: 'qkkvnabtziufbksa@ethereal.email',
+          pass: 'A4W9HF2WbhAav263VM',
+        }
+      });
+    }
     // setup email data with unicode symbols
     let mailOptions = {
       from: `"${req.body.name}" <${req.body.email}>`, // sender address
-      to: process.env.GLOBAL_EMAIL, // list of receivers
+      to: 'ben@benbagley.co.uk', // list of receivers
       subject: 'New contact message', // Subject line
       html: output // html body
     };
