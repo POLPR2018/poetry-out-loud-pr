@@ -4,6 +4,14 @@
 	<form action="/users/register" method="post">
 		<h2>Registration Form</h2>
 
+		{{# if errors}}
+		<div class="alert alert-danger">
+			{{#each errors}}
+				<li>{{msg}}</li>
+			{{/each}}
+		</div>
+		{{/if}}
+
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				School Information

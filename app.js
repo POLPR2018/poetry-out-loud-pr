@@ -25,6 +25,7 @@ app.set('view engine', 'hbs');
 
 // static assets rendered
 app.use(express.static(__dirname + '/public'));
+app.use('/users', express.static(__dirname + '/public'));
 
 // body-parser middleware
 app.use(bodyParser.urlencoded({ extended: false }))

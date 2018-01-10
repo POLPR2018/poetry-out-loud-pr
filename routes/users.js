@@ -66,9 +66,11 @@ router.post('/register', (req, res) => {
   var errors = req.validationErrors();
 
   if (errors) {
-    console.log('errors')
+    res.render('register', {
+      errors:errors
+    });
   } else {
-    console.log('No errors!')
+    console.log('PASSED')
   }
 });
 
