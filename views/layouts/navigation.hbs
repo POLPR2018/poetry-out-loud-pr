@@ -13,6 +13,14 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
+        {{#if user }}
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li>
+          <a href="/users/logout">
+            <span class="glyphicon glyphicon-log-out">Logout</span>
+          </a>
+        </li>
+        {{else}}
         <li><a href="#myPage">INICIO</a></li>
         <li><a href="#band">QUÉ ES POL</a></li>
         <!-- <li><a href="#tour">TOUR</a></li> -->
@@ -28,12 +36,8 @@
             <li><a href="#">Recursos de apoyo</a></li>
           </ul>
         </li> -->
-        <li><a href="/users/register">REGÍSTRATE</a></li>
-        <li>
-          <a href="/users/logout">
-            <span class="glyphicon glyphicon-log-out">Logout</span>
-          </a>
-        </li>
+        <li><a href="/users/login"><span class="glyphicon glyphicon-log-in"></span>ENTRAR</a></li>
+        {{/if}}
       </ul>
     </div>
   </div>

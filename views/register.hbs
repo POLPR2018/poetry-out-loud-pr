@@ -21,12 +21,12 @@
 				<div class="row">
 					<div class="form-group col-md-12">
 						<label for="schoolName">School Name</label>
-						<input type="text" class="form-control" id="schoolName" name="schoolName" placeholder="Enter school name" required>
+						<input type="text" class="form-control" id="schoolName" name="schoolName" placeholder="Enter school name">
 					</div>
 
 					<div class="form-group col-md-12">
-						<label for="shippingAddress">Physical Address</label>
-						<input type="text" class="form-control" id="shippingAddress" name="schoolAddress" placeholder="Enter your school's physical address" required>
+						<label for="schoolAddress">School Address</label>
+						<input type="text" class="form-control" id="schoolAddress" name="schoolAddress" placeholder="Enter your school's physical address">
 					</div>
 
 					<div class="form-group col-md-12">
@@ -36,7 +36,7 @@
 
 					<div class="form-group col-md-6">
 						<label for="city">City</label>
-						<input type="text" class="form-control" id="city" name="city" placeholder="City" required>
+						<input type="text" class="form-control" id="city" name="city" placeholder="City">
 					</div>
 
 					<div class="form-group col-md-6">
@@ -45,25 +45,27 @@
 					</div>
 
 					<div class="form-check col-md-12">
-						<input type="checkbox" class="form-check-input" id="addressCheck">
+						<input type="checkbox" name="addressCheck" id="addressCheck" value="addressCheck" class="form-check-input">
 						<label class="form-check-label" for="addressCheck">Check if the school's postal address is the same as the physical address</label>
 					</div>
 
 					<!-- This should be hidden if the box above has been checked -->
 					<!-- Postal address, usually a P.O. Box -->
-					<div class="form-group col-md-12">
-						<label for="postalAddress">Postal Address</label>
-						<input type="text" class="form-control" id="postalAddress" name="postalAddress" placeholder="Enter your school's postal address">
-					</div>
+					<div class="postalAddress-fields" style="display:none">
+						<div class="form-group col-md-12">
+							<label for="postalAddress">Postal Address</label>
+							<input type="text" class="form-control" id="postalAddress" name="postalAddress" placeholder="Enter your school's postal address">
+						</div>
 
-					<div class="form-group col-md-6">
-						<label for="city2">City</label>
-						<input type="text" class="form-control" id="city2" name="postalCity" placeholder="postalCity">
-					</div>
+						<div class="form-group col-md-6">
+							<label for="city2">City</label>
+							<input type="text" class="form-control" id="city2" name="postalCity" placeholder="postalCity">
+						</div>
 
-					<div class="form-group col-md-6">
-						<label for="zip2">Zip Code</label>
-						<input type="text" class="form-control" id="zip2" placeholder="Zip Code">
+						<div class="form-group col-md-6">
+							<label for="zip2">Zip Code</label>
+							<input type="text" class="form-control" id="zip2" placeholder="Zip Code">
+						</div>
 					</div>
 					<!-- End of hidden fields -->
 
@@ -78,7 +80,7 @@
 					</div>
 
 					<div class="form-group col-md-6">
-						<label for="exampleFormControlInput1">Email address</label>
+						<label for="exampleFormControlInput1">School's Email Address</label>
 						<input type="email" class="form-control" id="exampleFormControlInput1" name="email" placeholder="name@example.com">
 						<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 					</div>
@@ -100,37 +102,71 @@
 			<div class="panel-body">
 				<div class="row">
 					<div class="form-group col-md-6">
-						<label for="schoolTypeControlSelect">Type of School</label>
-						<select class="form-control" id="schoolTypeControlSelect" name="schoolType" required>
-							<option>Public</option>
-							<option>Private</option>
-							<option>Home School</option>
+						<label for="schoolType">Type of School</label>
+						<select class="form-control" id="schoolType" name="schoolType">
+							<option selected>None</option>
+							<option value="public">Public</option>
+							<option value="private">Private</option>
+							<option value="homeSchool">Home School</option>
 						</select>
 					</div>
 
 					<!-- If Public is selected than the following fields become VISIBLE, otherwise they stay hidden -->
-					<div class="form-group col-md-6">
-						<label for="districtControlSelect">School District</label>
-						<select class="form-control" id="districtControlSelect" name="schoolDistrict">
-							<option>Choice 1</option>
-							<option>Choice 2</option>
-							<option>Choice 3</option>
-						</select>
-					</div>
+					<div class="schoolInformation-fields" style="display:none">
+						<div class="form-group col-md-6">
+							<label for="districtControlSelect">School District</label>
+							<select class="form-control" id="districtControlSelect" name="schoolDistrict">
+								<option>None</option>
+								<option>Aguadilla</option>
+								<option>Arecibo</option>
+								<option>Barranquitas</option>
+								<option>Bayamón</option>
+								<option>Cabo Rojo</option>
+								<option>Camuy</option>
+								<option>Canóvanas</option>
+								<option>Carolina</option>
+								<option>Cidra</option>
+								<option>Fajardo</option>
+								<option>Guayama</option>
+								<option>Guaynabo</option>
+								<option>Gurabo</option>
+								<option>Las Piedras</option>
+								<option>Manatí</option>
+								<option>Mayagüez</option>
+								<option>Naranjito</option>
+								<option>Orocovis</option>
+								<option>Ponce</option>
+								<option>Santa Isabel</option>
+								<option>San Juan 1</option>
+								<option>San Juan 2</option>
+								<option>San Sebastián</option>
+								<option>Toa Baja</option>
+								<option>Utuado</option>
+								<option>Vega Alta</option>
+								<option>Yabucoa</option>
+								<option>Yauco</option>
+							</select>
+						</div>
 
-					<div class="form-group col-md-6">
-						<label for="regionControlSelect">School Region</label>
-						<select class="form-control" id="regionControlSelect" name="schoolRegion">
-							<option>Region 1</option>
-							<option>Region 2</option>
-							<option>Region 3</option>
-						</select>
+						<div class="form-group col-md-6">
+							<label for="regionControlSelect">School Region</label>
+							<select class="form-control" id="regionControlSelect" name="schoolRegion">
+								<option>None</option>
+								<option>Arecibo</option>
+								<option>Bayamón</option>
+								<option>Caguas</option>
+								<option>Humacao</option>
+								<option>Mayagüez</option>
+								<option>Ponce</option>
+								<option>San Juan</option>
+							</select>
+						</div>
 					</div>
 					<!-- End of hidden fields -->
 
 					<div class="form-group col-md-6">
 						<label for="curriculumControlSelect">Curriculum</label>
-						<select class="form-control" id="curriculumControlSelect" name="curriculum" required>
+						<select class="form-control" id="curriculumControlSelect" name="curriculum">
 							<option>English as a second language</option>
 							<option>English as a main language</option>
 							<option>Bilingual</option>
@@ -164,32 +200,32 @@
 			</div><!-- Panel body -->
 		</div><!-- Other School panel ends -->
 
-		<!-- School Principal/director information -->
+		<!-- School Director information -->
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				School Director / Principal Information
+				School Director Information
 			</div>
 
 			<div class="panel-body">
 				<div class="form-group">
 					<label for="directorName">Director's Name</label>
-					<input type="text" class="form-control" id="directorName" placeholder="Enter the School Director's Name" name="directorName" required>
+					<input type="text" class="form-control" id="directorName" placeholder="Enter the School Director's Name" name="directorName">
 				</div>
 
 				<div class="form-group">
 					<label for="telephone2">Telephone</label>
-					<input type="text" class="form-control" id="telephone2" placeholder="Enter your school director's Telephone Number" name="directorTelephone" required>
+					<input type="text" class="form-control" id="telephone2" placeholder="Enter your school director's Telephone Number" name="directorTelephone">
 				</div>
 
 				<div class="form-group">
 					<label for="directorEmail">Email address</label>
-					<input type="email" class="form-control" id="directorEmail" placeholder="director@example.com" name="directorEmail" required>
+					<input type="email" class="form-control" id="directorEmail" placeholder="director@example.com" name="directorEmail">
 				</div>
 			</div><!-- panel body ends -->
 		</div><!-- panel -->
 
 		<!-- The following fields are hidden to users and should ONLY be visible and editable by a site admin-level user. -->
-		<div class="panel panel-danger">
+		<!-- <div class="panel panel-danger">
 			<div class="panel-heading">
 				Administrators Only
 			</div>
@@ -227,34 +263,34 @@
 					</label>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<!-- End of fields hidden to user -->
 
-		<!-- School Liaison Info -->
+		<!-- School Representative (Liaison) Info -->
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				School Liaison
+				School Representative
 			</div>
 
 			<div class="panel-body">
 				<div class="form-group">
-					<label for="liaison">Liaison's Name</label>
-					<input type="text" class="form-control" id="liaison" placeholder="Enter the School Liaison's Name" name="schoolLiaisonName" required>
+					<label for="liaison">Representative's Name</label>
+					<input type="text" class="form-control" id="liaison" placeholder="Enter the School Liaison's Name" name="schoolLiaisonName">
 				</div>
 
 				<div class="form-group">
 					<label for="telephone3">Telephone</label>
-					<input type="text" class="form-control" id="telephone3" placeholder="Enter your school liaison's Telephone Number" name="schoolLiaisonTelephone" required>
+					<input type="text" class="form-control" id="telephone3" placeholder="Enter your school representative's Telephone Number" name="schoolLiaisonTelephone">
 				</div>
 
 				<div class="form-group">
 					<label for="liaisonEmail">Email address</label>
-					<input type="email" class="form-control" id="liaisonEmail" placeholder="liaison@example.com" name="schoolLiaisonEmail" required>
+					<input type="email" class="form-control" id="liaisonEmail" placeholder="rep@example.com" name="schoolLiaisonEmail">
 				</div>
 
 				<div class="form-group">
 					<label for="positionControlSelect">Position</label>
-					<select class="form-control" id="positionControlSelect" name="schoolLiaisonPosition" required>
+					<select class="form-control" id="positionControlSelect" name="schoolLiaisonPosition">
 						<option>Teacher</option>
 						<option>Intern</option>
 						<option>Coordinator</option>
@@ -268,12 +304,12 @@
 
 				<div class="form-group">
 					<label for="otherPosition">"Other" position</label>
-					<input type="text" class="form-control" id="otherPosition" placeholder="Position" name="schoolLiaisonOtherPosition">
+					<input type="text" class="form-control" id="otherPosition" placeholder="If other, specify the position" name="schoolLiaisonOtherPosition">
 				</div>
 
 				<div class="form-group">
 					<label for="sizeControlSelect">T-shirt Size</label>
-					<select class="form-control" id="sizeControlSelect" name="schoolLiaisonTShirt" required>
+					<select class="form-control" id="sizeControlSelect" name="schoolLiaisonTShirt">
 						<option>Small</option>
 						<option>Medium</option>
 						<option>Large</option>
@@ -283,18 +319,24 @@
 
 				<div class="form-group">
 					<label for="mentorControlSelect">Poet Tutor/Mentor</label>
-					<select class="form-control" id="mentorControlSelect" name="schoolLiaisonTutorMentor" required>
+					<select class="form-control" id="mentorControlSelect" name="schoolLiaisonTutorMentor">
+						<option>None</option>
+						<option>Ketsia Ramos</option>
+						<option>Christian Díaz</option>
+						<option>Gerónimo Robaina López</option>
 						<option>Jacqueline Jiang</option>
 						<option>Mara Pastor</option>
-						<option>Penelope</option>
+						<option>Nivialis Toro</option>
+						<option>Penélope N. Cuyar Bordas</option>
 						<option>Rubén Durán Morales</option>
+						<option>Lucía Zoé Martínez</option>
 					</select>
 				</div>
 			</div>
 		</div>
 
 		<!-- The following fields are hidden to users and should ONLY be visible and editable by a site admin-level user. -->
-		<div class="panel panel-danger">
+		<!-- <div class="panel panel-danger">
 			<div class="panel-heading">
 				Administrators Only
 			</div>
@@ -332,10 +374,11 @@
 					</label>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<!-- End of fields hidden to user -->
 
 		<button type="submit" class="btn btn-primary">Register</button>
+		<button type="" class="btn btn-primary">Cancel</button>
 	</form>
 </div>
 

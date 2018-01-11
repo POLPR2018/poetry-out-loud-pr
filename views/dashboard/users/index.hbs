@@ -1,0 +1,74 @@
+{{> header }}
+<!-- This view should only be visible to Administrators -->
+<div class="container">
+	<!-- <button class="btn btn-lg pull-right">Search</button> -->
+	<form class="navbar-form pull-right" role="search">
+		<div class="input-group">
+			<input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+			<div class="input-group-btn">
+				<button class="btn btn-default btn-sm" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+			</div>
+		</div>
+	</form>
+
+	<h3>Registered Users</h3>
+	<br>
+
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">School</th>
+					<th scope="col">City</th>
+					<th scope="col">Email</th>
+					<th scope="col"><nobr>School Type</nobr></th>
+					<th scope="col">District</th>
+					<th scope="col">Region</th>
+					<th scope="col"><nobr>Director's Name</nobr></th>
+					<th scope="col">Liaison</th>
+					<th scope="col">Poet/Mentor</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>Abelardo Díaz Morales</td>
+					<td>Caguas</td>
+					<td>email@me.com</td>
+					<td>Public</td>
+					<td>San Juan 1</td>
+					<td>Caguas</td>
+					<td>Raymond Arrieta</td>
+					<td>Raymond Arrieta</td>
+					<td>None</td>
+				</tr>
+
+				<tr>
+					<td>Eugenio María de Hostos</td>
+					<td>Bayamón</td>
+					<td>eugenio@gmail.com</td>
+					<td>Private</td>
+					<td>Aguadilla</td>
+					<td>Mayagüez</td>
+					<td>Juan del Pueblo</td>
+					<td>Juana la Cubana</td>
+					<td>None</td>
+				</tr>
+
+				<tr>
+					<td>Secundino Díaz</td>
+					<td>Toa Alta</td>
+					<td>secundo@yahoo.com</td>
+					<td>Public</td>
+					<td>Bayamón</td>
+					<td>Bayamón</td>
+					<td>Luz Benítez</td>
+					<td>Luz Benítez</td>
+					<td>Penelope</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div><!-- Container ends -->
+
+{{> footer }}

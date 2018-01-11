@@ -1,4 +1,6 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 var app = express();
 
@@ -9,12 +11,13 @@ if (app.get('env') === 'production') {
 }
 
 var db = mongoose.connection;
+
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   console.log("Connection has been established");
 });
 
-module.exports = mongoose.model('User', {
+var UserSchema = mongoose.Schema({
   schoolName: String,
   schoolAddress: String,
   schoolAddress2: String,
@@ -47,5 +50,33 @@ module.exports = mongoose.model('User', {
   schoolLiaisonTShirt: String,
   schoolLiaisonTutorMentor: String,
   attendanceRehersal: Boolean,
-  attendanceEvent: Boolean
+  attendanceEvent: Boolean,
+  admin: Boolean,
 });
+
+var User = module.exports = mongoose.model('User', UserSchema);
+
+module.exports.createUser = function(newUser, callback){
+  bcrypt.genSalt(10, function(err, salt) {
+    bcrypt.hash(newUser.password, salt, function(err, hash) {
+      newUser.password = hash;
+      newUser.save(callback);
+    });
+  });
+}
+
+module.exports.getUserByEmail = function(email, callback){
+  var query = {email: email};
+  User.findOne(query, callback);
+}
+
+module.exports.getUserById = function(id, callback){
+  User.findById(id, callback);
+}
+
+module.exports.comparePassword = function(candidatePassword, hash, callback) {
+  bcrypt.compare(candidatePassword, hash, function(err, isMatch) {
+    if(err) throw err;
+    callback(null, isMatch);
+  });
+}

@@ -26,6 +26,7 @@ app.set('view engine', 'hbs');
 // static assets rendered
 app.use(express.static(__dirname + '/public'));
 app.use('/users', express.static(__dirname + '/public'));
+app.use('/dashboard', express.static(__dirname + '/public'));
 
 // body-parser middleware
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -62,16 +63,17 @@ app.use(expressValidator({
   }
 }));
 
-// connect flash
+// Connect Flash
 app.use(flash());
 
-// global vars
-// app.use(function (req, res, next) {
-//   res.local.success_msg = req.flash('success_msg');
-//   res.local.error_msg = req.flash('error_msg');
-//   res.local.error = req.flash('error');
-//   next();
-// });
+// Global Vars
+app.use(function (req, res, next) {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  res.locals.user = req.user || null;
+  next();
+});
 
 // server.log setup middleware
 app.use((req, res, next) => {
@@ -91,8 +93,10 @@ app.use((req, res, next) => {
 // Routes
 const routes = require('./routes/routes');
 const users = require('./routes/users');
+const dashboard = require('./routes/dashboard');
 app.use("/", routes);
 app.use("/users", users);
+app.use("/dashboard", dashboard);
 
 // Get year for footer
 hbs.registerHelper('getCurrentYear', () => {

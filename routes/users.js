@@ -1,5 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+
+var User = require('../models/user');
 
 router.get('/register', (req, res) => {
   res.render('register.hbs', {
@@ -16,6 +20,7 @@ router.get('/login', (req, res) => {
 router.post('/register', (req, res) => {
   var schoolName = req.body.schoolName;
   var schoolAddress = req.body.schoolAddress;
+  var schoolAddress2 = req.body.schoolAddress2;
   var city = req.body.city;
   var zipCode = req.body.zipCode;
   var postalAddress = req.body.postalAddress;
@@ -42,13 +47,14 @@ router.post('/register', (req, res) => {
   req.checkBody('schoolName', 'The school name is required').notEmpty();
   req.checkBody('schoolAddress', 'The school address is required').notEmpty();
   req.checkBody('city', 'The city is required').notEmpty();
-  req.checkBody('zipCode', 'The zip code is required').notEmpty();
-  req.checkBody('postalAddress', 'The postal address is required').notEmpty();
-  req.checkBody('postalCity', 'The postal city is required').notEmpty();
-  req.checkBody('postalZipCode', 'The postal zip code is required').notEmpty();
-  req.checkBody('telephone', 'A telephone number is required').isisMobilePhone();
-  req.checkBody('email', 'An email is required').isEmail();
-  req.checkBody('password', 'A password is required').notEmpty();
+  req.checkBody('zipCode', 'This zip code is required').notEmpty();
+  // req.checkBody('postalAddress', 'The postal address is required').notEmpty();
+  // req.checkBody('postalCity', 'The postal city is required').notEmpty();
+  // req.checkBody('postalZipCode', 'The postal zip code is required').notEmpty();
+  req.checkBody('telephone', 'A telephone number is required').notEmpty();
+  req.checkBody('email', 'An account email is required').notEmpty();
+  // req.checkBody('email', 'This account email is not valid').isEmail();
+  req.checkBody('password', 'An account password is required').notEmpty();
   req.checkBody('schoolType', 'A school type is required').notEmpty();
   req.checkBody('schoolDistrict', 'A school district is required').notEmpty();
   req.checkBody('schoolRegion', 'A school region is required').notEmpty();
@@ -56,12 +62,14 @@ router.post('/register', (req, res) => {
   req.checkBody('directorName', 'A directors name is required').notEmpty();
   req.checkBody('directorTelephone', 'A directors telephone is required').notEmpty();
   req.checkBody('directorEmail', 'A directors email is required').notEmpty();
-  req.checkBody('schoolLiaisonName', 'A school liaison name is required').notEmpty();
-  req.checkBody('schoolLiaisonTelephone', 'A school liaison telephone is required').notEmpty();
-  req.checkBody('schoolLiaisonEmail', 'A school liaison email is required').notEmpty();
-  req.checkBody('schoolLiaisonPosition', 'A school liaison position is required').notEmpty();
-  req.checkBody('schoolLiaisonTShirt', 'A school liaison t-shirt size is required').notEmpty();
-  req.checkBody('schoolLiaisonTutorMentor', 'A school liaison tutor/mentor is required').notEmpty();
+  req.checkBody('directorEmail', 'This email is not valid').isEmail();
+  req.checkBody('schoolLiaisonName', 'A school representative name is required').notEmpty();
+  req.checkBody('schoolLiaisonTelephone', 'A school representative telephone is required').notEmpty();
+  req.checkBody('schoolLiaisonEmail', 'The school representative email is not valid').isEmail();
+  req.checkBody('schoolLiaisonEmail', 'A school representative email is required').notEmpty();
+  req.checkBody('schoolLiaisonPosition', 'A school representative position is required').notEmpty();
+  req.checkBody('schoolLiaisonTShirt', 'A school representative t-shirt size is required').notEmpty();
+  req.checkBody('schoolLiaisonTutorMentor', 'A school representative tutor/mentor is required').notEmpty();
 
   var errors = req.validationErrors();
 
@@ -70,20 +78,88 @@ router.post('/register', (req, res) => {
       errors:errors
     });
   } else {
-    console.log('PASSED')
+    var newUser = new User({
+      schoolName: schoolName,
+      schoolAddress: schoolAddress,
+      schoolAddress2: schoolAddress2,
+      city: city,
+      zipCode: zipCode,
+      postalAddress: postalAddress,
+      postalCity: postalCity,
+      postalZipCode: postalZipCode,
+      telephone: telephone,
+      email: email,
+      password: password,
+      schoolType: schoolType,
+      schoolDistrict: schoolDistrict,
+      schoolRegion: schoolRegion,
+      curriculum: curriculum,
+      directorName: directorName,
+      directorTelephone: directorTelephone,
+      directorEmail: directorEmail,
+      schoolLiaisonName: schoolLiaisonName,
+      schoolLiaisonTelephone: schoolLiaisonTelephone,
+      schoolLiaisonEmail: schoolLiaisonEmail,
+      schoolLiaisonPosition: schoolLiaisonPosition,
+      schoolLiaisonTShirt: schoolLiaisonTShirt,
+      schoolLiaisonTutorMentor: schoolLiaisonTutorMentor,
+    });
+
+    User.createUser(newUser, function(err, user) {
+      if(err) throw err;
+      console.log(user);
+    });
+
+    req.flash('success_msg', 'You are now registered, you can now login!');
+    res.redirect('/users/login');
   }
 });
 
-// router.post('/register', passport.authenticate('register', {
-//   successRedirect: '/',
-//   failureRedirect: '/',
-//   failureFlash : true
-// }));
+passport.use(new LocalStrategy({
+  usernameField: 'email'
+  },
+  function(email, password, done) {
+    User.getUserByEmail(email, function(err, user){
+      if(err) throw err;
+      if(!user){
+        return done(null, false, {message: 'Unknown Email Address'});
+      }
 
-// router.post('/login', passport.authenticate('login', {
-//   successRedirect: '/',
-//   failureRedirect: '/',
-//   failureFlash : true
-// }));
+      User.comparePassword(password, user.password, function(err, ismatch){
+        if(err) throw err;
+        if(ismatch){
+          return done(null, user);
+        } else {
+          return done(null, false, {message: 'Invalid password'});
+        }
+      });
+    });
+  }));
+
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.getUserById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/dashboard',
+  failureRedirect: '/users/login',
+  successFlash: 'Welcome!',
+  failureFlash: 'Invalid email or password.'
+}), function(req, res) {
+  // res.redirect('/' + req.user.username);
+  res.redirect('/');
+});
+
+router.get('/logout', function(req, res) {
+  req.logout();
+  req.flash('success_msg', 'You are now logged out!')
+  res.redirect('/users/login');
+});
 
 module.exports = router;

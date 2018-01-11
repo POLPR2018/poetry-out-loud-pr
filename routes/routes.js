@@ -15,6 +15,7 @@ router.post('/send', (req, res) => {
     <ul>
     <li>Name: ${ req.body.name }</li>
     <li>Email: ${ req.body.email }</li>
+    <li>School Name: ${ req.body.school }</li>
     </ul>
 
     <h3>Message:</h3>

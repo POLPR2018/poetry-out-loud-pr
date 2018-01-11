@@ -16,4 +16,25 @@ $(document).ready(function(){
   $('button').click(function(){
     $('.alert').show()
   }) ;
+
+  // Register Form
+  $('#addressCheck').on('change', function(){
+    if ( $(this).is(':checked') ) {
+      $('.postalAddress-fields').show();
+    } else {
+      $('.postalAddress-fields').hide();
+    }
+  });
+
+  $('#schoolType').change(function(){
+    selection = $(this).val();
+    switch(selection) {
+      case 'public':
+        $('.schoolInformation-fields').show();
+      break;
+      default:
+        $('.schoolInformation-fields').hide();
+      break;
+    }
+  });
 }); // end document.ready
