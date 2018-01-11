@@ -48,12 +48,9 @@ router.post('/register', (req, res) => {
   req.checkBody('schoolAddress', 'The school address is required').notEmpty();
   req.checkBody('city', 'The city is required').notEmpty();
   req.checkBody('zipCode', 'This zip code is required').notEmpty();
-  // req.checkBody('postalAddress', 'The postal address is required').notEmpty();
-  // req.checkBody('postalCity', 'The postal city is required').notEmpty();
-  // req.checkBody('postalZipCode', 'The postal zip code is required').notEmpty();
   req.checkBody('telephone', 'A telephone number is required').notEmpty();
   req.checkBody('email', 'An account email is required').notEmpty();
-  // req.checkBody('email', 'This account email is not valid').isEmail();
+  req.checkBody('email', 'This account email is not valid').isEmail();
   req.checkBody('password', 'An account password is required').notEmpty();
   req.checkBody('schoolType', 'A school type is required').notEmpty();
   req.checkBody('schoolDistrict', 'A school district is required').notEmpty();
@@ -158,7 +155,7 @@ router.post('/login', passport.authenticate('local', {
 
 router.get('/logout', function(req, res) {
   req.logout();
-  req.flash('success_msg', 'You are now logged out!')
+  req.flash('success_msg', 'You are now logged out!');
   res.redirect('/users/login');
 });
 

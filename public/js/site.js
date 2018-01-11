@@ -14,7 +14,7 @@ $(document).ready(function(){
   }); // end  scrollspy
 
   $(".alert").hide();
-  $(".alert").fadeTo(1000, 500).slideUp(500, function(){
+  $(".alert").fadeTo(2000, 500).slideUp(500, function(){
     $(".alert").slideUp(500);
   });
 
