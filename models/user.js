@@ -29,7 +29,7 @@ var UserSchema = mongoose.Schema({
   postalZipCode: String,
   telephone: Number,
   fax: Number,
-  email: String,
+  email: { type: String, required: true, unique: true },
   password: String,
   schoolType: String,
   schoolDistrict: String,

@@ -1,22 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const nodemailer = require('nodemailer');
 const LocalStrategy = require('passport-local').Strategy;
 
 var User = require('../models/user');
 
+// Register :get
 router.get('/register', (req, res) => {
   res.render('register.hbs', {
     pageTitle: 'Register'
   });
 });
 
-router.get('/login', (req, res) => {
-  res.render('login.hbs', {
-    pageTitle: 'Login'
-  });
-});
-
+// Register :post
 router.post('/register', (req, res) => {
   var schoolName = req.body.schoolName;
   var schoolAddress = req.body.schoolAddress;
@@ -143,6 +140,14 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
+// Login :get
+router.get('/login', (req, res) => {
+  res.render('login.hbs', {
+    pageTitle: 'Login'
+  });
+});
+
+// Login :post
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/dashboard',
   failureRedirect: '/users/login',
@@ -153,6 +158,7 @@ router.post('/login', passport.authenticate('local', {
   res.redirect('/');
 });
 
+// Logout
 router.get('/logout', function(req, res) {
   req.logout();
   req.flash('success_msg', 'You are now logged out!');
