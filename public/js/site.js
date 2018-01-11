@@ -13,6 +13,11 @@ $(document).ready(function(){
     } // end if
   }); // end  scrollspy
 
+  $(".alert").hide();
+  $(".alert").fadeTo(1000, 500).slideUp(500, function(){
+    $(".alert").slideUp(500);
+  });
+
   $('button').click(function(){
     $('.alert').show()
   }) ;
