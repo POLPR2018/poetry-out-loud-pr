@@ -99,6 +99,79 @@ router.post('/register', (req, res) => {
       schoolLiaisonTutorMentor: schoolLiaisonTutorMentor,
     });
 
+    const output = `
+      <p>You have a new contact request</p>
+      <h3>Contact Details</h3>
+      <ul>
+        <li><b>School Name:</b> ${schoolName}</li>
+        <li><b>School Address:</b> ${schoolAddress}</li>
+        <li><b>School Address:</b> ${schoolAddress2}</li>
+        <li><b>City:</b> ${city}</li>
+        <li><b>Zip Code:</b> ${zipCode}</li>
+        <li><b>Postal Address:</b> ${postalAddress}</li>
+        <li><b>Postal City:</b> ${postalCity}</li>
+        <li><b>Postal Zip Code:</b> ${postalZipCode}</li>
+        <li><b>Telephone:</b> ${telephone}</li>
+        <li><b>School's Email:</b> ${email}</li>
+        <li><b>School Type:</b> ${schoolType}</li>
+        <li><b>School District:</b> ${schoolDistrict}</li>
+        <li><b>School Region:</b> ${schoolRegion}</li>
+        <li><b>Curriculum:</b> ${curriculum}</li>
+        <li><b>Director Name:</b> ${directorName}</li>
+        <li><b>Director Telephone:</b> ${directorTelephone}</li>
+        <li><b>Director Email:</b> ${directorEmail}</li>
+        <li><b>School Representative's Name:</b> ${schoolLiaisonName}</li>
+        <li><b>School Representative's Telephone:</b> ${schoolLiaisonTelephone}</li>
+        <li><b>School Representative's Email:</b> ${schoolLiaisonEmail}</li>
+        <li><b>School Representative's Position:</b> ${schoolLiaisonPosition}</li>
+        <li><b>School Representative's T-Shirt:</b> ${schoolLiaisonTShirt}</li>
+        <li><b>School Representative's Tutor / Mentor:</b> ${schoolLiaisonTutorMentor}</li>
+      </ul>
+    `;
+
+    nodemailer.createTestAccount((err, account) => {
+      // create reusable transporter object using the default SMTP transport
+      if (process.env.NODE_ENV === 'production') {
+        transporter = nodemailer.createTransport({
+          host: "smtp.sendgrid.net",
+          port: 587,
+          auth: {
+            user: process.env.SENDGRID_USERNAME,
+            pass: process.env.SENDGRID_PASSWORD,
+          }
+        });
+      } else {
+        transporter = nodemailer.createTransport({
+          host: "smtp.ethereal.email",
+          port: 587,
+          auth: {
+            user: 'qkkvnabtziufbksa@ethereal.email',
+            pass: 'A4W9HF2WbhAav263VM',
+          }
+        });
+      }
+      // setup email data with unicode symbols
+      let mailOptions = {
+        from: 'password.reset' + process.env.GLOBAL_EMAIL || 'ben@benbagley.co.uk', // sender address
+        to: user.email, // list of receivers
+        subject: 'Welcome to Poetry Out Loud', // Subject line
+        html: output // html body
+      };
+      // send mail with defined transport object
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          return console.log(error);
+        }
+
+        console.log('Message sent: %s', info.messageId);
+        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+
+        res.render('index', {
+          pageTitle: 'Thank you'
+        });
+      });
+    });
+
     User.createUser(newUser, function(err, user) {
       if(err) throw err;
       console.log(user);
