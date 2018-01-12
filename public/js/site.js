@@ -25,9 +25,9 @@ $(document).ready(function(){
   // Register Form
   $('#addressCheck').on('change', function(){
     if ( $(this).is(':checked') ) {
-      $('.postalAddress-fields').show();
-    } else {
       $('.postalAddress-fields').hide();
+    } else {
+      $('.postalAddress-fields').show();
     }
   });
 
@@ -40,6 +40,14 @@ $(document).ready(function(){
       default:
         $('.schoolInformation-fields').hide();
       break;
+    }
+  });
+
+  $("input[type=radio]").change(function() {
+    if($(this).prop('value') == 'yes'){
+      $(".participationYears-field").show();
+    } else {
+      $(".participationYears-field").hide();
     }
   });
 }); // end document.ready
