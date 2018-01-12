@@ -100,33 +100,16 @@ router.post('/register', (req, res) => {
     });
 
     const output = `
-      <p>You have a new contact request</p>
-      <h3>Contact Details</h3>
-      <ul>
-        <li><b>School Name:</b> ${schoolName}</li>
-        <li><b>School Address:</b> ${schoolAddress}</li>
-        <li><b>School Address:</b> ${schoolAddress2}</li>
-        <li><b>City:</b> ${city}</li>
-        <li><b>Zip Code:</b> ${zipCode}</li>
-        <li><b>Postal Address:</b> ${postalAddress}</li>
-        <li><b>Postal City:</b> ${postalCity}</li>
-        <li><b>Postal Zip Code:</b> ${postalZipCode}</li>
-        <li><b>Telephone:</b> ${telephone}</li>
-        <li><b>School's Email:</b> ${email}</li>
-        <li><b>School Type:</b> ${schoolType}</li>
-        <li><b>School District:</b> ${schoolDistrict}</li>
-        <li><b>School Region:</b> ${schoolRegion}</li>
-        <li><b>Curriculum:</b> ${curriculum}</li>
-        <li><b>Director Name:</b> ${directorName}</li>
-        <li><b>Director Telephone:</b> ${directorTelephone}</li>
-        <li><b>Director Email:</b> ${directorEmail}</li>
-        <li><b>School Representative's Name:</b> ${schoolLiaisonName}</li>
-        <li><b>School Representative's Telephone:</b> ${schoolLiaisonTelephone}</li>
-        <li><b>School Representative's Email:</b> ${schoolLiaisonEmail}</li>
-        <li><b>School Representative's Position:</b> ${schoolLiaisonPosition}</li>
-        <li><b>School Representative's T-Shirt:</b> ${schoolLiaisonTShirt}</li>
-        <li><b>School Representative's Tutor / Mentor:</b> ${schoolLiaisonTutorMentor}</li>
-      </ul>
+      <h3>Gracias por registrarse en la 10ma edición de Poetry Out Loud Puerto Rico. Su cuenta se ha creado exitosamente con los siguientes credenciales:</h3>
+
+      <p><b>Username:</b> ${email}</p>
+
+      <p>Recuerde regresar a su cuenta para completar los próximos registros que indica el calendario.</p>
+
+      <p>Muchas gracias,<p>
+
+      <p>equipo</p>
+      <p>POL – Puerto Rico</>
     `;
 
     nodemailer.createTestAccount((err, account) => {

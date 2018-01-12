@@ -10,15 +10,15 @@ router.get('/', (req, res) => {
 
 router.post('/send', (req, res) => {
   const output = `
-    <p>You have a new contact request</p>
-    <h3>Contact Details</h3>
+    <p>Tienes una nueva solicitud de Contacto</p>
+    <h3>Detalles del contacto</h3>
     <ul>
-    <li>Name: ${ req.body.name }</li>
-    <li>Email: ${ req.body.email }</li>
-    <li>School Name: ${ req.body.school }</li>
+    <li><b>Nombre:</b> ${ req.body.name }</li>
+    <li><b>Email:</b> ${ req.body.email }</li>
+    <li><b>Nombre de la escuela:</b> ${ req.body.school }</li>
     </ul>
 
-    <h3>Message:</h3>
+    <h3>Mensaje:</h3>
     <p>${ req.body.message }</p>
   `;
 
