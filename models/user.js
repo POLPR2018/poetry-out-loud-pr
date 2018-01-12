@@ -51,7 +51,7 @@ var UserSchema = mongoose.Schema({
   schoolLiaisonTutorMentor: String,
   attendanceRehersal: Boolean,
   attendanceEvent: Boolean,
-  admin: Boolean,
+  admin: { type: Boolean, default: false },
 });
 
 var User = module.exports = mongoose.model('User', UserSchema);
