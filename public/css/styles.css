@@ -211,8 +211,12 @@ h3, h4 {
   background-color: #EB7725 !important;
 }
 
+.user-btn-danger {
+  background-color: red;
+ }
+
 @media (min-width: 768px) {
-  .navbar-nav>li>a {
+  .navbar-nav > li > a {
     padding-top: 25px;
   }
 }

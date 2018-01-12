@@ -153,7 +153,7 @@ router.post('/register', (req, res) => {
       // setup email data with unicode symbols
       let mailOptions = {
         from: 'password.reset' + process.env.GLOBAL_EMAIL || 'ben@benbagley.co.uk', // sender address
-        to: user.email, // list of receivers
+        to: `${email}`, // list of receivers
         subject: 'Welcome to Poetry Out Loud', // Subject line
         html: output // html body
       };
