@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 var app = express();
 
 if (app.get('env') === 'production') {
-  mongoose.connect(process.env.DATABASE_URL, { useMongoClient: true });
+  mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
 } else {
   mongoose.connect('mongodb://localhost/pol-development', { useMongoClient: true });
 }
