@@ -3,7 +3,7 @@ const router = express.Router();
 
 var User = require('../models/user');
 
-router.get('/', ensureAuthenticated, (req, res) => {
+router.get('/dashboard', ensureAuthenticated, (req, res) => {
   res.render('dashboard/index.hbs', {
     pageTitle: 'Dashboard'
   });
@@ -14,7 +14,7 @@ function ensureAuthenticated(req, res, next){
     return next();
   } else {
     req.flash('error_msg', 'You are not logged in');
-    res.render('login');
+    res.redirect('/users/login');
   }
 }
 

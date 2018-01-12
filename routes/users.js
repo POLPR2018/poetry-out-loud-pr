@@ -2,19 +2,21 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const nodemailer = require('nodemailer');
+const randomBytes = require('randombytes');
+const async = require('async');
 const LocalStrategy = require('passport-local').Strategy;
 
 var User = require('../models/user');
 
 // Register :get
-router.get('/register', (req, res) => {
+router.get('/users/register', (req, res) => {
   res.render('register.hbs', {
     pageTitle: 'Register'
   });
 });
 
 // Register :post
-router.post('/register', (req, res) => {
+router.post('/users/register', (req, res) => {
   var schoolName = req.body.schoolName;
   var schoolAddress = req.body.schoolAddress;
   var schoolAddress2 = req.body.schoolAddress2;
@@ -96,7 +98,7 @@ router.post('/register', (req, res) => {
       schoolLiaisonEmail: schoolLiaisonEmail,
       schoolLiaisonPosition: schoolLiaisonPosition,
       schoolLiaisonTShirt: schoolLiaisonTShirt,
-      schoolLiaisonTutorMentor: schoolLiaisonTutorMentor,
+      schoolLiaisonTutorMentor: schoolLiaisonTutorMentor
     });
 
     const output = `
@@ -149,9 +151,8 @@ router.post('/register', (req, res) => {
         console.log('Message sent: %s', info.messageId);
         console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
-        res.render('index', {
-          pageTitle: 'Thank you'
-        });
+        req.flash('success_msg', 'You are now registered, you can now login!');
+        res.redirect('/users/login');
       });
     });
 
@@ -159,9 +160,6 @@ router.post('/register', (req, res) => {
       if(err) throw err;
       console.log(user);
     });
-
-    req.flash('success_msg', 'You are now registered, you can now login!');
-    res.redirect('/users/login');
   }
 });
 
@@ -197,14 +195,14 @@ passport.deserializeUser(function(id, done) {
 });
 
 // Login :get
-router.get('/login', (req, res) => {
+router.get('/users/login', (req, res) => {
   res.render('login.hbs', {
     pageTitle: 'Login'
   });
 });
 
 // Login :post
-router.post('/login', passport.authenticate('local', {
+router.post('/users/login', passport.authenticate('local', {
   successRedirect: '/dashboard',
   failureRedirect: '/users/login',
   successFlash: 'Welcome!',
@@ -214,8 +212,159 @@ router.post('/login', passport.authenticate('local', {
   res.redirect('/');
 });
 
+// Reset Password :get
+router.get('/users/reset-password', function(req, res) {
+  res.render('reset-password', {
+    pageTitle: 'Reset Password',
+    User: req.user
+  });
+});
+
+// Reset Password :post
+router.post('/users/reset-password', function(req, res, next) {
+  async.waterfall([
+    function(done) {
+      randomBytes(20, function(err, buf) {
+        var token = buf.toString('hex');
+        done(err, token);
+      });
+    },
+    function(token, done) {
+      User.findOne({ email: req.body.email }, function(err, user) {
+        if (!user) {
+          req.flash('error', 'No account with that email address exists.');
+          return res.redirect('/users/reset-password');
+        }
+
+        user.resetPasswordToken = token;
+        user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+
+        user.save(function(err) {
+          done(err, token, user);
+        });
+      });
+    },
+    function(token, user, done) {
+      nodemailer.createTestAccount((err, account) => {
+        // create reusable transporter object using the default SMTP transport
+        if (process.env.NODE_ENV === 'production') {
+          transporter = nodemailer.createTransport({
+            host: "smtp.sendgrid.net",
+            port: 587,
+            auth: {
+              user: process.env.SENDGRID_USERNAME,
+              pass: process.env.SENDGRID_PASSWORD,
+            }
+          });
+        } else {
+          transporter = nodemailer.createTransport({
+            host: "smtp.ethereal.email",
+            port: 587,
+            auth: {
+              user: 'qkkvnabtziufbksa@ethereal.email',
+              pass: 'A4W9HF2WbhAav263VM',
+            }
+          });
+        }
+        // setup email data with unicode symbols
+        let mailOptions = {
+          from: 'password.reset' + process.env.GLOBAL_EMAIL || 'ben@benbagley.co.uk', // sender address
+          to: user.email, // list of receivers
+          subject: 'Reset Password Request', // Subject line
+          text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' + 'Please click on the following link, or paste this into your browser to complete the process:\n\n' + 'http://' + req.headers.host + '/users/reset-password/' + token + '\n\n' + 'If you did not request this, please ignore this email and your password will remain unchanged.\n' // output
+        };
+        // send mail with defined transport object
+        transporter.sendMail(mailOptions, (error, info) => {
+          req.flash('success', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+          done(err, 'done');
+          res.redirect('/users/reset-password');
+        });
+      });
+    }
+  ], function(err) {
+    if (err) return next(err);
+    res.redirect('/');
+  });
+});
+
+// Reset Password Token link :get
+router.get('/users/reset-password/:token', function(req, res) {
+  User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+    if (!user) {
+      req.flash('error', 'Password reset token is invalid or has expired.');
+      return res.redirect('/users/reset-password');
+    }
+
+    res.redirect('/users/new-password', {
+      user: req.user
+    });
+  });
+});
+
+// Reset Password Token :post
+router.post('/users/reset-password/:token', function(req, res, next) {
+  async.waterfall([
+    function(done) {
+      User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+        if (!user) {
+          req.flash('error', 'Password reset token is invalid or has expired.');
+          return res.redirect('back');
+        }
+
+        user.password = req.body.password;
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpires = undefined;
+
+        user.save(function(err) {
+          req.logIn(user, function(err) {
+            done(err, user);
+          });
+        });
+      });
+    },
+    function(user, done) {
+      nodemailer.createTestAccount((err, account) => {
+        // create reusable transporter object using the default SMTP transport
+        if (process.env.NODE_ENV === 'production') {
+          transporter = nodemailer.createTransport({
+            host: "smtp.sendgrid.net",
+            port: 587,
+            auth: {
+              user: process.env.SENDGRID_USERNAME,
+              pass: process.env.SENDGRID_PASSWORD,
+            }
+          });
+        } else {
+          transporter = nodemailer.createTransport({
+            host: "smtp.ethereal.email",
+            port: 587,
+            auth: {
+              user: 'qkkvnabtziufbksa@ethereal.email',
+              pass: 'A4W9HF2WbhAav263VM',
+            }
+          });
+        }
+        // setup email data with unicode symbols
+        let mailOptions = {
+          from: 'password.reset' + process.env.GLOBAL_EMAIL || 'ben@benbagley.co.uk', // sender address
+          to: user.email, // list of receivers
+          subject: 'Your password has been changed', // Subject line
+          text: 'Hello,\n\n' + 'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n' // output
+        };
+        // send mail with defined transport object
+        transporter.sendMail(mailOptions, (err) => {
+          req.flash('success', 'Success! Your password has been changed.');
+          done(err);
+        });
+      });
+    }
+  ], function(err) {
+    res.redirect('/');
+  });
+});
+
 // Logout
-router.get('/logout', function(req, res) {
+router.get('/users/logout', function(req, res) {
   req.logout();
   req.flash('success_msg', 'You are now logged out!');
   res.redirect('/users/login');

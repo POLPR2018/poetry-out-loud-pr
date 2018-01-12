@@ -11,6 +11,7 @@ if (app.get('env') === 'production') {
 }
 
 var db = mongoose.connection;
+mongoose.Promise = global.Promise;
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
@@ -52,6 +53,25 @@ var UserSchema = mongoose.Schema({
   attendanceRehersal: Boolean,
   attendanceEvent: Boolean,
   admin: { type: Boolean, default: false },
+  resetPasswordToken: String,
+  resetPasswordExpires: String
+});
+
+UserSchema.pre('save', function(next) {
+  var user = this;
+  var SALT_FACTOR = 5;
+
+  if (!user.isModified('password')) return next();
+
+  bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
+    if (err) return next(err);
+
+    bcrypt.hash(user.password, salt, null, function(err, hash) {
+      if (err) return next(err);
+      user.password = hash;
+      next();
+    });
+  });
 });
 
 var User = module.exports = mongoose.model('User', UserSchema);

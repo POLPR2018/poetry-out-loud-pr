@@ -95,8 +95,8 @@ const routes = require('./routes/routes');
 const users = require('./routes/users');
 const dashboard = require('./routes/dashboard');
 app.use("/", routes);
-app.use("/users", users);
-app.use("/dashboard", dashboard);
+app.use("/", users);
+app.use("/", dashboard);
 
 // Get year for footer
 hbs.registerHelper('getCurrentYear', () => {
