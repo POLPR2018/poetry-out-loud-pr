@@ -173,7 +173,7 @@ passport.use(new LocalStrategy({
         return done(null, false, {message: 'Unknown Email Address'});
       }
 
-      User.comparePassword(password, user.password, function(err, ismatch){
+      User.comparePassword(password, user.password, function(err, isMatch){
         if(err) throw err;
         if(isMatch){
           return done(null, user);
