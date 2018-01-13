@@ -175,7 +175,7 @@ passport.use(new LocalStrategy({
 
       User.comparePassword(password, user.password, function(err, ismatch){
         if(err) throw err;
-        if(ismatch){
+        if(isMatch){
           return done(null, user);
         } else {
           return done(null, false, {message: 'Invalid password'});
@@ -233,7 +233,7 @@ router.post('/users/reset-password', function(req, res, next) {
       User.findOne({ email: req.body.email }, function(err, user) {
         if (!user) {
           req.flash('error', 'No account with that email address exists.');
-          return res.redirect('/users/reset-password');
+          return res.redirect('reset-password');
         }
 
         user.resetPasswordToken = token;
@@ -275,9 +275,9 @@ router.post('/users/reset-password', function(req, res, next) {
         };
         // send mail with defined transport object
         transporter.sendMail(mailOptions, (error, info) => {
-          req.flash('success', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+          req.flash('success_msg', 'An e-mail has been sent to ' + user.email + ' with further instructions.');
+          res.redirect('reset-password');
           done(err, 'done');
-          res.redirect('/users/reset-password');
         });
       });
     }
@@ -292,12 +292,19 @@ router.get('/users/reset-password/:token', function(req, res) {
   User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
     if (!user) {
       req.flash('error', 'Password reset token is invalid or has expired.');
-      return res.redirect('/users/reset-password');
+      return res.redirect(302, '/users/new-password');
     }
 
-    res.redirect('/users/new-password', {
+    res.redirect(301, 'reset-password', {
       user: req.user
     });
+  });
+});
+
+router.get('/users/new-password', function(req, res) {
+  res.render('new-password', {
+    pageTitle: 'New Password',
+    User: req.user
   });
 });
 
