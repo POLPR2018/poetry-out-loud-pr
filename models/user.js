@@ -52,26 +52,7 @@ var UserSchema = mongoose.Schema({
   schoolLiaisonTutorMentor: String,
   attendanceRehersal: Boolean,
   attendanceEvent: Boolean,
-  admin: { type: Boolean, default: false },
-  resetPasswordToken: String,
-  resetPasswordExpires: String
-});
-
-UserSchema.pre('save', function(next) {
-  var user = this;
-  var SALT_FACTOR = 5;
-
-  if (!user.isModified('password')) return next();
-
-  bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
-    if (err) return next(err);
-
-    bcrypt.hash(user.password, salt, null, function(err, hash) {
-      if (err) return next(err);
-      user.password = hash;
-      next();
-    });
-  });
+  admin: { type: Boolean, default: false }
 });
 
 var User = module.exports = mongoose.model('User', UserSchema);
@@ -95,8 +76,10 @@ module.exports.getUserById = function(id, callback){
 }
 
 module.exports.comparePassword = function(candidatePassword, hash, callback) {
-  bcrypt.compare(candidatePassword, hash, function(err, ismatch) {
+  console.log(candidatePassword)
+  console.log(hash)
+  bcrypt.compare(candidatePassword, hash, function(err, isMatch) {
     if(err) throw err;
-    callback(null, ismatch);
+    callback(null, isMatch);
   });
 }
