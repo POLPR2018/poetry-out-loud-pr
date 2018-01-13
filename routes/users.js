@@ -173,9 +173,9 @@ passport.use(new LocalStrategy({
         return done(null, false, {message: 'Unknown Email Address'});
       }
 
-      User.comparePassword(password, user.password, function(err, isMatch){
+      User.comparePassword(password, user.password, function(err, ismatch){
         if(err) throw err;
-        if(isMatch){
+        if(ismatch){
           return done(null, user);
         } else {
           return done(null, false, {message: 'Invalid password'});

@@ -95,8 +95,8 @@ module.exports.getUserById = function(id, callback){
 }
 
 module.exports.comparePassword = function(candidatePassword, hash, callback) {
-  bcrypt.compare(candidatePassword, hash, function(err, isMatch) {
+  bcrypt.compare(candidatePassword, hash, function(err, ismatch) {
     if(err) throw err;
-    callback(null, isMatch);
+    callback(null, ismatch);
   });
 }
