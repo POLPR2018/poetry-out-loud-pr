@@ -208,7 +208,7 @@ router.post('/users/login', passport.authenticate('local', {
   successFlash: 'Welcome!',
   failureFlash: 'Invalid email or password.'
 }), function(req, res) {
-  res.redirect('/' + req.user.username);
+  res.redirect('/' + req.user.email);
 });
 
 // Logout

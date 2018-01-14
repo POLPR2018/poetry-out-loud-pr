@@ -11,7 +11,7 @@
 		</div>
 	</form>
 
-	<h3>Registered Users</h3>
+	<h2>Registered Users</h2>
 	<br>
 
 	<div class="table-responsive">
@@ -21,51 +21,29 @@
 					<th scope="col">School</th>
 					<th scope="col">City</th>
 					<th scope="col">Email</th>
-					<th scope="col"><nobr>School Type</nobr></th>
+					<th scope="col">School Type</th>
 					<th scope="col">District</th>
 					<th scope="col">Region</th>
-					<th scope="col"><nobr>Director's Name</nobr></th>
-					<th scope="col">Liaison</th>
+					<th scope="col">Director's Name</th>
+					<th scope="col">Representative</th>
 					<th scope="col">Poet/Mentor</th>
 				</tr>
 			</thead>
 
 			<tbody>
+				{{#each user}}
 				<tr>
-					<td>Abelardo Díaz Morales</td>
-					<td>Caguas</td>
-					<td>email@me.com</td>
-					<td>Public</td>
-					<td>San Juan 1</td>
-					<td>Caguas</td>
-					<td>Raymond Arrieta</td>
-					<td>Raymond Arrieta</td>
-					<td>None</td>
+					<td>{{schoolName}}</td>
+					<td>{{city}}</td>
+					<td>{{email}}</td>
+					<td>{{schoolType}}</td>
+					<td>{{schoolDistrict}}</td>
+					<td>{{schoolRegion}}</td>
+					<td>{{directorName}}</td>
+					<td>{{schoolRepresentativeName}}</td>
+					<td>{{schoolRepresentativeTutorMentor}}</td>
 				</tr>
-
-				<tr>
-					<td>Eugenio María de Hostos</td>
-					<td>Bayamón</td>
-					<td>eugenio@gmail.com</td>
-					<td>Private</td>
-					<td>Aguadilla</td>
-					<td>Mayagüez</td>
-					<td>Juan del Pueblo</td>
-					<td>Juana la Cubana</td>
-					<td>None</td>
-				</tr>
-
-				<tr>
-					<td>Secundino Díaz</td>
-					<td>Toa Alta</td>
-					<td>secundo@yahoo.com</td>
-					<td>Public</td>
-					<td>Bayamón</td>
-					<td>Bayamón</td>
-					<td>Luz Benítez</td>
-					<td>Luz Benítez</td>
-					<td>Penelope</td>
-				</tr>
+				{{/each}}
 			</tbody>
 		</table>
 	</div>

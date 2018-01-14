@@ -1,9 +1,421 @@
 {{> header }}
 
 <div class="container">
-  {{> flash }}
+	<form action="/users/register" method="post">
+		<h2>Registration Form</h2>
 
-  <h1>Edit {{user.email}}</h1>
+		{{# if errors}}
+		<div class="alert alert-danger">
+			{{#each errors}}
+				<li>{{msg}}</li>
+			{{/each}}
+		</div>
+		{{/if}}
+
+		<p>
+			<b>All fields with <span style="color: red">*</span> are required</b>
+		</p>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				School Information
+			</div>
+
+			<div class="panel-body">
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label for="schoolName">
+							School Name <span style="color: red">*</span>
+						</label>
+						<input type="text" class="form-control" id="schoolName" name="schoolName" placeholder="Enter school name" value="{{user.schoolName}}">
+					</div>
+
+					<div class="form-group col-md-12">
+						<label for="schoolAddress">
+							School Address <span style="color: red">*</span>
+						</label>
+						<input type="text" class="form-control" id="schoolAddress" name="schoolAddress" placeholder="Enter your school's physical address" value="{{user.schoolAddress}}">
+					</div>
+
+					<div class="form-group col-md-12">
+						<label for="inputAddress2">Address 2</label>
+						<input type="text" class="form-control" id="inputAddress2" name="schoolAddress2" placeholder="Apartment, studio, or floor" value="{{user.schoolAddress2}}">
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="city">
+							City <span style="color: red">*</span>
+						</label>
+						<input type="text" class="form-control" id="city" name="city" placeholder="City" value="{{user.city}}">
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="zip">
+							Zip Code <span style="color: red">*</span>
+						</label>
+						<input type="text" class="form-control" id="zip" name="zipCode" placeholder="Zip Code">
+					</div>
+
+					<div class="form-check col-md-12">
+						<input type="checkbox" name="addressCheck" id="addressCheck" value="addressCheck" class="form-check-input" value="{{user.addressCheck}}">
+						<label class="form-check-label" for="addressCheck">Check if the school's postal address is the same as the physical address</label>
+					</div>
+
+					<!-- This should be hidden if the box above has been checked -->
+					<!-- Postal address, usually a P.O. Box -->
+					<div class="postalAddress-fields">
+						<div class="form-group col-md-12">
+							<label for="postalAddress">Postal Address</label>
+							<input type="text" class="form-control" id="postalAddress" name="postalAddress" placeholder="Enter your school's postal address" value="{{user.postalAddress}}">
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="city2">City</label>
+							<input type="text" class="form-control" id="city2" name="postalCity" placeholder="postalCity" value="{{user.postalCity}}">
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="zip2">Zip Code</label>
+							<input type="text" class="form-control" id="zip2" placeholder="Zip Code" value="{{user.postalZipCode}}">
+						</div>
+					</div>
+					<!-- End of hidden fields -->
+
+					<div class="form-group col-md-6">
+						<label for="telephone">
+							Telephone <span style="color: red">*</span>
+						</label>
+						<input type="text" class="form-control" id="telephone" name="telephone" placeholder="Enter your school's Telephone Number" value="{{user.telephone}}">
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="fax">Fax</label>
+						<input type="text" class="form-control" id="fax" name="fax" placeholder="Enter your school's Fax Number" value="{{user.fax}}">
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="exampleFormControlInput1">
+							School's Email Address <span style="color: red">*</span>
+						</label>
+						<input type="email" class="form-control" id="exampleFormControlInput1" name="email" placeholder="name@example.com" value="{{user.email}}">
+						<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="exampleInputPassword1">
+							Password <span style="color: red">*</span>
+						</label>
+						<input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password" value="{{user.password}}">
+					</div>
+				</div><!-- row ends -->
+			</div><!-- End of panel body -->
+		</div><!-- School Information panel ends -->
+
+		<!-- Other School Information -->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Other School Information
+			</div><!-- Panel heading ends -->
+
+			<div class="panel-body">
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label for="schoolType">
+							Type of School <span style="color: red">*</span>
+						</label>
+						<select class="form-control" id="schoolType" name="schoolType" value="{{user.schoolType}}">
+							<option selected>None</option>
+							<option value="public">Public</option>
+							<option value="private">Private</option>
+							<option value="homeSchool">Home School</option>
+						</select>
+					</div>
+
+					<!-- If Public is selected than the following fields become VISIBLE, otherwise they stay hidden -->
+					<div class="schoolInformation-fields" style="display:none">
+						<div class="form-group col-md-6">
+							<label for="districtControlSelect">School District</label>
+							<select class="form-control" id="districtControlSelect" name="schoolDistrict" value="{{user.schoolDistrict}}">
+								<option>None</option>
+								<option>Aguadilla</option>
+								<option>Arecibo</option>
+								<option>Barranquitas</option>
+								<option>Bayamón</option>
+								<option>Cabo Rojo</option>
+								<option>Camuy</option>
+								<option>Canóvanas</option>
+								<option>Carolina</option>
+								<option>Cidra</option>
+								<option>Fajardo</option>
+								<option>Guayama</option>
+								<option>Guaynabo</option>
+								<option>Gurabo</option>
+								<option>Las Piedras</option>
+								<option>Manatí</option>
+								<option>Mayagüez</option>
+								<option>Naranjito</option>
+								<option>Orocovis</option>
+								<option>Ponce</option>
+								<option>Santa Isabel</option>
+								<option>San Juan 1</option>
+								<option>San Juan 2</option>
+								<option>San Sebastián</option>
+								<option>Toa Baja</option>
+								<option>Utuado</option>
+								<option>Vega Alta</option>
+								<option>Yabucoa</option>
+								<option>Yauco</option>
+							</select>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label for="regionControlSelect">School Region</label>
+							<select class="form-control" id="regionControlSelect" name="schoolRegion" value="{{user.schoolRegion}}">
+								<option>None</option>
+								<option>Arecibo</option>
+								<option>Bayamón</option>
+								<option>Caguas</option>
+								<option>Humacao</option>
+								<option>Mayagüez</option>
+								<option>Ponce</option>
+								<option>San Juan</option>
+							</select>
+						</div>
+					</div>
+					<!-- End of hidden fields -->
+
+					<div class="form-group col-md-6">
+						<label for="curriculumControlSelect">Curriculum</label>
+						<select class="form-control" id="curriculumControlSelect" name="curriculum" value="{{user.curriculum}}">
+							<option>English as a second language</option>
+							<option>English as a main language</option>
+							<option>Bilingual</option>
+							<option>Other</option>
+						</select>
+					</div>
+
+					<p class="col-md-12">Has your school participated in previous years?</p>
+
+					<div class="col-md-12">
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="participationRadio" id="yesRadio" value="yes" checked value="{{user.participationBefore}}">
+							<label class="form-check-label" for="yesRadio">
+								Yes
+							</label>
+						</div>
+
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="participationRadio" id="noRadio" value="no" value="{{user.participationBefore}}">
+							<label class="form-check-label" for="noRadio">
+								No
+							</label>
+						</div>
+					</div>
+
+					<div class="participationYears-field">
+						<div class="form-group col-md-6">
+							<label for="years">How many years participating?</label>
+							<input type="text" class="form-control" id="years" placeholder="If your previous answer is YES, enter the number of years" name="participationYears" value="{{user.participationYears}}">
+						</div>
+					</div>
+				</div><!-- form-row ends -->
+			</div><!-- Panel body -->
+		</div><!-- Other School panel ends -->
+
+		<!-- School Director information -->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				School Director Information
+			</div>
+
+			<div class="panel-body">
+				<div class="form-group">
+					<label for="directorName">
+						Director's Name <span style="color: red">*</span>
+					</label>
+					<input type="text" class="form-control" id="directorName" placeholder="Enter the School Director's Name" name="directorName" value="{{user.directorName}}">
+				</div>
+
+				<div class="form-group">
+					<label for="telephone2">
+						Telephone <span style="color: red">*</span>
+					</label>
+					<input type="text" class="form-control" id="telephone2" placeholder="Enter your school director's Telephone Number" name="directorTelephone" value="{{user.directorTelephone}}">
+				</div>
+
+				<div class="form-group">
+					<label for="directorEmail">
+						Email address <span style="color: red">*</span>
+					</label>
+					<input type="email" class="form-control" id="directorEmail" placeholder="director@example.com" name="directorEmail" value="{{user.directorEmail}}">
+				</div>
+			</div><!-- panel body ends -->
+		</div><!-- panel -->
+
+		<!-- The following fields are hidden to users and should ONLY be visible and editable by a site admin-level user. -->
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				Administrators Only
+			</div>
+
+			<div class="panel-body">
+				<p>Director Attended Rehersal</p>
+
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="attendanceRadio" id="yesRadio2" value="yes">
+					<label class="form-check-label" for="yesRadio2">
+						Yes
+					</label>
+				</div>
+
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="attendanceRadio" id="noRadio2" value="no">
+					<label class="form-check-label" for="noRadio2">
+						No
+					</label>
+				</div>
+
+				<p>Director Attended the Competition Event</p>
+
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="eventRadio" id="yesRadio3" value="yes">
+					<label class="form-check-label" for="yesRadio3">
+						Yes
+					</label>
+				</div>
+
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="eventRadio" id="noRadio3" value="no">
+					<label class="form-check-label" for="noRadio3">
+						No
+					</label>
+				</div>
+			</div>
+		</div>
+		<!-- End of fields hidden to user -->
+
+		<!-- School Representative (Liaison) Info -->
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				School Representative
+			</div>
+
+			<div class="panel-body">
+				<div class="form-group">
+					<label for="liaison">
+						Representative's Name <span style="color: red">*</span>
+					</label>
+					<input type="text" class="form-control" id="liaison" placeholder="Enter the school representative's Name" name="schoolRepresentativeName" value="{{user.schoolRepresentativeName}}">
+				</div>
+
+				<div class="form-group">
+					<label for="telephone3">
+						Telephone <span style="color: red">*</span>
+					</label>
+					<input type="text" class="form-control" id="telephone3" placeholder="Enter your school representative's telephone number" name="schoolRepresentativeTelephone" value="{{user.schoolRepresentativeTelephone}}">
+				</div>
+
+				<div class="form-group">
+					<label for="liaisonEmail">
+						Email address <span style="color: red">*</span>
+					</label>
+					<input type="email" class="form-control" id="liaisonEmail" placeholder="rep@example.com" name="schoolRepresentativeEmail" value="{{user.schoolRepresentativeEmail}}">
+				</div>
+
+				<div class="form-group">
+					<label for="positionControlSelect">Position</label>
+					<select class="form-control" id="positionControlSelect" name="schoolRepresentativePosition" value="{{user.schoolRepresentativePosition}}">
+						<option>Teacher</option>
+						<option>Intern</option>
+						<option>Coordinator</option>
+						<option>Facilitator</option>
+						<option>Director</option>
+						<option>Other</option>
+					</select>
+				</div>
+
+				<p>If other, specify position</p>
+
+				<div class="form-group">
+					<label for="otherPosition">"Other" position</label>
+					<input type="text" class="form-control" id="otherPosition" placeholder="If other, specify the position" name="schoolRepresentativeOtherPosition" value="{{user.schoolRepresentativeOtherPosition}}">
+				</div>
+
+				<div class="form-group">
+					<label for="sizeControlSelect">T-shirt Size</label>
+					<select class="form-control" id="sizeControlSelect" name="schoolRepresentativeTShirt" value="{{user.schoolRepresentativeTShirt}}">
+						<option>Small</option>
+						<option>Medium</option>
+						<option>Large</option>
+						<option>X-Large</option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label for="mentorControlSelect">Poet Tutor/Mentor</label>
+					<select class="form-control" id="mentorControlSelect" name="schoolRepresentativeTutorMentor" value="{{user.schoolRepresentativeTutorMentor}}">
+						<option>None</option>
+						<option>Ketsia Ramos</option>
+						<option>Christian Díaz</option>
+						<option>Gerónimo Robaina López</option>
+						<option>Jacqueline Jiang</option>
+						<option>Mara Pastor</option>
+						<option>Nivialis Toro</option>
+						<option>Penélope N. Cuyar Bordas</option>
+						<option>Rubén Durán Morales</option>
+						<option>Lucía Zoé Martínez</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<!-- The following fields are hidden to users and should ONLY be visible and editable by a site admin-level user. -->
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				Administrators Only
+			</div>
+
+			<div class="panel-body">
+				<p>Attended Rehersal?</p>
+
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="attendanceRadio2" id="yesLiaisonRadio" value="yes">
+					<label class="form-check-label" for="yesLiaisonRadio">
+						Yes
+					</label>
+				</div>
+
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="attendanceRadio2" id="noLiaisonRadio" value="no">
+					<label class="form-check-label" for="noLiaisonRadio">
+						No
+					</label>
+				</div>
+
+				<p>Attended the Competition Event?</p>
+
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="eventRadio2" id="yesLiaisonRadio2" value="yes">
+					<label class="form-check-label" for="yesLiaisonRadio2">
+						Yes
+					</label>
+				</div>
+
+				<div class="form-check">
+					<input class="form-check-input" type="radio" name="eventRadio2" id="noLiaisonRadio2" value="no">
+					<label class="form-check-label" for="noLiaisonRadio2">
+						No
+					</label>
+				</div>
+			</div>
+		</div>
+		<!-- End of fields hidden to user -->
+
+		<button type="submit" class="btn btn-primary">Register</button>
+		<a href="/users/register">
+			<button class="btn btn-primary">Cancel</button>
+		</a>
+	</form>
 </div>
 
 {{> footer }}

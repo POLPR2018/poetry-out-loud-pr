@@ -73,8 +73,12 @@
         <tr>
           <td><a href="">School Registration</a></td>
           <td>
-            <button class="btn">Open</button>
-            <button class="btn">Edit</button>
+            <a href="">
+              <button class="btn">Open</button>
+            </a>
+            <a href="/dashboard/users/edit">
+              <button class="btn">Edit</button>
+            </a>
             {{#if user.admin}}
             <button class="btn user-btn-danger">Delete</button>
             {{/if}}

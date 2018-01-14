@@ -18,4 +18,17 @@ function ensureAuthenticated(req, res, next){
   }
 }
 
+router.get('/dashboard/users', ensureAuthenticated, (req, res) => {
+  res.render('dashboard/users/index.hbs', {
+    pageTitle: 'Users'
+  });
+});
+
+// users edit
+router.get('/dashboard/users/edit', ensureAuthenticated, (req, res) => {
+  res.render('dashboard/users/edit.hbs', {
+    pageTitle: 'Edit'
+  });
+});
+
 module.exports = router;
