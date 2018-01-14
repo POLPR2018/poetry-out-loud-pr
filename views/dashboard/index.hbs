@@ -2,8 +2,96 @@
 
 <div class="container">
   {{> flash }}
-  
-  <h1>Dashboard</h1>
+
+  <h2>Dashboard | {{user.email}}</h2>
+
+  <br>
+
+  <h5>What's next?</h5>
+
+  <section class="todo-list">
+    <label>
+      <input type="radio" name="registerYourSchool" value="strikethrough">
+      <span>
+        <i class="fa fa-check"></i>
+        Register your school
+      </span>
+    </label>
+
+    <br>
+
+    <label>
+      <input type="radio" name="competitionForm" value="strikethrough">
+      <span>
+        <i class="fa fa-check"></i>
+        Fill out the form competition form
+      </span>
+    </label>
+
+    <br>
+
+    <label>
+      <input type="radio" name="competitionResults" value="strikethrough">
+      <span>
+        <i class="fa fa-check"></i>
+        Check competition results
+      </span>
+    </label>
+
+    <br>
+
+    <label>
+      <input type="radio" name="poemRegistration" value="strikethrough">
+      <span>
+        <i class="fa fa-check"></i>
+        Fill out poem registration
+      </span>
+    </label>
+  </section>
+
+  <div class="table table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Form Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="">School Registration</a></td>
+          <td>
+            <button class="btn">Open</button>
+            <button class="btn">Edit</button>
+            <button class="btn user-btn-danger">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td><a href="">School Competition</a></td>
+          <td>
+            <button class="btn">Open</button>
+            <button class="btn">Edit</button>
+            <button class="btn user-btn-danger">Delete</button>
+          </td>
+        </tr><tr>
+          <td><a href="">Competition Results</a></td>
+          <td>
+            <button class="btn">Open</button>
+            <button class="btn">Edit</button>
+            <button class="btn user-btn-danger">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td><a href="">Poem Registration</a></td>
+          <td>
+            <button class="btn">Open</button>
+            <button class="btn">Edit</button>
+            <button class="btn user-btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 {{> footer }}

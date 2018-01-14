@@ -12,6 +12,10 @@
 		</div>
 		{{/if}}
 
+		<p>
+			<b>All fields with <span style="color: red">*</span> are required</b>
+		</p>
+
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				School Information
@@ -20,12 +24,16 @@
 			<div class="panel-body">
 				<div class="row">
 					<div class="form-group col-md-12">
-						<label for="schoolName">School Name</label>
+						<label for="schoolName">
+							School Name <span style="color: red">*</span>
+						</label>
 						<input type="text" class="form-control" id="schoolName" name="schoolName" placeholder="Enter school name">
 					</div>
 
 					<div class="form-group col-md-12">
-						<label for="schoolAddress">School Address</label>
+						<label for="schoolAddress">
+							School Address <span style="color: red">*</span>
+						</label>
 						<input type="text" class="form-control" id="schoolAddress" name="schoolAddress" placeholder="Enter your school's physical address">
 					</div>
 
@@ -35,12 +43,16 @@
 					</div>
 
 					<div class="form-group col-md-6">
-						<label for="city">City</label>
+						<label for="city">
+							City <span style="color: red">*</span>
+						</label>
 						<input type="text" class="form-control" id="city" name="city" placeholder="City">
 					</div>
 
 					<div class="form-group col-md-6">
-						<label for="zip">Zip Code</label>
+						<label for="zip">
+							Zip Code <span style="color: red">*</span>
+						</label>
 						<input type="text" class="form-control" id="zip" name="zipCode" placeholder="Zip Code">
 					</div>
 
@@ -70,7 +82,9 @@
 					<!-- End of hidden fields -->
 
 					<div class="form-group col-md-6">
-						<label for="telephone">Telephone</label>
+						<label for="telephone">
+							Telephone <span style="color: red">*</span>
+						</label>
 						<input type="text" class="form-control" id="telephone" name="telephone" placeholder="Enter your school's Telephone Number">
 					</div>
 
@@ -80,13 +94,17 @@
 					</div>
 
 					<div class="form-group col-md-6">
-						<label for="exampleFormControlInput1">School's Email Address</label>
+						<label for="exampleFormControlInput1">
+							School's Email Address <span style="color: red">*</span>
+						</label>
 						<input type="email" class="form-control" id="exampleFormControlInput1" name="email" placeholder="name@example.com">
 						<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 					</div>
 
 					<div class="form-group col-md-6">
-						<label for="exampleInputPassword1">Password</label>
+						<label for="exampleInputPassword1">
+							Password <span style="color: red">*</span>
+						</label>
 						<input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
 					</div>
 				</div><!-- row ends -->
@@ -102,7 +120,9 @@
 			<div class="panel-body">
 				<div class="row">
 					<div class="form-group col-md-6">
-						<label for="schoolType">Type of School</label>
+						<label for="schoolType">
+							Type of School <span style="color: red">*</span>
+						</label>
 						<select class="form-control" id="schoolType" name="schoolType">
 							<option selected>None</option>
 							<option value="public">Public</option>
@@ -210,17 +230,23 @@
 
 			<div class="panel-body">
 				<div class="form-group">
-					<label for="directorName">Director's Name</label>
+					<label for="directorName">
+						Director's Name <span style="color: red">*</span>
+					</label>
 					<input type="text" class="form-control" id="directorName" placeholder="Enter the School Director's Name" name="directorName">
 				</div>
 
 				<div class="form-group">
-					<label for="telephone2">Telephone</label>
+					<label for="telephone2">
+						Telephone <span style="color: red">*</span>
+					</label>
 					<input type="text" class="form-control" id="telephone2" placeholder="Enter your school director's Telephone Number" name="directorTelephone">
 				</div>
 
 				<div class="form-group">
-					<label for="directorEmail">Email address</label>
+					<label for="directorEmail">
+						Email address <span style="color: red">*</span>
+					</label>
 					<input type="email" class="form-control" id="directorEmail" placeholder="director@example.com" name="directorEmail">
 				</div>
 			</div><!-- panel body ends -->
@@ -276,23 +302,29 @@
 
 			<div class="panel-body">
 				<div class="form-group">
-					<label for="liaison">Representative's Name</label>
-					<input type="text" class="form-control" id="liaison" placeholder="Enter the School Liaison's Name" name="schoolLiaisonName">
+					<label for="liaison">
+						Representative's Name <span style="color: red">*</span>
+					</label>
+					<input type="text" class="form-control" id="liaison" placeholder="Enter the school representative's Name" name="schoolRepresentativeName">
 				</div>
 
 				<div class="form-group">
-					<label for="telephone3">Telephone</label>
-					<input type="text" class="form-control" id="telephone3" placeholder="Enter your school representative's Telephone Number" name="schoolLiaisonTelephone">
+					<label for="telephone3">
+						Telephone <span style="color: red">*</span>
+					</label>
+					<input type="text" class="form-control" id="telephone3" placeholder="Enter your school representative's telephone number" name="schoolRepresentativeTelephone">
 				</div>
 
 				<div class="form-group">
-					<label for="liaisonEmail">Email address</label>
-					<input type="email" class="form-control" id="liaisonEmail" placeholder="rep@example.com" name="schoolLiaisonEmail">
+					<label for="liaisonEmail">
+						Email address <span style="color: red">*</span>
+					</label>
+					<input type="email" class="form-control" id="liaisonEmail" placeholder="rep@example.com" name="schoolRepresentativeEmail">
 				</div>
 
 				<div class="form-group">
 					<label for="positionControlSelect">Position</label>
-					<select class="form-control" id="positionControlSelect" name="schoolLiaisonPosition">
+					<select class="form-control" id="positionControlSelect" name="schoolRepresentativePosition">
 						<option>Teacher</option>
 						<option>Intern</option>
 						<option>Coordinator</option>
@@ -306,12 +338,12 @@
 
 				<div class="form-group">
 					<label for="otherPosition">"Other" position</label>
-					<input type="text" class="form-control" id="otherPosition" placeholder="If other, specify the position" name="schoolLiaisonOtherPosition">
+					<input type="text" class="form-control" id="otherPosition" placeholder="If other, specify the position" name="schoolRepresentativeOtherPosition">
 				</div>
 
 				<div class="form-group">
 					<label for="sizeControlSelect">T-shirt Size</label>
-					<select class="form-control" id="sizeControlSelect" name="schoolLiaisonTShirt">
+					<select class="form-control" id="sizeControlSelect" name="schoolRepresentativeTShirt">
 						<option>Small</option>
 						<option>Medium</option>
 						<option>Large</option>
@@ -321,7 +353,7 @@
 
 				<div class="form-group">
 					<label for="mentorControlSelect">Poet Tutor/Mentor</label>
-					<select class="form-control" id="mentorControlSelect" name="schoolLiaisonTutorMentor">
+					<select class="form-control" id="mentorControlSelect" name="schoolRepresentativeTutorMentor">
 						<option>None</option>
 						<option>Ketsia Ramos</option>
 						<option>Christian Díaz</option>
@@ -380,7 +412,9 @@
 		<!-- End of fields hidden to user -->
 
 		<button type="submit" class="btn btn-primary">Register</button>
-		<button type="" class="btn btn-primary">Cancel</button>
+		<a href="/users/register">
+			<button class="btn btn-primary">Cancel</button>
+		</a>
 	</form>
 </div>
 

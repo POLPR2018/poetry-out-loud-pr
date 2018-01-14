@@ -35,12 +35,12 @@ router.post('/users/register', (req, res) => {
   var directorName = req.body.directorName;
   var directorTelephone = req.body.directorTelephone;
   var directorEmail = req.body.directorEmail;
-  var schoolLiaisonName = req.body.schoolLiaisonName;
-  var schoolLiaisonTelephone = req.body.schoolLiaisonTelephone;
-  var schoolLiaisonEmail = req.body.schoolLiaisonEmail;
-  var schoolLiaisonPosition = req.body.schoolLiaisonPosition;
-  var schoolLiaisonTShirt = req.body.schoolLiaisonTShirt;
-  var schoolLiaisonTutorMentor = req.body.schoolLiaisonTutorMentor;
+  var schoolRepresentativeName = req.body.schoolRepresentativeName;
+  var schoolRepresentativeTelephone = req.body.schoolRepresentativeTelephone;
+  var schoolRepresentativeEmail = req.body.schoolRepresentativeEmail;
+  var schoolRepresentativePosition = req.body.schoolRepresentativePosition;
+  var schoolRepresentativeTShirt = req.body.schoolRepresentativeTShirt;
+  var schoolRepresentativeTutorMentor = req.body.schoolRepresentativeTutorMentor;
 
   // validations
   req.checkBody('schoolName', 'The school name is required').notEmpty();
@@ -59,13 +59,13 @@ router.post('/users/register', (req, res) => {
   req.checkBody('directorTelephone', 'A directors telephone is required').notEmpty();
   req.checkBody('directorEmail', 'A directors email is required').notEmpty();
   req.checkBody('directorEmail', 'This email is not valid').isEmail();
-  req.checkBody('schoolLiaisonName', 'A school representative name is required').notEmpty();
-  req.checkBody('schoolLiaisonTelephone', 'A school representative telephone is required').notEmpty();
-  req.checkBody('schoolLiaisonEmail', 'The school representative email is not valid').isEmail();
-  req.checkBody('schoolLiaisonEmail', 'A school representative email is required').notEmpty();
-  req.checkBody('schoolLiaisonPosition', 'A school representative position is required').notEmpty();
-  req.checkBody('schoolLiaisonTShirt', 'A school representative t-shirt size is required').notEmpty();
-  req.checkBody('schoolLiaisonTutorMentor', 'A school representative tutor/mentor is required').notEmpty();
+  req.checkBody('schoolRepresentativeName', 'A school representative name is required').notEmpty();
+  req.checkBody('schoolRepresentativeTelephone', 'A school representative telephone is required').notEmpty();
+  req.checkBody('schoolRepresentativeEmail', 'The school representative email is not valid').isEmail();
+  req.checkBody('schoolRepresentativeEmail', 'A school representative email is required').notEmpty();
+  req.checkBody('schoolRepresentativePosition', 'A school representative position is required').notEmpty();
+  req.checkBody('schoolRepresentativeTShirt', 'A school representative t-shirt size is required').notEmpty();
+  req.checkBody('schoolRepresentativeTutorMentor', 'A school representative tutor/mentor is required').notEmpty();
 
   var errors = req.validationErrors();
 
@@ -93,12 +93,12 @@ router.post('/users/register', (req, res) => {
       directorName: directorName,
       directorTelephone: directorTelephone,
       directorEmail: directorEmail,
-      schoolLiaisonName: schoolLiaisonName,
-      schoolLiaisonTelephone: schoolLiaisonTelephone,
-      schoolLiaisonEmail: schoolLiaisonEmail,
-      schoolLiaisonPosition: schoolLiaisonPosition,
-      schoolLiaisonTShirt: schoolLiaisonTShirt,
-      schoolLiaisonTutorMentor: schoolLiaisonTutorMentor
+      schoolRepresentativeName: schoolRepresentativeName,
+      schoolRepresentativeTelephone: schoolRepresentativeTelephone,
+      schoolRepresentativeEmail: schoolRepresentativeEmail,
+      schoolRepresentativePosition: schoolRepresentativePosition,
+      schoolRepresentativeTShirt: schoolRepresentativeTShirt,
+      schoolRepresentativeTutorMentor: schoolRepresentativeTutorMentor
     });
 
     const output = `
@@ -208,8 +208,7 @@ router.post('/users/login', passport.authenticate('local', {
   successFlash: 'Welcome!',
   failureFlash: 'Invalid email or password.'
 }), function(req, res) {
-  // res.redirect('/' + req.user.username);
-  res.redirect('/');
+  res.redirect('/' + req.user.username);
 });
 
 // Logout
