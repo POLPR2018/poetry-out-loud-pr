@@ -21,16 +21,6 @@
     <br>
 
     <label>
-      <input type="checkbox" class="todo-item" name="organizeCompetition" value="organizeCompetition">
-      <span>
-        <i class="fa fa-check"></i>
-        Organize your school competition
-      </span>
-    </label>
-
-    <br>
-
-    <label>
       <input type="checkbox" class="todo-item" name="competitionForm" value="competitionForm">
       <span>
         <i class="fa fa-check"></i>
@@ -44,7 +34,7 @@
       <input type="checkbox" class="todo-item" name="competitionResults" value="competitionResults">
       <span>
         <i class="fa fa-check"></i>
-        Check competition results
+        Fill out the  competition results
       </span>
     </label>
 
@@ -71,12 +61,12 @@
       </thead>
       <tbody>
         <tr>
-          <td><a href="">School Registration</a></td>
+          <td>School Registration</td>
           <td>
-            <a href="">
+            <a href="/dashboard/users/{{user.id}}">
               <button class="btn">Open</button>
             </a>
-            <a href="/dashboard/users/edit">
+            <a href="/dashboard/users/edit/{{user.id}}">
               <button class="btn">Edit</button>
             </a>
             {{#if user.admin}}
@@ -85,7 +75,7 @@
           </td>
         </tr>
         <tr>
-          <td><a href="">School Competition</a></td>
+          <td>School Competition</td>
           <td>
             <button class="btn">Open</button>
             {{#if user.admin}}
@@ -94,7 +84,7 @@
             {{/if}}
           </td>
         </tr><tr>
-          <td><a href="">Competition Results</a></td>
+          <td>Competition Results</td>
           <td>
             <button class="btn">Open</button>
             {{#if user.admin}}
@@ -104,7 +94,7 @@
           </td>
         </tr>
         <tr>
-          <td><a href="">Poem Registration</a></td>
+          <td>Poem Registration</td>
           <td>
             <button class="btn">Open</button>
             {{#if user.admin}}

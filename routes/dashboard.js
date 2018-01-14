@@ -24,8 +24,15 @@ router.get('/dashboard/users', ensureAuthenticated, (req, res) => {
   });
 });
 
+// users details
+router.get('/dashboard/users/:id', ensureAuthenticated, (req, res) => {
+  res.render('dashboard/users/show.hbs', {
+    pageTitle: 'Users Details'
+  });
+});
+
 // users edit
-router.get('/dashboard/users/edit', ensureAuthenticated, (req, res) => {
+router.get('/dashboard/users/edit/:id', ensureAuthenticated, (req, res, next) => {
   res.render('dashboard/users/edit.hbs', {
     pageTitle: 'Edit'
   });
