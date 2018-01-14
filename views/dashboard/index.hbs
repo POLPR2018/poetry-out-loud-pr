@@ -7,11 +7,11 @@
 
   <br>
 
-  <h5>What's next?</h5>
+  <h5>What's next? (click the option when filled out)</h5>
 
   <section class="todo-list">
     <label>
-      <input type="radio" name="registerYourSchool" value="strikethrough">
+      <input type="checkbox" class="todo-item" name="registerYourSchool" value="registerYourSchool">
       <span>
         <i class="fa fa-check"></i>
         Register your school
@@ -21,7 +21,17 @@
     <br>
 
     <label>
-      <input type="radio" name="competitionForm" value="strikethrough">
+      <input type="checkbox" class="todo-item" name="organizeCompetition" value="organizeCompetition">
+      <span>
+        <i class="fa fa-check"></i>
+        Organize your school competition
+      </span>
+    </label>
+
+    <br>
+
+    <label>
+      <input type="checkbox" class="todo-item" name="competitionForm" value="competitionForm">
       <span>
         <i class="fa fa-check"></i>
         Fill out the form competition form
@@ -31,7 +41,7 @@
     <br>
 
     <label>
-      <input type="radio" name="competitionResults" value="strikethrough">
+      <input type="checkbox" class="todo-item" name="competitionResults" value="competitionResults">
       <span>
         <i class="fa fa-check"></i>
         Check competition results
@@ -41,13 +51,15 @@
     <br>
 
     <label>
-      <input type="radio" name="poemRegistration" value="strikethrough">
+      <input type="checkbox" class="todo-item" name="poemRegistration" value="poemRegistration">
       <span>
         <i class="fa fa-check"></i>
         Fill out poem registration
       </span>
     </label>
   </section>
+
+  <br>
 
   <div class="table table-responsive">
     <table class="table table-hover">
@@ -63,30 +75,38 @@
           <td>
             <button class="btn">Open</button>
             <button class="btn">Edit</button>
+            {{#if user.admin}}
             <button class="btn user-btn-danger">Delete</button>
+            {{/if}}
           </td>
         </tr>
         <tr>
           <td><a href="">School Competition</a></td>
           <td>
             <button class="btn">Open</button>
+            {{#if user.admin}}
             <button class="btn">Edit</button>
             <button class="btn user-btn-danger">Delete</button>
+            {{/if}}
           </td>
         </tr><tr>
           <td><a href="">Competition Results</a></td>
           <td>
             <button class="btn">Open</button>
+            {{#if user.admin}}
             <button class="btn">Edit</button>
             <button class="btn user-btn-danger">Delete</button>
+            {{/if}}
           </td>
         </tr>
         <tr>
           <td><a href="">Poem Registration</a></td>
           <td>
             <button class="btn">Open</button>
+            {{#if user.admin}}
             <button class="btn">Edit</button>
             <button class="btn user-btn-danger">Delete</button>
+            {{/if}}
           </td>
         </tr>
       </tbody>

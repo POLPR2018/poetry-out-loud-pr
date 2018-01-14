@@ -245,11 +245,11 @@ textarea {
   resize: none;
 }
 
-.todo-list input[type=radio] {
+.todo-list input[type=checkbox] {
   display: none;
 }
 
-.todo-list input[type=radio]:checked + span {
+.todo-list input[type=checkbox]:checked + span {
   text-decoration: line-through;
 }
 

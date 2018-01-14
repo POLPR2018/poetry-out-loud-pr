@@ -50,4 +50,19 @@ $(document).ready(function(){
       $(".participationYears-field").hide();
     }
   });
+
+  // todo save checkboxes
+  $("input.todo-item").each(function() {
+    var mycookie = $.cookie($(this).attr('name'));
+    if (mycookie && mycookie === "true") {
+      $(this).prop('checked', mycookie);
+    }
+  });
+
+  $("input.todo-item").change(function() {
+    $.cookie($(this).attr("name"), $(this).prop('checked'), {
+      path: '/',
+      expires: 365
+    });
+  });
 }); // end document.ready
