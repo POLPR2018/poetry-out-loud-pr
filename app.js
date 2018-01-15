@@ -1,4 +1,4 @@
-const express = require('express');
+ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const hbs = require('hbs');
@@ -23,6 +23,7 @@ app.listen(port, () => {
 hbs.registerPartials(__dirname + '/views/layouts');
 app.set('view engine', 'hbs');
 
+// Select fields based on db values
 hbs.registerHelper('select', function(selected, option) {
   return (selected == option) ? 'selected="selected"' : '';
 });

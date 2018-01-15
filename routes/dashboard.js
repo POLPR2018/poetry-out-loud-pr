@@ -3,12 +3,6 @@ const router = express.Router();
 
 var User = require('../models/user');
 
-router.get('/dashboard', ensureAuthenticated, (req, res) => {
-  res.render('dashboard/index.hbs', {
-    pageTitle: 'Dashboard'
-  });
-});
-
 function ensureAuthenticated(req, res, next){
   if(req.isAuthenticated()){
     return next();
@@ -18,10 +12,19 @@ function ensureAuthenticated(req, res, next){
   }
 }
 
-router.get('/dashboard/users', ensureAuthenticated, (req, res) => {
-  res.render('dashboard/users/index.hbs', {
-    pageTitle: 'Users'
+router.get('/dashboard', ensureAuthenticated, (req, res) => {
+  res.render('dashboard/index.hbs', {
+    pageTitle: 'Dashboard'
   });
+});
+
+router.get('/dashboard/users', ensureAuthenticated, (req, res) => {
+  User.find({}, function(err, data) {
+    res.render('dashboard/users/index.hbs', {
+      pageTitle: 'Users',
+      users: data
+    });
+  })
 });
 
 // users details
