@@ -20,7 +20,7 @@ app.listen(port, () => {
 });
 
 // Views directory established and handbars engine
-hbs.registerPartials(__dirname + '/views/layouts')
+hbs.registerPartials(__dirname + '/views/layouts');
 app.set('view engine', 'hbs');
 
 // static assets rendered

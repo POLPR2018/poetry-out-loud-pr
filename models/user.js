@@ -50,9 +50,13 @@ var UserSchema = mongoose.Schema({
   schoolRepresentativeOtherPosition: String,
   schoolRepresentativeTShirt: String,
   schoolRepresentativeTutorMentor: String,
+  admin: { type: Boolean, default: false },
+
+  // admin fields
+  directorAttendanceRehersal: Boolean,
+  directorCompetitionEvent: Boolean,
   attendanceRehersal: Boolean,
   attendanceEvent: Boolean,
-  admin: { type: Boolean, default: false }
 });
 
 var User = module.exports = mongoose.model('User', UserSchema);

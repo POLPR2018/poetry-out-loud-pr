@@ -63,7 +63,13 @@ router.post('/dashboard/users/edit/:id', (req, res) => {
     schoolRepresentativeEmail: req.body.schoolRepresentativeEmail,
     schoolRepresentativePosition: req.body.schoolRepresentativePosition,
     schoolRepresentativeTShirt: req.body.schoolRepresentativeTShirt,
-    schoolRepresentativeTutorMentor: req.body.schoolRepresentativeTutorMentor
+    schoolRepresentativeTutorMentor: req.body.schoolRepresentativeTutorMentor,
+
+    // admin fields
+    directorAttendanceRehersal: req.body.directorAttendanceRehersal,
+    directorCompetitionEvent: req.body.directorCompetitionEvent,
+    attendanceRehersal: req.body.attendanceRehersal,
+    attendanceEvent: req.body.attendanceEvent
   };
 
   User.findByIdAndUpdate(req.params.id, user, function(err, raw){

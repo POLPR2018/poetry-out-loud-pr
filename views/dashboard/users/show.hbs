@@ -1,8 +1,8 @@
 {{> header }}
 
 <div class="container">
-	<form action="/users/edit" method="post">
-		<h2>Update {{user.email}}</h2>
+	<form>
+		<h2>{{user.email}}'s profile</h2>
 
 		{{# if errors}}
 		<div class="alert alert-danger">

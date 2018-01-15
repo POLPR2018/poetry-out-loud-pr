@@ -42,6 +42,12 @@ router.post('/users/register', (req, res) => {
   var schoolRepresentativeTShirt = req.body.schoolRepresentativeTShirt;
   var schoolRepresentativeTutorMentor = req.body.schoolRepresentativeTutorMentor;
 
+  // admin fields
+  var directorAttendanceRehersal = req.body.directorAttendanceRehersal;
+  var directorCompetitionEvent = req.body.directorCompetitionEvent;
+  var attendanceRehersal = req.body.attendanceRehersal;
+  var attendanceEvent = req.body.attendanceEvent;
+
   // validations
   req.checkBody('schoolName', 'The school name is required').notEmpty();
   req.checkBody('schoolAddress', 'The school address is required').notEmpty();
