@@ -123,11 +123,11 @@
 						<label for="schoolType">
 							Type of School <span style="color: red">*</span>
 						</label>
-						<select class="form-control" id="schoolType" name="schoolType" value="{{user.schoolType}}" disabled>
-							<option selected>None</option>
-							<option value="public">Public</option>
-							<option value="private">Private</option>
-							<option value="homeSchool">Home School</option>
+						<select class="form-control" id="schoolType" name="schoolType" disabled>
+							<option value="none" {{{select user.schoolType 'none'}}}>None</option>
+							<option value="public" {{{select user.schoolType 'public'}}}>Public</option>
+							<option value="private" {{{select user.schoolType 'private'}}}>Private</option>
+							<option value="homeSchool" {{{select user.schoolType 'homeSchool'}}}>Home School</option>
 						</select>
 					</div>
 
@@ -135,50 +135,50 @@
 					<div class="schoolInformation-fields" style="display:none">
 						<div class="form-group col-md-6">
 							<label for="districtControlSelect">School District</label>
-							<select class="form-control" id="districtControlSelect" name="schoolDistrict" value="{{user.schoolDistrict}}" disabled>
-								<option>None</option>
-								<option>Aguadilla</option>
-								<option>Arecibo</option>
-								<option>Barranquitas</option>
-								<option>Bayamón</option>
-								<option>Cabo Rojo</option>
-								<option>Camuy</option>
-								<option>Canóvanas</option>
-								<option>Carolina</option>
-								<option>Cidra</option>
-								<option>Fajardo</option>
-								<option>Guayama</option>
-								<option>Guaynabo</option>
-								<option>Gurabo</option>
-								<option>Las Piedras</option>
-								<option>Manatí</option>
-								<option>Mayagüez</option>
-								<option>Naranjito</option>
-								<option>Orocovis</option>
-								<option>Ponce</option>
-								<option>Santa Isabel</option>
-								<option>San Juan 1</option>
-								<option>San Juan 2</option>
-								<option>San Sebastián</option>
-								<option>Toa Baja</option>
-								<option>Utuado</option>
-								<option>Vega Alta</option>
-								<option>Yabucoa</option>
-								<option>Yauco</option>
+							<select class="form-control" id="districtControlSelect" name="schoolDistrict" disabled>
+								<option value="none" {{{select user.schoolDistrict 'none'}}}>None</option>
+								<option value="aguadilla" {{{select user.schoolDistrict 'aguadilla'}}}>Aguadilla</option>
+								<option value="arecibo" {{{select user.schoolDistrict 'arecibo'}}}>Arecibo</option>
+								<option value="barranquitas" {{{select user.schoolDistrict 'barranquitas'}}}>Barranquitas</option>
+								<option value="bayamon" {{{select user.schoolDistrict 'bayamon'}}}>Bayamón</option>
+								<option value="caboRojo" {{{select user.schoolDistrict 'caboRojo'}}}>Cabo Rojo</option>
+								<option value="camuy" {{{select user.schoolDistrict 'camuy'}}}>Camuy</option>
+								<option value="canovanas" {{{select user.schoolDistrict 'canovanas'}}}>Canóvanas</option>
+								<option value="carolina" {{{select user.schoolDistrict 'carolina'}}}>Carolina</option>
+								<option value="cidra" {{{select user.schoolDistrict 'cidra'}}}>Cidra</option>
+								<option value="fajardo" {{{select user.schoolDistrict 'fajardo'}}}>Fajardo</option>
+								<option value="guayama" {{{select user.schoolDistrict 'guayama'}}}>Guayama</option>
+								<option value="guaynabo" {{{select user.schoolDistrict 'guaynabo'}}}>Guaynabo</option>
+								<option value="gurabo" {{{select user.schoolDistrict 'gurabo'}}}>Gurabo</option>
+								<option value="lasPiedras" {{{select user.schoolDistrict 'lasPiedras'}}}>Las Piedras</option>
+								<option value="manati" {{{select user.schoolDistrict 'manati'}}}>Manatí</option>
+								<option value="mayaguez" {{{select user.schoolDistrict 'mayaguez'}}}>Mayagüez</option>
+								<option value="naranjito" {{{select user.schoolDistrict 'naranjito'}}}>Naranjito</option>
+								<option value="orocovis" {{{select user.schoolDistrict 'orocovis'}}}>Orocovis</option>
+								<option value="ponce" {{{select user.schoolDistrict 'ponce'}}}>Ponce</option>
+								<option value="santaIsabel" {{{select user.schoolDistrict 'santaIsabel'}}}>Santa Isabel</option>
+								<option value="sanJan1" {{{select user.schoolDistrict 'sanJan1'}}}>San Juan 1</option>
+								<option value="sanJan2" {{{select user.schoolDistrict 'sanJan2'}}}>San Juan 2</option>
+								<option value="sanSebastian" {{{select user.schoolDistrict 'sanSebastian'}}}>San Sebastián</option>
+								<option value="toaBajas" {{{select user.schoolDistrict 'toaBajas'}}}>Toa Baja</option>
+								<option value="utuado" {{{select user.schoolDistrict 'utuado'}}}>Utuado</option>
+								<option value="vegaAlta" {{{select user.schoolDistrict 'vegaAlta'}}}>Vega Alta</option>
+								<option value="yabucoa" {{{select user.schoolDistrict 'yabucoa'}}}>Yabucoa</option>
+								<option value="yauco" {{{select user.schoolDistrict 'yauco'}}}>Yauco</option>
 							</select>
 						</div>
 
 						<div class="form-group col-md-6">
 							<label for="regionControlSelect">School Region</label>
-							<select class="form-control" id="regionControlSelect" name="schoolRegion" value="{{user.schoolRegion}}">
-								<option>None</option>
-								<option>Arecibo</option>
-								<option>Bayamón</option>
-								<option>Caguas</option>
-								<option>Humacao</option>
-								<option>Mayagüez</option>
-								<option>Ponce</option>
-								<option>San Juan</option>
+							<select class="form-control" id="regionControlSelect" name="schoolRegion" disabled>
+								<option value="none" {{{select user.schoolRegion 'none'}}}>None</option>
+								<option value="arecibo" {{{select user.schoolRegion 'arecibo'}}}>Arecibo</option>
+								<option value="bayamon" {{{select user.schoolRegion 'bayamon'}}}>Bayamón</option>
+								<option value="caguas" {{{select user.schoolRegion 'caguas'}}}>Caguas</option>
+								<option value="humacao" {{{select user.schoolRegion 'humacao'}}}>Humacao</option>
+								<option value="mayaguez" {{{select user.schoolRegion 'mayaguez'}}}>Mayagüez</option>
+								<option value="ponce" {{{select user.schoolRegion 'ponce'}}}>Ponce</option>
+								<option value="sanJuan" {{{select user.schoolRegion 'sanJuan'}}}>San Juan</option>
 							</select>
 						</div>
 					</div>
@@ -186,11 +186,11 @@
 
 					<div class="form-group col-md-6">
 						<label for="curriculumControlSelect">Curriculum</label>
-						<select class="form-control" id="curriculumControlSelect" name="curriculum" value="{{user.curriculum}}">
-							<option>English as a second language</option>
-							<option>English as a main language</option>
-							<option>Bilingual</option>
-							<option>Other</option>
+						<select class="form-control" id="curriculumControlSelect" name="curriculum" disabled>
+							<option value="englishAsASecondLanguage" {{{select user.curriculum 'englishAsASecondLanguage'}}}>English as a second language</option>
+							<option value="englishAsAMainLanguage" {{{select user.curriculum 'englishAsAMainLanguage'}}}>English as a main language</option>
+							<option value="bilingual" {{{select user.curriculum 'bilingual'}}}>Bilingual</option>
+							<option value="other" {{{select user.curriculum 'other'}}}>Other</option>
 						</select>
 					</div>
 
@@ -282,13 +282,13 @@
 
 				<div class="form-group">
 					<label for="positionControlSelect">Position</label>
-					<select class="form-control" id="positionControlSelect" name="schoolRepresentativePosition" value="{{user.schoolRepresentativePosition}}" disabled>
-						<option>Teacher</option>
-						<option>Intern</option>
-						<option>Coordinator</option>
-						<option>Facilitator</option>
-						<option>Director</option>
-						<option>Other</option>
+					<select class="form-control" id="positionControlSelect" name="schoolRepresentativePosition" disabled>
+						<option value="teacher" {{{select user.schoolRepresentativePosition 'teacher'}}}>Teacher</option>
+						<option value="intern" {{{select user.schoolRepresentativePosition 'intern'}}}>Intern</option>
+						<option value="coordinator" {{{select user.schoolRepresentativePosition 'coordinator'}}}>Coordinator</option>
+						<option value="facilitator" {{{select user.schoolRepresentativePosition 'facilitator'}}}>Facilitator</option>
+						<option value="director" {{{select user.schoolRepresentativePosition 'director'}}}>Director</option>
+						<option value="other" {{{select user.schoolRepresentativePosition 'other'}}}>Other</option>
 					</select>
 				</div>
 
@@ -301,27 +301,27 @@
 
 				<div class="form-group">
 					<label for="sizeControlSelect">T-shirt Size</label>
-					<select class="form-control" id="sizeControlSelect" name="schoolRepresentativeTShirt" value="{{user.schoolRepresentativeTShirt}}" disabled>
-						<option>Small</option>
-						<option>Medium</option>
-						<option>Large</option>
-						<option>X-Large</option>
+					<select class="form-control" id="sizeControlSelect" name="schoolRepresentativeTShirt" disabled>
+						<option value="small" {{{select user.schoolRepresentativeTShirt 'small'}}}>Small</option>
+						<option value="medium" {{{select user.schoolRepresentativeTShirt 'medium'}}}>Medium</option>
+						<option value="large" {{{select user.schoolRepresentativeTShirt 'large'}}}>Large</option>
+						<option value="xLarge" {{{select user.schoolRepresentativeTShirt 'xLarge'}}}>X-Large</option>
 					</select>
 				</div>
 
 				<div class="form-group">
 					<label for="mentorControlSelect">Poet Tutor/Mentor</label>
-					<select class="form-control" id="mentorControlSelect" name="schoolRepresentativeTutorMentor" value="{{user.schoolRepresentativeTutorMentor}}" disabled>
-						<option>None</option>
-						<option>Ketsia Ramos</option>
-						<option>Christian Díaz</option>
-						<option>Gerónimo Robaina López</option>
-						<option>Jacqueline Jiang</option>
-						<option>Mara Pastor</option>
-						<option>Nivialis Toro</option>
-						<option>Penélope N. Cuyar Bordas</option>
-						<option>Rubén Durán Morales</option>
-						<option>Lucía Zoé Martínez</option>
+					<select class="form-control" id="mentorControlSelect" name="schoolRepresentativeTutorMentor" disabled>
+						<option value="none" {{{select user.schoolRepresentativeTutorMentor 'none'}}}>None</option>
+						<option value="ketsiaRamos" {{{select user.schoolRepresentativeTutorMentor 'ketsiaRamos'}}}>Ketsia Ramos</option>
+						<option value="christianDiaz" {{{select user.schoolRepresentativeTutorMentor 'christianDiaz'}}}>Christian Díaz</option>
+						<option value="geronimoRobainaLopez" {{{select user.schoolRepresentativeTutorMentor 'geronimoRobainaLopez'}}}>Gerónimo Robaina López</option>
+						<option value="jacquelineJiang" {{{select user.schoolRepresentativeTutorMentor 'jacquelineJiang'}}}>Jacqueline Jiang</option>
+						<option value="maraPastor" {{{select user.schoolRepresentativeTutorMentor 'maraPastor'}}}>Mara Pastor</option>
+						<option value="nivialisToro" {{{select user.schoolRepresentativeTutorMentor 'nivialisToro'}}}>Nivialis Toro</option>
+						<option value="penelopeNCuyarBordas" {{{select user.schoolRepresentativeTutorMentor 'penelopeNCuyarBordas'}}}>Penélope N. Cuyar Bordas</option>
+						<option value="rubenDuranMorales" {{{select user.schoolRepresentativeTutorMentor 'rubenDuranMorales'}}}>Rubén Durán Morales</option>
+						<option value="luciaZoeMartinez" {{{select user.schoolRepresentativeTutorMentor 'luciaZoeMartinez'}}}>Lucía Zoé Martínez</option>
 					</select>
 				</div>
 			</div>

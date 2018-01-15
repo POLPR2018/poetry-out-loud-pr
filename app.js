@@ -23,6 +23,10 @@ app.listen(port, () => {
 hbs.registerPartials(__dirname + '/views/layouts');
 app.set('view engine', 'hbs');
 
+hbs.registerHelper('select', function(selected, option) {
+  return (selected == option) ? 'selected="selected"' : '';
+});
+
 // static assets rendered
 app.use(express.static(__dirname + '/public'));
 app.use('/', express.static(__dirname + '/public'));
