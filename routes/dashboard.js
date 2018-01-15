@@ -39,7 +39,7 @@ router.get('/dashboard/users/edit/:id', ensureAuthenticated, (req, res, next) =>
 });
 
 // users put
-router.put('/dashboard/users/edit/:id', (req, res) => {
+router.post('/dashboard/users/edit/:id', (req, res) => {
   const user = {
     schoolName: req.body.schoolName,
     schoolAddress: req.body.schoolAddress,
@@ -51,7 +51,6 @@ router.put('/dashboard/users/edit/:id', (req, res) => {
     postalZipCode: req.body.postalZipCode,
     telephone: req.body.telephone,
     email: req.body.email,
-    password: req.body.password,
     schoolType: req.body.schoolType,
     schoolDistrict: req.body.schoolDistrict,
     schoolRegion: req.body.schoolRegion,
@@ -71,7 +70,8 @@ router.put('/dashboard/users/edit/:id', (req, res) => {
     if(err) {
       res.send(err);
     }
-    res.send(raw);
+    req.flash('success_msg', 'User has been updated');
+    res.redirect('/dashboard/');
   });
 });
 
