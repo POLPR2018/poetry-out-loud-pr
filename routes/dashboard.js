@@ -38,4 +38,41 @@ router.get('/dashboard/users/edit/:id', ensureAuthenticated, (req, res, next) =>
   });
 });
 
+// users put
+router.put('/dashboard/users/edit/:id', (req, res) => {
+  const user = {
+    schoolName: req.body.schoolName,
+    schoolAddress: req.body.schoolAddress,
+    schoolAddress2: req.body.schoolAddress2,
+    city: req.body.city,
+    zipCode: req.body.zipCode,
+    postalAddress: req.body.postalAddress,
+    postalCity: req.body.postalCity,
+    postalZipCode: req.body.postalZipCode,
+    telephone: req.body.telephone,
+    email: req.body.email,
+    password: req.body.password,
+    schoolType: req.body.schoolType,
+    schoolDistrict: req.body.schoolDistrict,
+    schoolRegion: req.body.schoolRegion,
+    curriculum: req.body.curriculum,
+    directorName: req.body.directorName,
+    directorTelephone: req.body.directorTelephone,
+    directorEmail: req.body.directorEmail,
+    schoolRepresentativeName: req.body.schoolRepresentativeName,
+    schoolRepresentativeTelephone: req.body.schoolRepresentativeTelephone,
+    schoolRepresentativeEmail: req.body.schoolRepresentativeEmail,
+    schoolRepresentativePosition: req.body.schoolRepresentativePosition,
+    schoolRepresentativeTShirt: req.body.schoolRepresentativeTShirt,
+    schoolRepresentativeTutorMentor: req.body.schoolRepresentativeTutorMentor
+  };
+
+  User.findByIdAndUpdate(req.params.id, user, function(err, raw){
+    if(err) {
+      res.send(err);
+    }
+    res.send(raw);
+  });
+});
+
 module.exports = router;

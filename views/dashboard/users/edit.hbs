@@ -1,9 +1,9 @@
 {{> header }}
 
 <div class="container">
-	<form action="/users/edit" method="post">
+	<form action="/dashboard/users/edit/:id" method="put">
 		<h2>Edit {{user.email}}</h2>
-		
+
 		{{# if errors}}
 		<div class="alert alert-danger">
 			{{#each errors}}
