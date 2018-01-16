@@ -10,7 +10,12 @@ const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 const fs = require('fs');
 
+const sslRedirect = require('heroku-ssl-redirect');
+
 var app = express();
+
+// enable ssl redirect
+app.use(sslRedirect());
 
 // Server port
 const port = process.env.PORT || 3000;
