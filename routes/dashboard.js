@@ -21,25 +21,31 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
 
 // /users
 router.get('/dashboard/users', ensureAuthenticated, (req, res) => {
-  User.find({}, function(err, data) {
+  User.find({}, function(err, users) {
     res.render('dashboard/users/index.hbs', {
       pageTitle: 'Users',
-      users: data
+      users: users
     });
   })
 });
 
 // users details
 router.get('/dashboard/users/:id', ensureAuthenticated, (req, res) => {
-  res.render('dashboard/users/show.hbs', {
-    pageTitle: 'Users Details',
+  User.findById(req.params.id, function(err, user){
+    res.render('dashboard/users/show.hbs', {
+      pageTitle: 'Users Details',
+      users: user
+    });
   });
 });
 
 // users edit
 router.get('/dashboard/users/edit/:id', ensureAuthenticated, (req, res, next) => {
-  res.render('dashboard/users/edit.hbs', {
-    pageTitle: 'Edit'
+  User.findById(req.params.id, function(err, user){
+    res.render('dashboard/users/edit.hbs', {
+      pageTitle: 'Edit Details',
+      users: user
+    });
   });
 });
 

@@ -1,8 +1,8 @@
 {{> header }}
 
 <div class="container">
-	<form action="/dashboard/users/edit/{{user.id}}" method="post">
-		<h2>Edit {{user.email}}</h2>
+	<form action="/dashboard/users/edit/{{users.id}}" method="post">
+		<h2>Edit {{users.email}}</h2>
 
 		{{# if errors}}
 		<div class="alert alert-danger">
@@ -27,37 +27,37 @@
 						<label for="schoolName">
 							School Name <span style="color: red">*</span>
 						</label>
-						<input type="text" class="form-control" id="schoolName" name="schoolName" placeholder="Enter school name" value="{{user.schoolName}}">
+						<input type="text" class="form-control" id="schoolName" name="schoolName" placeholder="Enter school name" value="{{users.schoolName}}">
 					</div>
 
 					<div class="form-group col-md-12">
 						<label for="schoolAddress">
 							School Address <span style="color: red">*</span>
 						</label>
-						<input type="text" class="form-control" id="schoolAddress" name="schoolAddress" placeholder="Enter your school's physical address" value="{{user.schoolAddress}}">
+						<input type="text" class="form-control" id="schoolAddress" name="schoolAddress" placeholder="Enter your school's physical address" value="{{users.schoolAddress}}">
 					</div>
 
 					<div class="form-group col-md-12">
 						<label for="inputAddress2">Address 2</label>
-						<input type="text" class="form-control" id="inputAddress2" name="schoolAddress2" placeholder="Apartment, studio, or floor" value="{{user.schoolAddress2}}">
+						<input type="text" class="form-control" id="inputAddress2" name="schoolAddress2" placeholder="Apartment, studio, or floor" value="{{users.schoolAddress2}}">
 					</div>
 
 					<div class="form-group col-md-6">
 						<label for="city">
 							City <span style="color: red">*</span>
 						</label>
-						<input type="text" class="form-control" id="city" name="city" placeholder="City" value="{{user.city}}">
+						<input type="text" class="form-control" id="city" name="city" placeholder="City" value="{{users.city}}">
 					</div>
 
 					<div class="form-group col-md-6">
 						<label for="zip">
 							Zip Code <span style="color: red">*</span>
 						</label>
-						<input type="text" class="form-control" id="zip" name="zipCode" placeholder="Zip Code" value="{{user.zipCode}}">
+						<input type="text" class="form-control" id="zip" name="zipCode" placeholder="Zip Code" value="{{users.zipCode}}">
 					</div>
 
 					<div class="form-check col-md-12">
-						<input type="checkbox" name="addressCheck" id="addressCheck" value="addressCheck" class="form-check-input" value="{{user.addressCheck}}">
+						<input type="checkbox" name="addressCheck" id="addressCheck" value="addressCheck" class="form-check-input" value="{{users.addressCheck}}">
 						<label class="form-check-label" for="addressCheck">Check if the school's postal address is the same as the physical address</label>
 					</div>
 
@@ -66,17 +66,17 @@
 					<div class="postalAddress-fields">
 						<div class="form-group col-md-12">
 							<label for="postalAddress">Postal Address</label>
-							<input type="text" class="form-control" id="postalAddress" name="postalAddress" placeholder="Enter your school's postal address" value="{{user.postalAddress}}">
+							<input type="text" class="form-control" id="postalAddress" name="postalAddress" placeholder="Enter your school's postal address" value="{{users.postalAddress}}">
 						</div>
 
 						<div class="form-group col-md-6">
 							<label for="city2">City</label>
-							<input type="text" class="form-control" id="city2" name="postalCity" placeholder="postalCity" value="{{user.postalCity}}">
+							<input type="text" class="form-control" id="city2" name="postalCity" placeholder="postalCity" value="{{users.postalCity}}">
 						</div>
 
 						<div class="form-group col-md-6">
 							<label for="zip2">Zip Code</label>
-							<input type="text" class="form-control" id="zip2" placeholder="Zip Code" value="{{user.postalZipCode}}">
+							<input type="text" class="form-control" id="zip2" placeholder="Zip Code" value="{{users.postalZipCode}}">
 						</div>
 					</div>
 					<!-- End of hidden fields -->
@@ -85,19 +85,19 @@
 						<label for="telephone">
 							Telephone <span style="color: red">*</span>
 						</label>
-						<input type="text" class="form-control" id="telephone" name="telephone" placeholder="Enter your school's Telephone Number" value="{{user.telephone}}">
+						<input type="text" class="form-control" id="telephone" name="telephone" placeholder="Enter your school's Telephone Number" value="{{users.telephone}}">
 					</div>
 
 					<div class="form-group col-md-6">
 						<label for="fax">Fax</label>
-						<input type="text" class="form-control" id="fax" name="fax" placeholder="Enter your school's Fax Number" value="{{user.fax}}">
+						<input type="text" class="form-control" id="fax" name="fax" placeholder="Enter your school's Fax Number" value="{{users.fax}}">
 					</div>
 
 					<div class="form-group col-md-6">
 						<label for="exampleFormControlInput1">
 							School's Email Address <span style="color: red">*</span>
 						</label>
-						<input type="email" class="form-control" id="exampleFormControlInput1" name="email" placeholder="name@example.com" value="{{user.email}}">
+						<input type="email" class="form-control" id="exampleFormControlInput1" name="email" placeholder="name@example.com" value="{{users.email}}">
 						<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 					</div>
 				</div><!-- row ends -->
@@ -191,14 +191,14 @@
 
 					<div class="col-md-12">
 						<div class="form-check">
-							<input class="form-check-input" type="radio" name="participationRadio" id="yesRadio" value="yes" checked value="{{user.participationBefore}}">
+							<input class="form-check-input" type="radio" name="participationRadio" id="yesRadio" value="yes" checked value="{{users.participationBefore}}">
 							<label class="form-check-label" for="yesRadio">
 								Yes
 							</label>
 						</div>
 
 						<div class="form-check">
-							<input class="form-check-input" type="radio" name="participationRadio" id="noRadio" value="no" value="{{user.participationBefore}}">
+							<input class="form-check-input" type="radio" name="participationRadio" id="noRadio" value="no" value="{{users.participationBefore}}">
 							<label class="form-check-label" for="noRadio">
 								No
 							</label>
@@ -208,7 +208,7 @@
 					<div class="participationYears-field">
 						<div class="form-group col-md-6">
 							<label for="years">How many years participating?</label>
-							<input type="text" class="form-control" id="years" placeholder="If your previous answer is YES, enter the number of years" name="participationYears" value="{{user.participationYears}}">
+							<input type="text" class="form-control" id="years" placeholder="If your previous answer is YES, enter the number of years" name="participationYears" value="{{users.participationYears}}">
 						</div>
 					</div>
 				</div><!-- form-row ends -->
@@ -226,21 +226,21 @@
 					<label for="directorName">
 						Director's Name <span style="color: red">*</span>
 					</label>
-					<input type="text" class="form-control" id="directorName" placeholder="Enter the School Director's Name" name="directorName" value="{{user.directorName}}">
+					<input type="text" class="form-control" id="directorName" placeholder="Enter the School Director's Name" name="directorName" value="{{users.directorName}}">
 				</div>
 
 				<div class="form-group">
 					<label for="telephone2">
 						Telephone <span style="color: red">*</span>
 					</label>
-					<input type="text" class="form-control" id="telephone2" placeholder="Enter your school director's Telephone Number" name="directorTelephone" value="{{user.directorTelephone}}">
+					<input type="text" class="form-control" id="telephone2" placeholder="Enter your school director's Telephone Number" name="directorTelephone" value="{{users.directorTelephone}}">
 				</div>
 
 				<div class="form-group">
 					<label for="directorEmail">
 						Email address <span style="color: red">*</span>
 					</label>
-					<input type="email" class="form-control" id="directorEmail" placeholder="director@example.com" name="directorEmail" value="{{user.directorEmail}}">
+					<input type="email" class="form-control" id="directorEmail" placeholder="director@example.com" name="directorEmail" value="{{users.directorEmail}}">
 				</div>
 			</div><!-- panel body ends -->
 		</div><!-- panel -->
@@ -252,7 +252,7 @@
 			</div>
 
 			<div class="panel-body">
-				<p>Director Attended Rehersal <b>(currently {{user.directorAttendanceRehersal}})</b></p>
+				<p>Director Attended Rehersal <b>(currently {{users.directorAttendanceRehersal}})</b></p>
 
 				<div class="form-check">
 					<input class="form-check-input" type="radio" name="directorAttendanceRehersal" id="directorAttendanceRehersal" value="yes">
@@ -268,7 +268,7 @@
 					</label>
 				</div>
 
-				<p>Director Attended the Competition Event <b>(currently {{user.directorCompetitionEvent}})</b></p>
+				<p>Director Attended the Competition Event <b>(currently {{users.directorCompetitionEvent}})</b></p>
 
 				<div class="form-check">
 					<input class="form-check-input" type="radio" name="directorCompetitionEvent" id="directorCompetitionEvent" value="yes">
@@ -298,21 +298,21 @@
 					<label for="liaison">
 						Representative's Name <span style="color: red">*</span>
 					</label>
-					<input type="text" class="form-control" id="liaison" placeholder="Enter the school representative's Name" name="schoolRepresentativeName" value="{{user.schoolRepresentativeName}}">
+					<input type="text" class="form-control" id="liaison" placeholder="Enter the school representative's Name" name="schoolRepresentativeName" value="{{users.schoolRepresentativeName}}">
 				</div>
 
 				<div class="form-group">
 					<label for="telephone3">
 						Telephone <span style="color: red">*</span>
 					</label>
-					<input type="text" class="form-control" id="telephone3" placeholder="Enter your school representative's telephone number" name="schoolRepresentativeTelephone" value="{{user.schoolRepresentativeTelephone}}">
+					<input type="text" class="form-control" id="telephone3" placeholder="Enter your school representative's telephone number" name="schoolRepresentativeTelephone" value="{{users.schoolRepresentativeTelephone}}">
 				</div>
 
 				<div class="form-group">
 					<label for="liaisonEmail">
 						Email address <span style="color: red">*</span>
 					</label>
-					<input type="email" class="form-control" id="liaisonEmail" placeholder="rep@example.com" name="schoolRepresentativeEmail" value="{{user.schoolRepresentativeEmail}}">
+					<input type="email" class="form-control" id="liaisonEmail" placeholder="rep@example.com" name="schoolRepresentativeEmail" value="{{users.schoolRepresentativeEmail}}">
 				</div>
 
 				<div class="form-group">
@@ -331,7 +331,7 @@
 
 				<div class="form-group">
 					<label for="otherPosition">"Other" position</label>
-					<input type="text" class="form-control" id="otherPosition" placeholder="If other, specify the position" name="schoolRepresentativeOtherPosition" value="{{user.schoolRepresentativeOtherPosition}}">
+					<input type="text" class="form-control" id="otherPosition" placeholder="If other, specify the position" name="schoolRepresentativeOtherPosition" value="{{users.schoolRepresentativeOtherPosition}}">
 				</div>
 
 				<div class="form-group">
@@ -369,7 +369,7 @@
 			</div>
 
 			<div class="panel-body">
-				<p>Attended Rehersal? <b>(currently {{user.attendanceRehersal}})</b></p>
+				<p>Attended Rehersal? <b>(currently {{users.attendanceRehersal}})</b></p>
 
 				<div class="form-check">
 					<input class="form-check-input" type="radio" name="attendanceRehersal" id="attendanceRehersal">
@@ -385,7 +385,7 @@
 					</label>
 				</div>
 
-				<p>Attended the Competition Event? <b>(currently {{user.attendanceEvent}})</b></p>
+				<p>Attended the Competition Event? <b>(currently {{users.attendanceEvent}})</b></p>
 
 				<div class="form-check">
 					<input class="form-check-input" type="radio" name="attendanceEvent" id="attendanceEvent" value="true">
