@@ -18,6 +18,8 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
   });
 });
 
+
+// /users
 router.get('/dashboard/users', ensureAuthenticated, (req, res) => {
   User.find({}, function(err, data) {
     res.render('dashboard/users/index.hbs', {
@@ -30,7 +32,7 @@ router.get('/dashboard/users', ensureAuthenticated, (req, res) => {
 // users details
 router.get('/dashboard/users/:id', ensureAuthenticated, (req, res) => {
   res.render('dashboard/users/show.hbs', {
-    pageTitle: 'Users Details'
+    pageTitle: 'Users Details',
   });
 });
 
@@ -41,7 +43,7 @@ router.get('/dashboard/users/edit/:id', ensureAuthenticated, (req, res, next) =>
   });
 });
 
-// users put
+// users post
 router.post('/dashboard/users/edit/:id', (req, res) => {
   const user = {
     schoolName: req.body.schoolName,

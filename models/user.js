@@ -85,10 +85,3 @@ module.exports.comparePassword = function(candidatePassword, hash, callback) {
     callback(null, isMatch);
   });
 }
-
-// get all users from collection
-// db.collection("users").find({}).toArray(function(err, result) {
-//   if (err) throw err;
-//   console.log(result);
-//   db.close();
-// });
