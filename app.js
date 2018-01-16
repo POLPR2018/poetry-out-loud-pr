@@ -95,12 +95,6 @@ app.use((req, res, next) => {
 });
 
 // Routes
-
-//heroku SSL
-app.get('/.well-known/acme-challenge/:content', function(req, res) {
-  res.send('yuVu2eGK3xqO39LqLdSZx2LcqDBcfNf6fRxXxW3mA1M')
-});
-
 const routes = require('./routes/routes');
 const users = require('./routes/users');
 const dashboard = require('./routes/dashboard');
