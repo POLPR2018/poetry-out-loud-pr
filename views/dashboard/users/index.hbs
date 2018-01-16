@@ -23,17 +23,27 @@
 						<th scope="col">Email</th>
 						<th scope="col">Representative</th>
 						<th scope="col">Poet/Mentor</th>
+						<th scope="col">Actions</th>
 					</tr>
 				</thead>
 
 				<tbody>
 					{{#each users}}
 					<tr>
-						<td><a href="/dashboard/users/{{_id}}">{{schoolName}}</a></td>
+						<td><a href="/dashboard/users/{{_id}}/progress">{{schoolName}}</a></td>
 						<td>{{city}}</td>
 						<td>{{email}}</td>
 						<td>{{schoolRepresentativeName}}</td>
 						<td>{{schoolRepresentativeTutorMentor}}</td>
+						<td>
+							<a href="/dashboard/users/{{_id}}">
+								<button class="btn">Show</button>
+							</a>
+
+							<a href="/dashboard/users/edit/{{_id}}">
+								<button class="btn">Edit</button>
+							</a>
+						</td>
 					</tr>
 					{{/each}}
 				</tbody>

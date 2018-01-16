@@ -49,7 +49,7 @@ router.get('/dashboard/users/edit/:id', ensureAuthenticated, (req, res, next) =>
   });
 });
 
-// users post
+// users edit post
 router.post('/dashboard/users/edit/:id', (req, res) => {
   const user = {
     schoolName: req.body.schoolName,
@@ -89,6 +89,16 @@ router.post('/dashboard/users/edit/:id', (req, res) => {
     }
     req.flash('success_msg', 'User has been updated');
     res.redirect('/dashboard/');
+  });
+});
+
+// users competition steps
+router.get('/dashboard/users/:id/progress', ensureAuthenticated, (req, res) => {
+  User.findById(req.params.id, function(err, user){
+    res.render('dashboard/users/progress.hbs', {
+      pageTitle: 'Progress',
+      users: user
+    });
   });
 });
 
