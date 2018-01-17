@@ -24,7 +24,11 @@ router.get('/dashboard/users', ensureAuthenticated, (req, res) => {
   User.find({}, function(err, users) {
     res.render('dashboard/users/index.hbs', {
       pageTitle: 'Users',
-      users: users
+      users: users,
+      pagination: {
+        page: 6,
+        pageCount: 1
+      }
     });
   })
 });
