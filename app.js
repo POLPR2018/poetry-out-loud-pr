@@ -11,7 +11,6 @@ const mongoose = require('mongoose');
 const fs = require('fs');
 
 const sslRedirect = require('heroku-ssl-redirect');
-const paginate = require('handlebars-paginate');
 
 var app = express();
 
@@ -33,8 +32,6 @@ app.set('view engine', 'hbs');
 hbs.registerHelper('select', function(selected, option) {
   return (selected == option) ? 'selected="selected"' : '';
 });
-
-hbs.registerHelper('paginate', paginate);
 
 // static assets rendered
 app.use(express.static(__dirname + '/public'));

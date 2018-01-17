@@ -25,11 +25,6 @@ router.get('/dashboard/users', ensureAuthenticated, (req, res) => {
     res.render('dashboard/users/index.hbs', {
       pageTitle: 'Users',
       users: users,
-      pagination: {
-        page: 6,
-        pageCount: 10,
-        limit: 5
-      }
     });
   })
 });
