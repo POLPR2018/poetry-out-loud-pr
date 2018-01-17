@@ -27,7 +27,8 @@ router.get('/dashboard/users', ensureAuthenticated, (req, res) => {
       users: users,
       pagination: {
         page: 6,
-        pageCount: 1
+        pageCount: 10,
+        limit: 5
       }
     });
   })
