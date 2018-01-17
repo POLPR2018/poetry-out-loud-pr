@@ -117,10 +117,10 @@
 							Type of School <span style="color: red">*</span>
 						</label>
 						<select class="form-control" id="schoolType" name="schoolType">
-							<option value="none" {{{select user.schoolType 'none'}}}>None</option>
-							<option value="public" {{{select user.schoolType 'public'}}}>Public</option>
-							<option value="private" {{{select user.schoolType 'private'}}}>Private</option>
-							<option value="homeSchool" {{{select user.schoolType 'homeSchool'}}}>Home School</option>
+							<option value="none" {{{select users.schoolType 'none'}}}>None</option>
+							<option value="public" {{{select users.schoolType 'public'}}}>Public</option>
+							<option value="private" {{{select users.schoolType 'private'}}}>Private</option>
+							<option value="homeSchool" {{{select users.schoolType 'homeSchool'}}}>Home School</option>
 						</select>
 					</div>
 
@@ -180,10 +180,10 @@
 					<div class="form-group col-md-6">
 						<label for="curriculumControlSelect">Curriculum</label>
 						<select class="form-control" id="curriculumControlSelect" name="curriculum">
-							<option value="englishAsASecondLanguage" {{{select user.curriculum 'englishAsASecondLanguage'}}}>English as a second language</option>
-							<option value="englishAsAMainLanguage" {{{select user.curriculum 'englishAsAMainLanguage'}}}>English as a main language</option>
-							<option value="bilingual" {{{select user.curriculum 'bilingual'}}}>Bilingual</option>
-							<option value="other" {{{select user.curriculum 'other'}}}>Other</option>
+							<option value="englishAsASecondLanguage" {{{select users.curriculum 'englishAsASecondLanguage'}}}>English as a second language</option>
+							<option value="englishAsAMainLanguage" {{{select users.curriculum 'englishAsAMainLanguage'}}}>English as a main language</option>
+							<option value="bilingual" {{{select users.curriculum 'bilingual'}}}>Bilingual</option>
+							<option value="other" {{{select users.curriculum 'other'}}}>Other</option>
 						</select>
 					</div>
 
@@ -245,7 +245,7 @@
 			</div><!-- panel body ends -->
 		</div><!-- panel -->
 
-		<!-- The following fields are hidden to users and should ONLY be visible and editable by a site admin-level user. -->
+		<!-- The following fields are hidden to users and should ONLY be visible and editable by a site admin-level users. -->
 		<div class="panel panel-danger">
 			<div class="panel-heading">
 				Administrators Only
@@ -318,12 +318,12 @@
 				<div class="form-group">
 					<label for="positionControlSelect">Position</label>
 					<select class="form-control" id="positionControlSelect" name="schoolRepresentativePosition">
-						<option value="teacher" {{{select user.schoolRepresentativePosition 'teacher'}}}>Teacher</option>
-						<option value="intern" {{{select user.schoolRepresentativePosition 'intern'}}}>Intern</option>
-						<option value="coordinator" {{{select user.schoolRepresentativePosition 'coordinator'}}}>Coordinator</option>
-						<option value="facilitator" {{{select user.schoolRepresentativePosition 'facilitator'}}}>Facilitator</option>
-						<option value="director" {{{select user.schoolRepresentativePosition 'director'}}}>Director</option>
-						<option value="other" {{{select user.schoolRepresentativePosition 'other'}}}>Other</option>
+						<option value="teacher" {{{select users.schoolRepresentativePosition 'teacher'}}}>Teacher</option>
+						<option value="intern" {{{select users.schoolRepresentativePosition 'intern'}}}>Intern</option>
+						<option value="coordinator" {{{select users.schoolRepresentativePosition 'coordinator'}}}>Coordinator</option>
+						<option value="facilitator" {{{select users.schoolRepresentativePosition 'facilitator'}}}>Facilitator</option>
+						<option value="director" {{{select users.schoolRepresentativePosition 'director'}}}>Director</option>
+						<option value="other" {{{select users.schoolRepresentativePosition 'other'}}}>Other</option>
 					</select>
 				</div>
 
@@ -337,10 +337,10 @@
 				<div class="form-group">
 					<label for="sizeControlSelect">T-shirt Size</label>
 					<select class="form-control" id="sizeControlSelect" name="schoolRepresentativeTShirt">
-						<option value="small" {{{select user.schoolRepresentativeTShirt 'small'}}}>Small</option>
-						<option value="medium" {{{select user.schoolRepresentativeTShirt 'medium'}}}>Medium</option>
-						<option value="large" {{{select user.schoolRepresentativeTShirt 'large'}}}>Large</option>
-						<option value="xLarge" {{{select user.schoolRepresentativeTShirt 'xLarge'}}}>X-Large</option>
+						<option value="small" {{{select users.schoolRepresentativeTShirt 'small'}}}>Small</option>
+						<option value="medium" {{{select users.schoolRepresentativeTShirt 'medium'}}}>Medium</option>
+						<option value="large" {{{select users.schoolRepresentativeTShirt 'large'}}}>Large</option>
+						<option value="xLarge" {{{select users.schoolRepresentativeTShirt 'xLarge'}}}>X-Large</option>
 					</select>
 				</div>
 
@@ -362,7 +362,7 @@
 			</div>
 		</div>
 
-		<!-- The following fields are hidden to users and should ONLY be visible and editable by a site admin-level user. -->
+		<!-- The following fields are hidden to users and should ONLY be visible and editable by a site admin-level users. -->
 		<div class="panel panel-danger">
 			<div class="panel-heading">
 				Administrators Only
