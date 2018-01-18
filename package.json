@@ -27,7 +27,6 @@
     "express-messages": "^1.0.1",
     "express-session": "^1.15.6",
     "express-validator": "^4.3.0",
-    "handlebars-paginate": "^0.1.0",
     "hbs": "^4.0.1",
     "heroku-ssl-redirect": "0.0.4",
     "i": "^0.3.6",
