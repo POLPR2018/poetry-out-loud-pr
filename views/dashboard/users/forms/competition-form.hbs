@@ -1,0 +1,169 @@
+{{> header}}
+
+<div class="container">
+  <form action="/dashboard/users/forms/competition-form/{{user.id}}" method="post" class="competitionformsubmit">
+    <h2>School Competition Form</h2>
+		<p>
+			<b>All fields with <span style="color: red">*</span> are required</b>
+		</p>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        General Information
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="schoolName">
+              School Name <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" name="schoolName" placeholder="Enter school name" value="{{competitions.schoolName}}" disabled>
+          </div>
+
+          <div class="form-group col-md-6 date" data-provide="datepicker">
+            <label for="competitionDate">
+              Competition Date <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionDate" name="competitionDate" placeholder="Enter the date of competition" value="{{competitions.competitionDate}}" disabled>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="competitionTime">
+              Time <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionTime" name="competitionTime" placeholder="Enter the time of the competition (e.g. 8:00 AM)" value="{{competitions.competitionTime}}" disabled>
+          </div>
+
+          <div class="form-group col-md-12">
+            <label for="competitionVenue">
+              Venue <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionVenue" name="competitionVenue" placeholder="Enter where the competition was held" value="{{competitions.competitionVenue}}" disabled>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="competitionTotalOfStudents">
+              Total number of students in the program <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionTotalOfStudents" name="competitionTotalOfStudents" placeholder="Enter the total number" value="{{competitions.competitionTotalOfStudents}}" disabled>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="competitionTotalParticipated">
+              Total number of students that participated <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionTotalParticipated" name="competitionTotalParticipated" placeholder="Enter the total number" value="{{competitions.competitionTotalParticipated}}" disabled>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="competitionTotalPersonnel">
+              Total number of school personnel involved in the program <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionTotalPersonnel" name="competitionTotalPersonnel" placeholder="Enter the total number" value="{{competitions.competitionTotalPersonnel}}" disabled>
+          </div>
+        </div><!-- row ends -->
+      </div><!-- End of panel body -->
+    </div><!-- School Information panel ends -->
+
+    <!-- Judge 1 Info -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Judge 1
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="competitionJudge1Name">
+              Judge's Name <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionJudge1Name" name="competitionJudge1Name" placeholder="Enter the Judge's Name" value="{{competitions.competitionJudge1Name}}" disabled>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="competitionJudge1Telephone">
+              Telephone <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionJudge1Telephone" name="competitionJudge1Telephone" placeholder="Enter the Judge's Telephone Number" value="{{competitions.competitionJudge1Telephone}}" disabled>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="competitionJudge1Email">
+              Email address <span style="color: red">*</span>
+            </label>
+            <input type="email" class="form-control" id="competitionJudge1Email" name="competitionJudge1Email" placeholder="judge@example.com" value="{{competitions.competitionJudge1Email}}" disabled>
+          </div>
+        </div>
+      </div><!-- end of row -->
+    </div>
+
+    <!-- Judge 2 Info -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Judge 2
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="competitionJudge2Name">
+              Judge's Name <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionJudge2Name" name="competitionJudge2Name" placeholder="Enter the Judge's Name" value="{{competitions.competitionJudge2Name}}" disabled>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="competitionJudge2Telephone">
+              Telephone <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionJudge2Telephone" name="competitionJudge2Telephone" placeholder="Enter the Judge's Telephone Number" value="{{competitions.competitionJudge2Telephone}}" disabled>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="competitionJudge2Email">
+              Email address <span style="color: red">*</span>
+            </label>
+            <input type="email" class="form-control" id="competitionJudge2Email" name="competitionJudge2Email" placeholder="judge@example.com" value="{{competitions.competitionJudge2Email}}" disabled>
+          </div>
+        </div>
+      </div><!-- end of row -->
+    </div>
+
+    <!-- Judge 3 Info -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Judge 3
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="competitionJudge3Name">
+              Judge's Name <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionJudge3Name" name="competitionJudge3Name" placeholder="Enter the Judge's Name" value="{{competitions.competitionJudge3Name}}" disabled>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="competitionJudge3Telephone">
+              Telephone <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionJudge3Telephone" name="competitionJudge3Telephone" placeholder="Enter the Judge's Telephone Number" value="{{competitions.competitionJudge3Telephone}}" disabled>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="competitionJudge3Email">
+              Email address <span style="color: red">*</span>
+            </label>
+            <input type="email" class="form-control" id="competitionJudge3Email" name="competitionJudge3Email" placeholder="judge@example.com" value="{{competitions.competitionJudge3Email}}" disabled>
+          </div>
+        </div>
+      </div><!-- end of row -->
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Confirm</button>
+  </form>
+</div>
+
+{{> footer}}

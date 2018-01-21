@@ -246,6 +246,7 @@
 		</div><!-- panel -->
 
 		<!-- The following fields are hidden to users and should ONLY be visible and editable by a site admin-level users. -->
+		{{#if user.admin}}
 		<div class="panel panel-danger">
 			<div class="panel-heading">
 				Administrators Only
@@ -285,6 +286,7 @@
 				</div>
 			</div>
 		</div>
+		{{/if}}
 		<!-- End of fields hidden to user -->
 
 		<!-- School Representative (Liaison) Info -->
@@ -363,6 +365,7 @@
 		</div>
 
 		<!-- The following fields are hidden to users and should ONLY be visible and editable by a site admin-level users. -->
+		{{#if user.admin}}
 		<div class="panel panel-danger">
 			<div class="panel-heading">
 				Administrators Only
@@ -402,6 +405,7 @@
 				</div>
 			</div>
 		</div>
+		{{/if}}
 		<!-- End of fields hidden to user -->
 
 		<button type="submit" class="btn btn-primary">Update</button>

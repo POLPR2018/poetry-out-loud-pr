@@ -211,7 +211,6 @@ router.get('/users/login', (req, res) => {
 router.post('/users/login', passport.authenticate('local', {
   successRedirect: '/dashboard',
   failureRedirect: '/users/login',
-  successFlash: 'Welcome!',
   failureFlash: 'Invalid email or password.'
 }), function(req, res) {
   res.redirect('/' + req.user.email);

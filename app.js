@@ -1,4 +1,4 @@
- const express = require('express');
+const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const hbs = require('hbs');
@@ -13,6 +13,8 @@ const fs = require('fs');
 const sslRedirect = require('heroku-ssl-redirect');
 
 var app = express();
+
+// mongoose.set('debug', true); // Only set when debugging
 
 // enable ssl redirect
 app.use(sslRedirect());

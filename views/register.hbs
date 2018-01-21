@@ -1,7 +1,7 @@
 {{> header }}
 
 <div class="container">
-	<form action="/users/register" method="post">
+	<form action="/users/register" method="post" data-persist="garlic" data-destroy="false">
 		<h2>Registration Form</h2>
 
 		{{# if errors}}
@@ -328,9 +328,6 @@
 		</div>
 
 		<button type="submit" class="btn btn-primary">Register</button>
-		<a href="/users/register">
-			<button class="btn btn-primary">Cancel</button>
-		</a>
 	</form>
 </div>
 

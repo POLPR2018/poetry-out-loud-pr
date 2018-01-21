@@ -1,0 +1,200 @@
+{{> header}}
+
+<div class="container">
+  <form action="/dashboard/users/forms/competition-form/{{user.id}}" method="post">
+    <h2>Edit School Competition Form</h2>
+		<p>
+			<b>All fields with <span style="color: red">*</span> are required</b>
+		</p>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        General Information
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="schoolName">
+              School Name <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" name="schoolName" placeholder="Enter school name" value="{{competitions.schoolName}}" required>
+          </div>
+
+          <div class="form-group col-md-6 date" data-provide="datepicker">
+            <label for="competitionDate">
+              Competition Date <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionDate" name="competitionDate" placeholder="Enter the date of competition" value="{{competitions.competitionDate}}" required>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="competitionTime">
+              Time <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionTime" name="competitionTime" placeholder="Enter the time of the competition (e.g. 8:00 AM)" value="{{competitions.competitionTime}}" required>
+          </div>
+
+          <div class="form-group col-md-12">
+            <label for="competitionVenue">
+              Venue <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionVenue" name="competitionVenue" placeholder="Enter where the competition was held" value="{{competitions.competitionVenue}}" required>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="competitionTotalOfStudents">
+              Total number of students in the program <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionTotalOfStudents" name="competitionTotalOfStudents" placeholder="Enter the total number" value="{{competitions.competitionTotalOfStudents}}" required>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="competitionTotalParticipated">
+              Total number of students that participated <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionTotalParticipated" name="competitionTotalParticipated" placeholder="Enter the total number" value="{{competitions.competitionTotalParticipated}}" required>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="competitionTotalPersonnel">
+              Total number of school personnel involved in the program <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionTotalPersonnel" name="competitionTotalPersonnel" placeholder="Enter the total number" value="{{competitions.competitionTotalPersonnel}}" required>
+          </div>
+        </div><!-- row ends -->
+      </div><!-- End of panel body -->
+    </div><!-- School Information panel ends -->
+
+    <!-- Judge 1 Info -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Judge 1
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="competitionJudge1Name">
+              Judge's Name <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionJudge1Name" name="competitionJudge1Name" placeholder="Enter the Judge's Name" value="{{competitions.competitionJudge1Name}}" required>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="competitionJudge1Telephone">
+              Telephone <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionJudge1Telephone" name="competitionJudge1Telephone" placeholder="Enter the Judge's Telephone Number" value="{{competitions.competitionJudge1Telephone}}" required>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="competitionJudge1Email">
+              Email address <span style="color: red">*</span>
+            </label>
+            <input type="email" class="form-control" id="competitionJudge1Email" name="competitionJudge1Email" placeholder="judge@example.com" value="{{competitions.competitionJudge1Email}}" required>
+          </div>
+        </div>
+      </div><!-- end of row -->
+    </div>
+
+    <!-- Judge 2 Info -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Judge 2
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="competitionJudge2Name">
+              Judge's Name <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionJudge2Name" name="competitionJudge2Name" placeholder="Enter the Judge's Name" value="{{competitions.competitionJudge2Name}}" required>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="competitionJudge2Telephone">
+              Telephone <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionJudge2Telephone" name="competitionJudge2Telephone" placeholder="Enter the Judge's Telephone Number" value="{{competitions.competitionJudge2Telephone}}" required>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="competitionJudge2Email">
+              Email address <span style="color: red">*</span>
+            </label>
+            <input type="email" class="form-control" id="competitionJudge2Email" name="competitionJudge2Email" placeholder="judge@example.com" value="{{competitions.competitionJudge2Email}}" required>
+          </div>
+        </div>
+      </div><!-- end of row -->
+    </div>
+
+    <!-- Judge 3 Info -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Judge 3
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label for="competitionJudge3Name">
+              Judge's Name <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionJudge3Name" name="competitionJudge3Name" placeholder="Enter the Judge's Name" value="{{competitions.competitionJudge3Name}}" required>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="competitionJudge3Telephone">
+              Telephone <span style="color: red">*</span>
+            </label>
+            <input type="text" class="form-control" id="competitionJudge3Telephone" name="competitionJudge3Telephone" placeholder="Enter the Judge's Telephone Number" value="{{competitions.competitionJudge3Telephone}}" required>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="competitionJudge3Email">
+              Email address <span style="color: red">*</span>
+            </label>
+            <input type="email" class="form-control" id="competitionJudge3Email" name="competitionJudge3Email" placeholder="judge@example.com" value="{{competitions.competitionJudge3Email}}" required>
+          </div>
+        </div>
+      </div><!-- end of row -->
+    </div>
+
+    <!-- The following fields are hidden to users and should ONLY be visible and editable by a site admin-level user. -->
+    {{#if user.admin}}
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        Administrators Only
+      </div>
+
+      <div class="panel-body">
+        <p>Sent Required Photos? (currently {{competitions.competitionRequiredPhotos}})</p>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="competitionRequiredPhotos" id="yesPhotosRadio" value="yes">
+          <label class="form-check-label" for="yesPhotosRadio">Yes</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="competitionRequiredPhotos" id="noPhotosRadio" value="no">
+          <label class="form-check-label" for="noPhotosRadio">No</label>
+        </div>
+
+        <p>Sent Required Certifications? (currently {{competitions.competitionRequiredCertifications}})</p>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="competitionRequiredCertifications" id="yesCertsRadio" value="yes">
+          <label class="form-check-label" for="yesCertsRadio">Yes</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="competitionRequiredCertifications" id="noCertsRadio" value="no">
+          <label class="form-check-label" for="noCertsRadio">No</label>
+        </div>
+      </div>
+    </div>
+    {{/if}}
+    <!-- End of fields hidden to user -->
+    <button type="submit" class="btn btn-primary">Confirm</button>
+  </form>
+</div>
+
+{{> footer}}

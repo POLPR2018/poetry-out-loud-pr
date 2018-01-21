@@ -65,4 +65,8 @@ $(document).ready(function(){
       expires: 365
     });
   });
+
+  // Datepicker & Timepicker
+  $('#competitionDate').datepicker();
+  $('#competitionTime').timepicker();
 }); // end document.ready

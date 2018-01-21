@@ -1,7 +1,9 @@
 const express = require('express');
+const flash = require('connect-flash');
 const router = express.Router();
 
 var User = require('../models/user');
+var CompetitionForm = require('../models/competition-form');
 
 function ensureAuthenticated(req, res, next){
   if(req.isAuthenticated()){
@@ -13,20 +15,12 @@ function ensureAuthenticated(req, res, next){
 }
 
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
-  res.render('dashboard/index.hbs', {
-    pageTitle: 'Dashboard'
-  });
-});
-
-
-// /users
-router.get('/dashboard/users', ensureAuthenticated, (req, res) => {
   User.find({}, function(err, users) {
-    res.render('dashboard/users/index.hbs', {
-      pageTitle: 'Users',
-      users: users,
+    res.render('dashboard/index.hbs', {
+      pageTitle: 'Dashboard',
+      users: users
     });
-  })
+  });
 });
 
 // users details
@@ -99,6 +93,56 @@ router.get('/dashboard/users/:id/progress', ensureAuthenticated, (req, res) => {
       pageTitle: 'Progress',
       users: user
     });
+  });
+});
+
+// ----------------
+// Forms
+// ----------------
+
+// competition form details
+router.get('/dashboard/users/forms/competition-form/:id', ensureAuthenticated, (req, res) => {
+  CompetitionForm.findById(req.params.id, function(err, competition){
+    res.render('dashboard/users/forms/competition-form.hbs', {
+      pageTitle: 'Competition Form',
+      competitions: competition
+    });
+  });
+});
+
+// competition form details post
+router.post('/dashboard/users/forms/competition-form/:id', (req, res) => {
+  CompetitionForm.findOneAndUpdate({ _id: req.params.id }, req.body, {upsert:true}, (err, competition) => {
+    if (err) {
+      console.log(`Error saving data:  ${err}`);
+      return res.send('Error saving data');
+    }
+    
+    res.redirect('/dashboard');
+    console.log(req.body);
+  });
+});
+
+// competition form edit
+router.get('/dashboard/users/forms/competition-form/edit/:id' , ensureAuthenticated, (req, res) => {
+  CompetitionForm.findById(req.params.id, function(err, competition){
+    res.render('dashboard/users/forms/competition-form-edit.hbs', {
+      pageTitle: 'Competition Form Edit',
+      competitions: competition
+    });
+  });
+});
+
+// competition form edit
+router.post('/dashboard/users/forms/competition-form/edit/:id', (req, res) => {
+  CompetitionForm.findOneAndUpdate({ _id: req.params.id }, req.body, (err, competition) => {
+    if (err) {
+      console.log(`Error saving data:  ${err}`);
+      return res.send('Error saving data');
+    }
+
+    res.redirect('/dashboard');
+    console.log(req.body);
   });
 });
 
