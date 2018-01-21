@@ -1,159 +1,159 @@
 {{> header }}
 
 {{#if user.admin}}
-	<!-- This view should only be visible to Administrators -->
-	<div class="container">
-		{{> flash }}
+<!-- This view should only be visible to Administrators -->
+<div class="container">
+	{{> flash }}
 
-		<h2>Admin Dashboard | {{user.email}}</h2>
+	<h2>Admin Dashboard | {{user.email}}</h2>
 
-    <br>
+	<br>
 
-		<form class="navbar-form pull-right" role="search">
-			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-				<div class="input-group-btn">
-					<button class="btn btn-default btn-sm" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-				</div>
+	<form class="navbar-form pull-right" role="search">
+		<div class="input-group">
+			<input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+			<div class="input-group-btn">
+				<button class="btn btn-default btn-sm" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 			</div>
-		</form>
+		</div>
+	</form>
 
-		<h2>Registered Users</h2>
+	<h2>Registered Users</h2>
+	<br>
+
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">School</th>
+					<th scope="col">City</th>
+					<th scope="col">Email</th>
+					<th scope="col">Representative</th>
+					<th scope="col">Poet Tutor/Mentor</th>
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{{#each users}}
+				<tr>
+					<td><a href="/dashboard/users/{{_id}}/progress">{{schoolName}}</a></td>
+					<td>{{city}}</td>
+					<td>{{email}}</td>
+					<td>{{schoolRepresentativeName}}</td>
+					<td>{{schoolRepresentativeTutorMentor}}</td>
+					<td>
+						<a href="/dashboard/users/{{_id}}">
+							<button class="btn">Show</button>
+						</a>
+						<a href="/dashboard/users/edit/{{_id}}">
+							<button class="btn">Edit</button>
+						</a>
+						<a href="">
+							<button class="btn user-btn-danger" disabled>Delete</button>
+						</a>
+					</td>
+				</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div><!-- Container ends -->
+{{else}}
+<div class="container">
+	{{> flash }}
+
+	<h2>Dashboard | {{user.email}}</h2>
+
+	<br>
+
+	<h5>What's next? (click the option when filled out)</h5>
+
+	<section class="todo-list">
+		<label>
+			<input type="checkbox" class="todo-item" name="registerYourSchool" value="registerYourSchool">
+			<span>
+				<i class="fa fa-check"></i>
+				Register your school
+			</span>
+		</label>
+
 		<br>
 
-		<div class="table-responsive">
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th scope="col">School</th>
-						<th scope="col">City</th>
-						<th scope="col">Email</th>
-						<th scope="col">Representative</th>
-						<th scope="col">Poet Tutor/Mentor</th>
-						<th scope="col">Actions</th>
-					</tr>
-				</thead>
+		<label>
+			<input type="checkbox" class="todo-item" name="competitionForm" value="competitionForm">
+			<span>
+				<i class="fa fa-check"></i>
+				Fill out the school competition form
+			</span>
+		</label>
 
-				<tbody>
-					{{#each users}}
-					<tr>
-						<td><a href="/dashboard/users/{{_id}}/progress">{{schoolName}}</a></td>
-						<td>{{city}}</td>
-						<td>{{email}}</td>
-						<td>{{schoolRepresentativeName}}</td>
-						<td>{{schoolRepresentativeTutorMentor}}</td>
-						<td>
-							<a href="/dashboard/users/{{_id}}">
-								<button class="btn">Show</button>
-							</a>
-							<a href="/dashboard/users/edit/{{_id}}">
-								<button class="btn">Edit</button>
-							</a>
-							<a href="">
-								<button class="btn user-btn-danger" disabled>Delete</button>
-							</a>
-						</td>
-					</tr>
-					{{/each}}
-				</tbody>
-			</table>
-		</div>
-	</div><!-- Container ends -->
-{{else}}
-  <div class="container">
-    {{> flash }}
+		<br>
 
-    <h2>Dashboard | {{user.email}}</h2>
+		<label>
+			<input type="checkbox" class="todo-item" name="competitionResults" value="competitionResults">
+			<span>
+				<i class="fa fa-check"></i>
+				Fill out the  competition results
+			</span>
+		</label>
 
-    <br>
+		<br>
 
-    <h5>What's next? (click the option when filled out)</h5>
+		<label>
+			<input type="checkbox" class="todo-item" name="poemRegistration" value="poemRegistration">
+			<span>
+				<i class="fa fa-check"></i>
+				Fill out poem registration
+			</span>
+		</label>
+	</section>
 
-    <section class="todo-list">
-      <label>
-        <input type="checkbox" class="todo-item" name="registerYourSchool" value="registerYourSchool">
-        <span>
-          <i class="fa fa-check"></i>
-          Register your school
-        </span>
-      </label>
+	<br>
 
-      <br>
-
-      <label>
-        <input type="checkbox" class="todo-item" name="competitionForm" value="competitionForm">
-        <span>
-          <i class="fa fa-check"></i>
-          Fill out the school competition form
-        </span>
-      </label>
-
-      <br>
-
-      <label>
-        <input type="checkbox" class="todo-item" name="competitionResults" value="competitionResults">
-        <span>
-          <i class="fa fa-check"></i>
-          Fill out the  competition results
-        </span>
-      </label>
-
-      <br>
-
-      <label>
-        <input type="checkbox" class="todo-item" name="poemRegistration" value="poemRegistration">
-        <span>
-          <i class="fa fa-check"></i>
-          Fill out poem registration
-        </span>
-      </label>
-    </section>
-
-    <br>
-
-    <div class="table table-responsive">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Form Name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>School Registration</td>
-            <td>
-              <a href="/dashboard/users/{{user.id}}">
-                <button class="btn">Open</button>
-              </a>
-              <a href="/dashboard/users/edit/{{user.id}}">
-                <button class="btn">Edit</button>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>School Competition</td>
-            <td>
-              <a href="/dashboard/users/forms/competition-form/{{user.id}}">
-                <button class="btn">Open</button>
-              </a>
-            </td>
-          </tr><tr>
-            <td>Competition Results</td>
-            <td>
-              <button class="btn">Open</button>
-            </td>
-          </tr>
-          <tr>
-            <td>Poem Registration</td>
-            <td>
-              <button class="btn">Open</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+	<div class="table table-responsive">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">Form Name</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>School Registration</td>
+					<td>
+						<a href="/dashboard/users/{{user.id}}">
+							<button class="btn">Open</button>
+						</a>
+						<a href="/dashboard/users/edit/{{user.id}}">
+							<button class="btn">Edit</button>
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td>School Competition</td>
+					<td>
+						<a href="/dashboard/users/forms/competition-form/{{user.id}}">
+							<button class="btn">Open</button>
+						</a>
+					</td>
+				</tr><tr>
+					<td>Competition Results</td>
+					<td>
+						<button class="btn">Open</button>
+					</td>
+				</tr>
+				<tr>
+					<td>Poem Registration</td>
+					<td>
+						<button class="btn">Open</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
 {{/if}}
 
 {{> footer }}
