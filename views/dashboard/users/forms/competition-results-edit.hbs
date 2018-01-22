@@ -1,6 +1,7 @@
 {{> header }}
 
 <div class="container">
+  {{#if user.admin}}
   <form action="/dashboard/users/forms/competition-results/{{user.id}}" method="post">
     <h2>Competition Results</h2>
     <div class="panel panel-default">
@@ -291,6 +292,12 @@
 
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+  {{else}}
+  <div class="text-center">
+    <h3>This is not the page you are looking for.</h3>
+    <p>Only admins have access to this page.</p>
+  </div>
+  {{/if}}
 </div>
 
 {{> footer }}

@@ -1,6 +1,7 @@
 {{> header}}
 
 <div class="container">
+  {{#if user.admin}}
   <form action="/dashboard/users/forms/competition-form/{{user.id}}" method="post">
     <h2>Edit School Competition Form</h2>
     <p>
@@ -163,7 +164,6 @@
     </div>
 
     <!-- The following fields are hidden to users and should ONLY be visible and editable by a site admin-level user. -->
-    {{#if user.admin}}
     <div class="panel panel-danger">
       <div class="panel-heading">
         Administrators Only
@@ -191,10 +191,16 @@
         </div>
       </div>
     </div>
-    {{/if}}
     <!-- End of fields hidden to user -->
-    <button type="submit" class="btn btn-primary">Confirm</button>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+  {{else}}
+  <div class="text-center">
+    <h3>This is not the page you are looking for.</h3>
+    <p>Only admins have access to this page.</p>
+  </div>
+  {{/if}}
 </div>
 
 {{> footer}}
