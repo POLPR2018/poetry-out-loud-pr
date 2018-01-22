@@ -109,6 +109,13 @@ app.use("/", routes);
 app.use("/", users);
 app.use("/", dashboard);
 
+app.use(function(req, res) {
+  res.status(400);
+  res.render('404.hbs', {
+    pageTitle: 'This page could not be found!'
+  });
+});
+
 // Get year for footer
 hbs.registerHelper('getCurrentYear', () => {
   return new Date().getFullYear()
