@@ -44,9 +44,15 @@
         </tr><tr>
           <td>Competition Results</td>
           <td>
-            <button class="btn">Open</button>
-            <button class="btn">Edit</button>
+            <a href="/dashboard/users/forms/competition-results/{{users.id}}">
+              <button class="btn">Open</button>
+            </a>
+            {{#if user.admin}}
+            <a href="/dashboard/users/forms/competition-results/edit/{{users.id}}">
+              <button class="btn">Edit</button>
+            </a>
             <button class="btn user-btn-danger">Delete</button>
+            {{/if }}
           </td>
         </tr>
         <tr>
