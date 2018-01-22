@@ -24,6 +24,12 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
   });
 });
 
+router.get('/dashboard/whats-new', ensureAuthenticated, (req, res) => {
+  res.render('dashboard/whats-new.hbs', {
+    pageTitle: 'What\'s mew'
+  });
+});
+
 // users details
 router.get('/dashboard/users/:id', ensureAuthenticated, (req, res) => {
   User.findById(req.params.id, function(err, user){

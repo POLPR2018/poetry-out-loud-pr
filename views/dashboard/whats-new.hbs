@@ -1,0 +1,93 @@
+{{> header }}
+
+{{#if user.admin}}
+<div class="container">
+  <h2>What's new</h2>
+  <p>(Only main points and features covered)</p>
+
+  <div class="alert alert-success" role="alert">
+    <b>Currently everything listed below is in production and live on <a href="https://poetryoutloudpr.org">https://poetryoutloudpr.org</a></b>
+  </div>
+
+  <!-- Competition Result form intergration and 404 added -->
+  <div class="alert alert-info" role="alert">
+    <b>Monday 22nd January 2018</b>
+    <ul>
+      <li>Implemented competition results form and tested, lauched to development site for José to test.</li>
+      <li>Removed admin lock on the competition form temporarily.</li>
+      <li>404 page added and setup.</li>
+    </ul>
+  </div>
+
+  <!-- Dashboard index changed and competition form intergration -->
+  <div class="alert alert-info" role="alert">
+    <b>Sunday 21st January 2018</b>
+    <p>Changed the dashboard front page so that users and admins see what they only need to see, in the process removed the "All users" page as this is not needed. Users see the TODO and forms that they need to fill out and admins see a list of clickable users.</p>
+  </div>
+
+  <!-- SSL implemention and minor tweaks -->
+  <div class="alert alert-info" role="alert">
+    <b>Tuesday 16th January 2018</b>
+    <p>implemented and forced SSL and HTTPS and made slight tweaks to the progress page and registration fields.</p>
+  </div>
+
+  <!-- Dashboard tweaks and other changes to the backend -->
+  <div class="alert alert-info" role="alert">
+    <b>Sunday 15th January 2018</b>
+    <p>Started work on dashboard</p>
+    <ul>
+      <li>Added user edit form and implemented field values for all users.</li>
+      <li>Removed alert animations.</li>
+      <li>implemented dynamic select fields on both registrations show and edit pages so the correct value shows.</li>
+      <li>Added "All users" page for admins only so that all users are shown and go to the individual "progress" page (based off the users id).</li>
+    </ul>
+  </div>
+
+  <!-- Started work on the the dashboard and implemented TODO steps -->
+  <div class="alert alert-info" role="alert">
+    <b>Sunday 14th January 2018</b>
+    <p>Started work on dashboard</p>
+    <ul>
+      <li>Static dashboard files implemented for user login.</li>
+      <li>implemented TODO checkboxes and cookie setup.</li>
+    </ul>
+  </div>
+
+  <!-- Registration now fully testing and functional -->
+  <div class="alert alert-info" role="alert">
+    <b>Friday 12th January 2018 - Sunday 14th January 2018</b>
+    <p>Registration now tested and minor front end tweaks done, database and forms are now fully dummy proof, user sign up and login tested.</p>
+  </div>
+
+  <!-- Registration Testing -->
+  <div class="alert alert-info" role="alert">
+    <b>Friday 12th January 2018</b>
+    <p>Registration fixed and confirmation mailer implemention, fully tested and now pushed to development site.</p>
+  </div>
+
+  <!-- Authorisation started -->
+  <div class="alert alert-info" role="alert">
+    <b>Wednesday 10th January 2018</b>
+    <p>Register and login implemented and pushed to development for testing.</p>
+  </div>
+
+  <!-- first commit -->
+  <div class="alert alert-info" role="alert">
+    <b>Tuesday 9 January 2018</b>
+    <p>Application basics setup and started work.</p>
+    <ul>
+      <li>Inital commit and basic of application set.</li>
+      <li>Inital front end structure and pages set.</li>
+      <li>Contact form and mailer setup, is working.</li>
+      <li>Authorisation (Register &amp; Login) setup Started.</li>
+    </ul>
+  </div>
+</div>
+{{else}}
+<div class="container">
+  <h2>This is not the page your looking for!</h2>
+  <p>Only admins have access to this page!</p>
+</div>
+{{/if}}
+
+{{> footer }}
