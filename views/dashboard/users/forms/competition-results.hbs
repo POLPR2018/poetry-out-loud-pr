@@ -50,7 +50,7 @@
             <label for="competitionDate">
               Competition Date <span style="color:red;">*</span>
             </label>
-            <input type="text" class="form-control" id="competitionDate" name="competitionDate" placeholder="Enter the date of competition" required>
+            <input type="text" class="form-control" id="competitionDate" name="competitionDate" placeholder="Enter the date of competition" value="{{competitionResults.competitionDate}}" required>
           </div>
 
           <div class="form-group col-md-6">
@@ -75,33 +75,33 @@
               Winner's T-shirt Size <span style="color:red;">*</span>
             </label>
 
-            <select class="form-control" name="winnersTShirtSize" value="{{competitionResults.winnersTShirtSize}}">
-              <option>Small</option>
-              <option>Medium</option>
-              <option>Large</option>
-              <option>X-Large</option>
+            <select class="form-control" name="winnersTShirtSize">
+              <option value="small" {{{select competitionResults.winnersTShirtSize 'small'}}}>Small</option>
+  						<option value="medium" {{{select competitionResults.winnersTShirtSize 'medium'}}}>Medium</option>
+  						<option value="large" {{{select competitionResults.winnersTShirtSize 'large'}}}>Large</option>
+  						<option value="xLarge" {{{select competitionResults.winnersTShirtSize 'xLarge'}}}>X-Large</option>
             </select>
           </div>
 
           <div class="form-group col-md-12">
-            <label for="winnerAccommodation">
-              Need Accommodations? <span style="color:red;">*</span> (currently {{competitionResults.winnerAccommodation}})
+            <label for="winnersAccommodation">
+              Need Accommodations? <span style="color:red;">*</span> (currently {{competitionResults.winnersAccommodation}})
             </label>
 
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="winnerAccommodation" id="yesWinNeedsRadio" value="yes">
+              <input class="form-check-input" type="radio" name="winnersAccommodation" id="yesWinNeedsRadio" value="yes">
               <label class="form-check-label" for="yesWinNeedsRadio">Yes</label>
             </div>
 
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="winnerAccommodation" id="noWinNeedsRadio" value="no">
+              <input class="form-check-input" type="radio" name="winnersAccommodation" id="noWinNeedsRadio" value="no">
               <label class="form-check-label" for="noWinNeedsRadio">No</label>
             </div>
           </div>
 
           <div class="form-group col-md-12">
             <label for="winnersAccommodationComments">Comments:</label>
-            <textarea class="form-control" rows="5" name="winnersAccommodationComments" placeholder="Please specify accommodation needs if required" value="{{competitionResults.winnersAccommodationComments}}"></textarea>
+            <textarea class="form-control" rows="5" name="winnersAccommodationComments" placeholder="Please specify accommodation needs if required">{{competitionResults.winnersAccommodationComments}}</textarea>
           </div>
         </div><!-- row ends -->
       </div><!-- End of panel body -->
@@ -186,7 +186,7 @@
             <label for="runnerUpsCity">
               City <span style="color:red;">*</span>
             </label>
-            <input type="text" class="form-control" id="runnerUpsCity" placeholder="City" value="{{competitionResults.runnerUpsCity}}" required>
+            <input type="text" class="form-control" name="runnerUpsCity" placeholder="City" value="{{competitionResults.runnerUpsCity}}" required>
           </div>
 
           <div class="form-group col-md-6">
@@ -217,11 +217,11 @@
 
           <div class="form-group col-md-6">
             <label for="runnerUpsTShirtSize">Runner-Up's T-shirt Size<span style="color:red;">*</span></label>
-            <select class="form-control" name="runnerUpsTShirtSize" value="{{competitionResults.runnerUpsTShirtSize}}">
-              <option>Small</option>
-              <option>Medium</option>
-              <option>Large</option>
-              <option>X-Large</option>
+            <select class="form-control" name="runnerUpsTShirtSize">
+              <option value="small" {{{select competitionResults.runnerUpsTShirtSize 'small'}}}>Small</option>
+  						<option value="medium" {{{select competitionResults.runnerUpsTShirtSize 'medium'}}}>Medium</option>
+  						<option value="large" {{{select competitionResults.runnerUpsTShirtSize 'large'}}}>Large</option>
+  						<option value="xLarge" {{{select competitionResults.runnerUpsTShirtSize 'xLarge'}}}>X-Large</option>
             </select>
           </div>
 
@@ -241,7 +241,7 @@
 
           <div class="form-group col-md-12">
             <label for="runnerUpsAccommodationComments">Comments:</label>
-            <textarea class="form-control" rows="5" name="runnerUpsAccommodationComments" placeholder="Please specify accommodation needs if required" value="{{competitionResults.runnerUpsAccommodationComments}}"></textarea>
+            <textarea class="form-control" rows="5" name="runnerUpsAccommodationComments" placeholder="Please specify accommodation needs if required">{{competitionResults.runnerUpsAccommodationComments}}</textarea>
           </div>
         </div><!-- row ends -->
       </div><!-- End of panel body -->

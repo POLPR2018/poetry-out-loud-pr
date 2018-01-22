@@ -2,8 +2,9 @@
 
 <div class="container">
   {{#if user.admin}}
-  <form action="/dashboard/users/forms/competition-results/{{user.id}}" method="post">
+  <form action="/dashboard/users/forms/competition-results/{{user.id}}" method="post" class="competitionresultssubmit">
     <h2>Competition Results</h2>
+
     <div class="panel panel-default">
       <div class="panel-heading">
         Information about the Winner
@@ -15,59 +16,59 @@
             <label for="winnersName">
               Winner's Name <span style="color:red;">*</span>
             </label>
-            <input type="text" class="form-control" name="winnersName" placeholder="Enter the Winner's name" value="{{competitionResult.winnersName}}" required>
+            <input type="text" class="form-control" name="winnersName" placeholder="Enter the Winner's name" value="{{competitionResults.winnersName}}" required>
           </div>
 
           <div class="form-group col-md-6">
             <label for="winnersGrade">
               Grade <span style="color:red;">*</span>
             </label>
-            <input type="text" class="form-control" name="winnersGrade" placeholder="Enter the Winner's grade" value="{{competitionResult.winnersGrade}}" required>
+            <input type="text" class="form-control" name="winnersGrade" placeholder="Enter the Winner's grade" value="{{competitionResults.winnersGrade}}" required>
           </div>
 
           <div class="form-group col-md-12">
             <label for="winnersAddress">
               Address <span style="color:red;">*</span>
             </label>
-            <input type="text" class="form-control" name="winnersAddress" placeholder="Enter the Winner's address" value="{{competitionResult.winnersAddress}}" required>
+            <input type="text" class="form-control" name="winnersAddress" placeholder="Enter the Winner's address" value="{{competitionResults.winnersAddress}}" required>
           </div>
 
           <div class="form-group col-md-6">
             <label for="winnersCity">
               City <span style="color:red;">*</span>
             </label>
-            <input type="text" class="form-control" name="winnersCity" placeholder="City" value="{{competitionResult.winnersCity}}" required>
+            <input type="text" class="form-control" name="winnersCity" placeholder="City" value="{{competitionResults.winnersCity}}" required>
           </div>
 
           <div class="form-group col-md-6">
             <label for="winnersZip">
               Zip Code <span style="color:red;">*</span>
             </label>
-            <input type="text" class="form-control" name="winnersZip" placeholder="Zip Code" value="{{competitionResult.winnersZip}}" required>
+            <input type="text" class="form-control" name="winnersZip" placeholder="Zip Code" value="{{competitionResults.winnersZip}}" required>
           </div>
 
           <div class="form-group col-md-6">
             <label for="competitionDate">
               Competition Date <span style="color:red;">*</span>
             </label>
-            <input type="text" class="form-control" id="competitionDate" name="competitionDate" placeholder="Enter the date of competition" required>
+            <input type="text" class="form-control" id="competitionDate" name="competitionDate" placeholder="Enter the date of competition" value="{{competitionResults.competitionDate}}" required>
           </div>
 
           <div class="form-group col-md-6">
             <label for="winnersTelephone">Winner's Telephone</label>
-            <input type="text" class="form-control" name="winnersTelephone" placeholder="Enter the Winner's Telephone" value="{{competitionResult.winnersTelephone}}">
+            <input type="text" class="form-control" name="winnersTelephone" placeholder="Enter the Winner's Telephone" value="{{competitionResults.winnersTelephone}}">
           </div>
 
           <div class="form-group col-md-12">
             <label for="winnersParentName">Parent's Name<span style="color:red;">*</span></label>
-            <input type="text" class="form-control" name="winnersParentName" placeholder="Enter the Parent's or Legal Guardian's name" value="{{competitionResult.winnersParentName}}" required>
+            <input type="text" class="form-control" name="winnersParentName" placeholder="Enter the Parent's or Legal Guardian's name" value="{{competitionResults.winnersParentName}}" required>
           </div>
 
           <div class="form-group col-md-6">
             <label for="winnersParentTelephone">
               Parent's Telephone <span style="color:red;">*</span>
             </label>
-            <input type="text" class="form-control" name="winnersParentTelephone" placeholder="Enter the Parent's or Legal Guardian's Telephone" value="{{competitionResult.winnersParentTelephone}}" required>
+            <input type="text" class="form-control" name="winnersParentTelephone" placeholder="Enter the Parent's or Legal Guardian's Telephone" value="{{competitionResults.winnersParentTelephone}}" required>
           </div>
 
           <div class="form-group col-md-6">
@@ -75,33 +76,33 @@
               Winner's T-shirt Size <span style="color:red;">*</span>
             </label>
 
-            <select class="form-control" name="winnersTShirtSize" value="{{competitionResult.winnersTShirtSize}}">
-              <option>Small</option>
-              <option>Medium</option>
-              <option>Large</option>
-              <option>X-Large</option>
+            <select class="form-control" name="winnersTShirtSize">
+              <option value="small" {{{select competitionResults.winnersTShirtSize 'small'}}}>Small</option>
+  						<option value="medium" {{{select competitionResults.winnersTShirtSize 'medium'}}}>Medium</option>
+  						<option value="large" {{{select competitionResults.winnersTShirtSize 'large'}}}>Large</option>
+  						<option value="xLarge" {{{select competitionResults.winnersTShirtSize 'xLarge'}}}>X-Large</option>
             </select>
           </div>
 
           <div class="form-group col-md-12">
-            <label for="winnerAccommodation">
-              Need Accommodations? <span style="color:red;">*</span> (currently {{competitionResult.winnerAccommodation}})
+            <label for="winnersAccommodation">
+              Need Accommodations? <span style="color:red;">*</span> (currently {{competitionResults.winnersAccommodation}})
             </label>
 
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="winnerAccommodation" id="yesWinNeedsRadio" value="yes">
+              <input class="form-check-input" type="radio" name="winnersAccommodation" id="yesWinNeedsRadio" value="yes">
               <label class="form-check-label" for="yesWinNeedsRadio">Yes</label>
             </div>
 
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="winnerAccommodation" id="noWinNeedsRadio" value="no">
+              <input class="form-check-input" type="radio" name="winnersAccommodation" id="noWinNeedsRadio" value="no">
               <label class="form-check-label" for="noWinNeedsRadio">No</label>
             </div>
           </div>
 
           <div class="form-group col-md-12">
             <label for="winnersAccommodationComments">Comments:</label>
-            <textarea class="form-control" rows="5" name="winnersAccommodationComments" placeholder="Please specify accommodation needs if required" value="{{competitionResult.winnersAccommodationComments}}"></textarea>
+            <textarea class="form-control" rows="5" name="winnersAccommodationComments" placeholder="Please specify accommodation needs if required">{{competitionResults.winnersAccommodationComments}}</textarea>
           </div>
         </div><!-- row ends -->
       </div><!-- End of panel body -->
@@ -114,7 +115,7 @@
       </div>
 
       <div class="panel-body">
-        <p>Attended Rehersal (currently {{competitionResult.winnersAttendedRehersal}})</p>
+        <p>Attended Rehersal (currently {{competitionResults.winnersAttendedRehersal}})</p>
         <div class="form-check">
           <input class="form-check-input" type="radio" name="winnersAttendedRehersal" id="yesWinRehersal" value="yes">
           <label class="form-check-label" for="yesWinRehersal">Yes</label>
@@ -125,7 +126,7 @@
           <label class="form-check-label" for="noWinRehersal">No</label>
         </div>
 
-        <p>Attended Main Competition (currently {{competitionResult.winnersAttendedMainCompetition}})</p>
+        <p>Attended Main Competition (currently {{competitionResults.winnersAttendedMainCompetition}})</p>
 
         <div class="form-check">
           <input class="form-check-input" type="radio" name="winnersAttendedMainCompetition" id="yesWinMainRadio" value="yes">
@@ -137,7 +138,7 @@
           <label class="form-check-label" for="noWinMainRadio">No</label>
         </div>
 
-        <p>Sent Release Form (currently {{competitionResult.winnersReleaseForm}})</p>
+        <p>Sent Release Form (currently {{competitionResults.winnersReleaseForm}})</p>
 
         <div class="form-check">
           <input class="form-check-input" type="radio" name="winnersReleaseForm" id="yesWinRelRadio" value="yes">
@@ -163,69 +164,69 @@
             <label for="runnerUpsName">
               Runner-up's Name <span style="color:red;">*</span>
             </label>
-            <input type="text" class="form-control" name="runnerUpsName" placeholder="Enter the Runner-Up's name" value="{{competitionResult.runnerUpsName}}" required>
+            <input type="text" class="form-control" name="runnerUpsName" placeholder="Enter the Runner-Up's name" value="{{competitionResults.runnerUpsName}}" required>
           </div>
 
           <div class="form-group col-md-6">
             <label for="runnerUpsGrade">
               Grade <span style="color:red;">*</span>
             </label>
-            <input type="text" class="form-control" name="runnerUpsGrade" placeholder="Enter the Runner-Up's grade" value="{{competitionResult.runnerUpsGrade}}" required>
+            <input type="text" class="form-control" name="runnerUpsGrade" placeholder="Enter the Runner-Up's grade" value="{{competitionResults.runnerUpsGrade}}" required>
           </div>
 
           <div class="form-group col-md-6">
             <label for="runnerUpsAddress">
               Address <span style="color:red;">*</span>
             </label>
-            <input type="text" class="form-control" name="runnerUpsAddress" placeholder="Enter the Runner-Up's address" value="{{competitionResult.runnerUpsAddress}}" required>
+            <input type="text" class="form-control" name="runnerUpsAddress" placeholder="Enter the Runner-Up's address" value="{{competitionResults.runnerUpsAddress}}" required>
           </div>
 
           <div class="form-group col-md-6">
             <label for="runnerUpsCity">
               City <span style="color:red;">*</span>
             </label>
-            <input type="text" class="form-control" id="runnerUpsCity" placeholder="City" value="{{competitionResult.runnerUpsCity}}" required>
+            <input type="text" class="form-control" name="runnerUpsCity" placeholder="City" value="{{competitionResults.runnerUpsCity}}" required>
           </div>
 
           <div class="form-group col-md-6">
             <label for="runnerUpsZip">
               Zip Code <span style="color:red;">*</span>
             </label>
-            <input type="text" class="form-control" name="runnerUpsZip" placeholder="Zip Code" value="{{competitionResult.runnerUpsZip}}" required>
+            <input type="text" class="form-control" name="runnerUpsZip" placeholder="Zip Code" value="{{competitionResults.runnerUpsZip}}" required>
           </div>
 
           <div class="form-group col-md-6">
             <label for="runnerUpsTelephone">
               Runner-Up's Telephone
             </label>
-            <input type="text" class="form-control" name="runnerUpsTelephone" placeholder="Enter the Runner-Up's Telephone" value="{{competitionResult.runnerUpsTelephone}}">
+            <input type="text" class="form-control" name="runnerUpsTelephone" placeholder="Enter the Runner-Up's Telephone" value="{{competitionResults.runnerUpsTelephone}}">
           </div>
 
           <div class="form-group col-md-12">
             <label for="runnerUpsParentName">
               Parent's Name <span style="color:red;">*</span>
             </label>
-            <input type="text" class="form-control" name="runnerUpsParentName" placeholder="Enter the Parent's or Legal Guardian's name" value="{{competitionResult.runnerUpsParentName}}" required>
+            <input type="text" class="form-control" name="runnerUpsParentName" placeholder="Enter the Parent's or Legal Guardian's name" value="{{competitionResults.runnerUpsParentName}}" required>
           </div>
 
           <div class="form-group col-md-6">
             <label for="runnerUpsParentTelephone">Parent's Telephone<span style="color:red;">*</span></label>
-            <input type="text" class="form-control" name="runnerUpsParentTelephone" placeholder="Enter the Parent's or Legal Guardian's Telephone" value="{{competitionResult.runnerUpsParentTelephone}}" required>
+            <input type="text" class="form-control" name="runnerUpsParentTelephone" placeholder="Enter the Parent's or Legal Guardian's Telephone" value="{{competitionResults.runnerUpsParentTelephone}}" required>
           </div>
 
           <div class="form-group col-md-6">
             <label for="runnerUpsTShirtSize">Runner-Up's T-shirt Size<span style="color:red;">*</span></label>
-            <select class="form-control" name="runnerUpsTShirtSize" value="{{competitionResult.runnerUpsTShirtSize}}">
-              <option>Small</option>
-              <option>Medium</option>
-              <option>Large</option>
-              <option>X-Large</option>
+            <select class="form-control" name="runnerUpsTShirtSize">
+              <option value="small" {{{select competitionResults.runnerUpsTShirtSize 'small'}}}>Small</option>
+  						<option value="medium" {{{select competitionResults.runnerUpsTShirtSize 'medium'}}}>Medium</option>
+  						<option value="large" {{{select competitionResults.runnerUpsTShirtSize 'large'}}}>Large</option>
+  						<option value="xLarge" {{{select competitionResults.runnerUpsTShirtSize 'xLarge'}}}>X-Large</option>
             </select>
           </div>
 
           <div class="form-group col-md-12">
             <label for="">
-              Need Accommodations? <span style="color:red;">*</span> (currently {{competitionResult.runnerUpsAccommodation}})
+              Need Accommodations? <span style="color:red;">*</span> (currently {{competitionResults.runnerUpsAccommodation}})
             </label>
             <div class="form-check col-md-12">
               <input class="form-check-input" type="radio" name="runnerUpsAccommodation" id="yesrunNeedsRadio" value="yes">
@@ -239,7 +240,7 @@
 
           <div class="form-group col-md-12">
             <label for="runnerUpsAccommodationComments">Comments:</label>
-            <textarea class="form-control" rows="5" name="runnerUpsAccommodationComments" placeholder="Please specify accommodation needs if required" value="{{competitionResult.runnerUpsAccommodationComments}}"></textarea>
+            <textarea class="form-control" rows="5" name="runnerUpsAccommodationComments" placeholder="Please specify accommodation needs if required">{{competitionResults.runnerUpsAccommodationComments}}</textarea>
           </div>
         </div><!-- row ends -->
       </div><!-- End of panel body -->
@@ -252,7 +253,7 @@
       </div>
 
       <div class="panel-body">
-        <p>Attended Rehersal (currently {{competitionResult.runnerUpsAttendedRehersal}})</p>
+        <p>Attended Rehersal (currently {{competitionResults.runnerUpsAttendedRehersal}})</p>
         <div class="form-check">
           <input class="form-check-input" type="radio" name="runnerUpsAttendedRehersal" id="yesWinRehersal" value="yes">
           <label class="form-check-label" for="yesWinRehersal">Yes</label>
@@ -263,7 +264,7 @@
           <label class="form-check-label" for="noWinRehersal">No</label>
         </div>
 
-        <p>Attended Main Competition (currently {{competitionResult.runnerUpsAttendedMainCompetition}})</p>
+        <p>Attended Main Competition (currently {{competitionResults.runnerUpsAttendedMainCompetition}})</p>
 
         <div class="form-check">
           <input class="form-check-input" type="radio" name="runnerUpsAttendedMainCompetition" id="yesWinMainRadio" value="yes">
@@ -275,7 +276,7 @@
           <label class="form-check-label" for="noWinMainRadio">No</label>
         </div>
 
-        <p>Sent Release Form (currently {{competitionResult.runnerUpsReleaseForm}})</p>
+        <p>Sent Release Form (currently {{competitionResults.runnerUpsReleaseForm}})</p>
 
         <div class="form-check">
           <input class="form-check-input" type="radio" name="runnerUpsReleaseForm" id="yesWinRelRadio" value="yes">
