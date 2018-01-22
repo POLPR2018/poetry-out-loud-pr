@@ -35,6 +35,19 @@ hbs.registerHelper('select', function(selected, option) {
   return (selected == option) ? 'selected="selected"' : '';
 });
 
+// Get year for footer
+hbs.registerHelper('getCurrentYear', () => {
+  return new Date().getFullYear()
+});
+
+// Get date + one day
+hbs.registerHelper('addDayOnCurrent', () => {
+  var someDate = new Date('January 09, 2018');
+  var compareDate = new Date('January 22, 2018');
+  var timeDiff = compareDate - someDate;
+  return daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+});
+
 // static assets rendered
 app.use(express.static(__dirname + '/public'));
 app.use('/', express.static(__dirname + '/public'));
@@ -114,9 +127,4 @@ app.use(function(req, res) {
   res.render('404.hbs', {
     pageTitle: 'This page could not be found!'
   });
-});
-
-// Get year for footer
-hbs.registerHelper('getCurrentYear', () => {
-  return new Date().getFullYear()
 });
