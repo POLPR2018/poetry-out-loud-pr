@@ -43,7 +43,7 @@ hbs.registerHelper('getCurrentYear', () => {
 // Get date + one day
 hbs.registerHelper('addDayOnCurrent', () => {
   var someDate = new Date('January 09, 2018');
-  var compareDate = new Date('January 22, 2018');
+  var compareDate = new Date();
   var timeDiff = compareDate - someDate;
   return daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 });
