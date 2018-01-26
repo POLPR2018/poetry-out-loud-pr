@@ -266,7 +266,7 @@ router.post('/users/forgot', (req, res) => {
         from: process.env.GLOBAL_EMAIL || 'ben@benbagley.co.uk', // sender address
         to: `${user.email}`, // list of receivers
         subject: 'Reset Password Request', // Subject line
-        text: `You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n Please click on the following link, or paste this into your browser to complete the process:\n\n http://${req.headers.host}/users/reset/${user.resetPasswordToken} \n\n If you did not request this, please ignore this email and your password will remain unchanged.\n` // output
+        text: `You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n Please click on the following link, or paste this into your browser to complete the process:\n\n https://${req.headers.host}/users/reset/${user.resetPasswordToken} \n\n If you did not request this, please ignore this email and your password will remain unchanged.\n` // output
       };
       // send mail with defined transport object
       transporter.sendMail(mailOptions, (error, info) => {
