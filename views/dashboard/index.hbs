@@ -43,15 +43,17 @@
 					<td>{{schoolRepresentativeName}}</td>
 					<td>{{schoolRepresentativeTutorMentor}}</td>
 					<td>
-						<a href="/dashboard/users/{{_id}}">
-							<button class="btn">Show</button>
-						</a>
-						<a href="/dashboard/users/edit/{{_id}}">
-							<button class="btn">Edit</button>
-						</a>
-						<a href="">
-							<button class="btn user-btn-danger" disabled>Delete</button>
-						</a>
+						<div style="white-space:nowrap">
+							<a href="/dashboard/users/{{_id}}">
+								<button class="btn">Show</button>
+							</a>
+							<a href="/dashboard/users/edit/{{_id}}">
+								<button class="btn">Edit</button>
+							</a>
+							<a href="">
+								<button class="btn user-btn-danger" disabled>Delete</button>
+							</a>
+						</div>
 					</td>
 				</tr>
 				{{/each}}

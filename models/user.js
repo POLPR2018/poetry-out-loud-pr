@@ -57,6 +57,10 @@ var UserSchema = mongoose.Schema({
   directorCompetitionEvent: Boolean,
   attendanceRehersal: Boolean,
   attendanceEvent: Boolean,
+
+  // reset password
+  resetPasswordToken: String,
+  resetPasswordExpires: Date
 });
 
 var User = module.exports = mongoose.model('User', UserSchema);

@@ -123,6 +123,15 @@ h3, h4 {
   color: #000;
 }
 
+.btn-group {
+  white-space: nowrap;
+}
+
+.btn {
+  display: inline-block;
+  float: none;
+}
+
 .modal-header, h4, .close {
   background-color: #0B4866;
   color: #fff !important;

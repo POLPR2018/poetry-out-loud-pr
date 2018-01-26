@@ -1,0 +1,27 @@
+{{> header }}
+
+<div class="container">
+	{{> flash }}
+
+	<form method="post">
+		<div class="panel panel-default">
+			<div class="panel-heading">Reset your password</div>
+
+			<div class="panel-body">
+				<div class="form-group">
+					<label for="password">New Password</label>
+          <input type="password" class="form-control" name="password">
+				</div>
+
+        <div class="form-group">
+					<label for="password-confirm">Confirm Password</label>
+          <input type="password" class="form-control" name="password-confirm">
+				</div>
+
+				<button type="submit" class="btn btn-primary">Reset Password</button>
+			</div><!-- Panel Body -->
+		</div><!-- Panel Default -->
+	</form>
+</div><!-- Container ends -->
+
+{{> footer }}

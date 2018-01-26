@@ -14,7 +14,7 @@ const sslRedirect = require('heroku-ssl-redirect');
 
 var app = express();
 
-// mongoose.set('debug', true); // Only set when debugging
+mongoose.set('debug', true); // Only set when debugging
 
 // enable ssl redirect
 app.use(sslRedirect());
