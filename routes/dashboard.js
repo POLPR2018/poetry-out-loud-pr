@@ -1,6 +1,7 @@
 const express = require('express');
 const flash = require('connect-flash');
 const router = express.Router();
+const nodemailer = require('nodemailer');
 
 var User = require('../models/user');
 var CompetitionForm = require('../models/competition-form');
@@ -99,6 +100,61 @@ router.get('/dashboard/users/:id/progress', ensureAuthenticated, (req, res) => {
     res.render('dashboard/users/progress.hbs', {
       pageTitle: 'Progress',
       users: user
+    });
+  });
+});
+
+// Delete User
+router.get('/dashboard/users/delete/:id', ensureAuthenticated, (req, res, next) => {
+  User.findByIdAndRemove(req.params.id, function(err, user){
+    req.flash('success_msg', `The user with the email ${user.email} was removed successfully!`);
+    res.redirect('/dashboard');
+
+    const output = `
+      <h3>Accout Deletion</h3>
+      <p>Hello ${user.schoolName},<p>
+      <p>We are emailing you to make you aware that your account with the email <b>${user.email}</b> has been deleted from our records!<p>
+      <br>
+      <p>- POL – Puerto Rico</>
+    `;
+
+    nodemailer.createTestAccount((err, account) => {
+      // create reusable transporter object using the default SMTP transport
+      if (process.env.NODE_ENV === 'production') {
+        transporter = nodemailer.createTransport({
+          host: "smtp.sendgrid.net",
+          port: 587,
+          auth: {
+            user: process.env.SENDGRID_USERNAME,
+            pass: process.env.SENDGRID_PASSWORD,
+          }
+        });
+      } else {
+        transporter = nodemailer.createTransport({
+          host: "smtp.ethereal.email",
+          port: 587,
+          auth: {
+            user: 'qkkvnabtziufbksa@ethereal.email',
+            pass: 'A4W9HF2WbhAav263VM',
+          }
+        });
+      }
+      // setup email data with unicode symbols
+      let mailOptions = {
+        from: process.env.GLOBAL_EMAIL || 'ben@benbagley.co.uk', // sender address
+        to: `${user.email}`, // list of receivers
+        subject: 'Account Deletion | Poetry Out Loud', // Subject line
+        html: output // html body
+      };
+      // send mail with defined transport object
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          return console.log(error);
+        }
+
+        console.log('Message sent: %s', info.messageId);
+        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+      });
     });
   });
 });
