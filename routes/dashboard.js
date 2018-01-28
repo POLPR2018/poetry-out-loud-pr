@@ -2,6 +2,7 @@ const express = require('express');
 const flash = require('connect-flash');
 const router = express.Router();
 const nodemailer = require('nodemailer');
+const mongoosePaginate = require('mongoose-paginate');
 
 var User = require('../models/user');
 var CompetitionForm = require('../models/competition-form');
@@ -17,10 +18,18 @@ function ensureAuthenticated(req, res, next){
 }
 
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
-  User.find({}, function(err, users) {
+
+  const limit = parseInt(req.query.limit) || 6;
+  const page = parseInt(req.query.page) || 1;
+
+  User.paginate({}, {page: page, limit: limit}, function(err, result) {
     res.render('dashboard/index.hbs', {
       pageTitle: 'Dashboard',
-      users: users
+      users: result.docs,
+      total: result.total,
+      limit: result.limit,
+      page: result.page,
+      pages: result.pages
     });
   });
 });
