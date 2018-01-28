@@ -18,18 +18,17 @@ function ensureAuthenticated(req, res, next){
 }
 
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
-
   const limit = parseInt(req.query.limit) || 6;
-  const page = parseInt(req.query.page) || 1;
+  const page = parseInt(req.query.page) || 0;
 
-  User.paginate({}, {page: page, limit: limit}, function(err, result) {
+  User.find({}, function(err, users) {
     res.render('dashboard/index.hbs', {
       pageTitle: 'Dashboard',
-      users: result.docs,
-      total: result.total,
-      limit: result.limit,
-      page: result.page,
-      pages: result.pages
+      users: users,
+      pagination: {
+        page: page,
+        limit: limit
+      }
     });
   });
 });
