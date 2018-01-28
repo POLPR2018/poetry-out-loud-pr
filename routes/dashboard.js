@@ -18,8 +18,8 @@ function ensureAuthenticated(req, res, next){
 }
 
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
-  const limit = parseInt(req.query.limit) || 6;
-  const page = parseInt(req.query.page) || 0;
+  var limit = parseInt(req.query.limit) || 6;
+  var page = parseInt(req.query.page) || 0;
 
   User.find({}, function(err, users) {
     res.render('dashboard/index.hbs', {
