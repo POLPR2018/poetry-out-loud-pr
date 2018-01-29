@@ -9,7 +9,6 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 const fs = require('fs');
-const paginateHelper = require('express-handlebars-paginate');
 
 const sslRedirect = require('heroku-ssl-redirect');
 
@@ -48,9 +47,6 @@ hbs.registerHelper('addDayOnCurrent', () => {
   var timeDiff = compareDate - someDate;
   return daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 });
-
-// Pagination
-hbs.registerHelper('paginateHelper', paginateHelper.createPagination);
 
 // static assets rendered
 app.use(express.static(__dirname + '/public'));

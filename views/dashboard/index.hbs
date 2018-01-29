@@ -61,7 +61,23 @@
 		</table>
 	</div>
 
-	{{{paginateHelper pagination rightText="Next" leftText="Prev" limit="6" paginationClass="pagination"}}}
+	<nav aria-label="Page navigation">
+		Number of records: {{total}}
+		Number of pages: {{pages}}
+		Current page: {{page}}
+
+	  <ul class="pagination">
+			<li><a href="/dashboard?limit={{limit}}&page=1">1</a></li>
+			<li><a href="/dashboard?limit={{limit}}&page=2">2</a></li>
+			<li><a href="/dashboard?limit={{limit}}&page=3">3</a></li>
+			<li><a href="/dashboard?limit={{limit}}&page=4">4</a></li>
+			<li><a href="/dashboard?limit={{limit}}&page=5">5</a></li>
+			<li><a href="/dashboard?limit={{limit}}&page=6">6</a></li>
+			<li><a href="/dashboard?limit={{limit}}&page=7">7</a></li>
+			<li><a href="/dashboard?limit={{limit}}&page=8">8</a></li>
+			<li><a href="/dashboard?limit={{limit}}&page=9">9</a></li>
+	  </ul>
+	</nav>
 </div><!-- Container ends -->
 {{else}}
 <div class="container">

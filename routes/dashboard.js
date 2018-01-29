@@ -19,16 +19,16 @@ function ensureAuthenticated(req, res, next){
 
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
   var limit = parseInt(req.query.limit) || 6;
-  var page = parseInt(req.query.page) || 0;
+  var page = parseInt(req.query.page) || 1;
 
-  User.find({}, function(err, users) {
+  User.paginate({}, { page: page, limit: limit }, function(err, result) {
     res.render('dashboard/index.hbs', {
       pageTitle: 'Dashboard',
-      users: users,
-      pagination: {
-        page: page,
-        limit: limit
-      }
+      users: result.docs,
+      total: result.total,
+      limit: result.limit,
+      page: result.page,
+      pages: result.pages
     });
   });
 });
