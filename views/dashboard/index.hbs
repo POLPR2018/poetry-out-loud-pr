@@ -62,10 +62,6 @@
 	</div>
 
 	<nav aria-label="Page navigation">
-		Number of records: {{total}}
-		Number of pages: {{pages}}
-		Current page: {{page}}
-
 	  <ul class="pagination">
 			<li><a href="/dashboard?limit={{limit}}&page=1">1</a></li>
 			<li><a href="/dashboard?limit={{limit}}&page=2">2</a></li>
@@ -78,6 +74,11 @@
 			<li><a href="/dashboard?limit={{limit}}&page=9">9</a></li>
 	  </ul>
 	</nav>
+
+	<p>Page Information</p>
+	<p>Number of records: {{total}}</p>
+	<p>Number of pages: {{pages}}</p>
+	<p>Current page: {{page}}</p>
 </div><!-- Container ends -->
 {{else}}
 <div class="container">
