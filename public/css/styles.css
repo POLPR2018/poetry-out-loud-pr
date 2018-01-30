@@ -42,12 +42,6 @@ h3, h4 {
   color: #fff !important;
 }
 
-@media (max-width: 600px) {
-  .carousel-caption {
-    display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
-  }
-}
-
 .bg-1 { /*Background color for the video section*/
   background: #A09682;
   color: #bdbdbd;
@@ -69,14 +63,18 @@ h3, h4 {
   margin-bottom: 20px;
 }
 
-.official-logo a:link {
-  opacity: 0.5;
-  filter: alpha(opacity=50); /* For IE8 and earlier */
+.official-logo:nth-child(4) {
+  text-align: center;
 }
 
-.official-logo a:hover {
-  opacity: 0.9;
-  filter: alpha(opacity=90); /* For IE8 and earlier */
+@media (min-width: 768px) {
+  .official-logo {
+    margin-bottom: 0;
+  }
+
+  .official-logo:nth-child(4) {
+    text-align: right;
+  }
 }
 
 .bg-3 {
