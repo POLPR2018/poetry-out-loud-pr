@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const mongoosePaginate = require('mongoose-paginate');
 
 var app = express();
 
@@ -64,7 +63,6 @@ var UserSchema = mongoose.Schema({
   resetPasswordExpires: Date
 });
 
-UserSchema.plugin(mongoosePaginate);
 var User = module.exports = mongoose.model('User', UserSchema);
 
 module.exports.createUser = function(newUser, callback){

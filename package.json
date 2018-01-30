@@ -32,7 +32,6 @@
     "heroku-ssl-redirect": "0.0.4",
     "i": "^0.3.6",
     "mongoose": "^4.13.9",
-    "mongoose-paginate": "^5.0.3",
     "nodemailer": "^4.4.1",
     "nodemon": "^1.14.9",
     "npm": "^5.6.0",
