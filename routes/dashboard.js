@@ -2,7 +2,6 @@ const express = require('express');
 const flash = require('connect-flash');
 const router = express.Router();
 const nodemailer = require('nodemailer');
-const mongoosePaginate = require('mongoose-paginate');
 
 var User = require('../models/user');
 var CompetitionForm = require('../models/competition-form');
