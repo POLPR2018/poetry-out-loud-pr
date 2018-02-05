@@ -199,7 +199,7 @@ router.get('/dashboard/users/forms/competition-form/edit/:id' , ensureAuthentica
 
 // competition form edit
 router.post('/dashboard/users/forms/competition-form/edit/:id', (req, res) => {
-  CompetitionForm.findOneAndUpdate({ _id: req.params.id }, req.body, (err, competition) => {
+  CompetitionForm.findOneAndUpdate(req.params.id, req.body, (err, competition) => {
     if (err) {
       console.log(`Error saving data:  ${err}`);
       return res.send('Error saving data');
