@@ -66,6 +66,21 @@ $(document).ready(function(){
     });
   });
 
+  // poem registrations checkboxes
+  $("input.form-check-input").each(function() {
+    var mycookie = $.cookie($(this).attr('name'));
+    if (mycookie && mycookie === "true") {
+      $(this).prop('checked', mycookie);
+    }
+  });
+
+  $("input.form-check-input").change(function() {
+    $.cookie($(this).attr("name"), $(this).prop('checked'), {
+      path: '/',
+      expires: 365
+    });
+  });
+
   // Datepicker & Timepicker
   $('#competitionDate').datepicker();
   $('#competitionTime').timepicker();

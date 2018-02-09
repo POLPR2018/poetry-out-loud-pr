@@ -1,0 +1,238 @@
+{{> header }}
+
+<div class="container">
+  <form action="/dashboard/users/forms/poem-registrations/{{user.id}}" method="post" class="competitionresultssubmit">
+    <h2>Poem Registration</h2>
+    <p>
+      <b>All fields with <span style="color: red">*</span> are required</b>
+    </p>
+
+    <div class="form-group">
+      <label for="schoolName">
+        School Name <span style="color:red;">*</span>
+      </label>
+      <input type="text" class="form-control" name="schoolName" placeholder="Enter the school's name" value="{{poemRegistrations.schoolName}}" required>
+    </div>
+
+    <div class="form-group date" data-provide="datepicker">
+      <label for="competitionDate">
+        Competition Date <span style="color: red">*</span>
+      </label>
+      <input type="text" class="form-control" id="competitionDate" name="competitionDate" placeholder="Enter the date of competition" value="{{poemRegistrations.competitionDate}}" required>
+    </div>
+
+    <!-- Poem 1 info -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Poem #1
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label for="poem1AuthorName">
+              Author's Name <span style="color:red;">*</span>
+            </label>
+            <input type="text" class="form-control" name="poem1AuthorName" placeholder="Enter the Author's name" value="{{poemRegistrations.poem1AuthorName}}" required>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="poem1Title">
+              Poem Title <span style="color:red;">*</span>
+            </label>
+            <input type="text" class="form-control" name="poem1Title" placeholder="Enter the title of the poem" value="{{poemRegistrations.poem1Title}}" required>
+          </div>
+
+          <!-- These will be links that the user will copy from another source and paste here -->
+          <div class="form-group col-md-6">
+            <label for="poem1Url">
+              Poem Link <span style="color:red;">*</span>
+            </label>
+            <input type="text" class="form-control" name="poem1Url" placeholder="Paste the selected poem's web link here" value="{{poemRegistrations.poem1Url}}" required>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="poem1AnthologyUrl">
+              Anthology Link <span style="color:red;">*</span>
+            </label>
+            <input type="text" class="form-control" name="poem1AnthologyUrl" placeholder="Paste the Anthology's web link here" value="{{poemRegistrations.poem1AnthologyUrl}}" required>
+          </div>
+
+          <div class="form-group col-md-12">
+            <label for="poem1Checks">Choose the category (you can choose up to two)</label>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" name="poem1LinesCheck" value="poem1LinesCheck">
+              <label class="form-check-label" for="poem1LinesCheck">
+                25 lines or less
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" name="poem1CenturyCheck" value="poem1CenturyCheck">
+              <label class="form-check-label" for="poem1CenturyCheck">
+                Before 20th Century
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" name="poem1FreeCheck" value="poem1FreeCheck">
+              <label class="form-check-label" for="poem1FreeCheck">
+                Free Selection
+              </label>
+            </div>
+          </div>
+        </div><!-- row ends -->
+      </div><!-- End of panel body -->
+    </div><!-- Poem 1 info ends -->
+
+    <!-- Poem 2 info -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Poem #2
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label for="poem2AuthorName">
+              Author's Name <span style="color:red;">*</span>
+            </label>
+            <input type="text" class="form-control" name="poem2AuthorName" placeholder="Enter the Author's name" value="{{poemRegistrations.poem2AuthorName}}" required>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="poem2Title">
+              Poem Title <span style="color:red;">*</span>
+            </label>
+            <input type="text" class="form-control" name="poem2Title" placeholder="Enter the title of the poem" value="{{poemRegistrations.poem2Title}}" required>
+          </div>
+
+          <!-- These will be links that the user will copy from another source and paste here -->
+          <div class="form-group col-md-6">
+            <label for="poem2Url">
+              Poem Link <span style="color:red;">*</span>
+            </label>
+            <input type="text" class="form-control" name="poem2Url" placeholder="Paste the selected poem's web link here" value="{{poemRegistrations.poem2Url}}" required>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="poem2AnthologyUrl">
+              Anthology Link <span style="color:red;">*</span>
+            </label>
+            <input type="text" class="form-control" name="poem2AnthologyUrl" placeholder="Paste the Anthology's web link here" value="{{poemRegistrations.poem2AnthologyUrl}}" required>
+          </div>
+
+          <div class="form-group col-md-12">
+            <label for="poem2Checks">Choose the category (you can choose up to two)</label>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" name="poem2LinesCheck">
+              <label class="form-check-label" for="poem2LinesCheck">
+                25 lines or less
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" name="poem2CenturyCheck">
+              <label class="form-check-label" for="poem2CenturyCheck">
+                Before 20th Century
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" name="poem2FreeCheck">
+              <label class="form-check-label" for="poem2FreeCheck">
+                Free Selection
+              </label>
+            </div>
+          </div>
+        </div><!-- row ends -->
+      </div><!-- End of panel body -->
+    </div><!-- Poem 2 info ends -->
+
+    <!-- Poem 3 info -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Poem #3
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label for="poem2AuthorName">
+              Author's Name <span style="color:red;">*</span>
+            </label>
+            <input type="text" class="form-control" name="poem3AuthorName" placeholder="Enter the Author's name" value="{{poemRegistrations.poem3AuthorName}}" required>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="poem3Title">
+              Poem Title <span style="color:red;">*</span>
+            </label>
+            <input type="text" class="form-control" name="poem3Title" placeholder="Enter the title of the poem" value="{{poemRegistrations.poem3Title}}" required>
+          </div>
+
+          <!-- These will be links that the user will copy from another source and paste here -->
+          <div class="form-group col-md-6">
+            <label for="poem3Url">
+              Poem Link <span style="color:red;">*</span>
+            </label>
+            <input type="text" class="form-control" name="poem3Url" placeholder="Paste the selected poem's web link here" value="{{poemRegistrations.poem3Url}}" required>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="poem3AnthologyUrl">
+              Anthology Link <span style="color:red;">*</span>
+            </label>
+            <input type="text" class="form-control" name="poem3AnthologyUrl" placeholder="Paste the Anthology's web link here" value="{{poemRegistrations.poem3AnthologyUrl}}" required>
+          </div>
+
+          <div class="form-group col-md-12">
+            <label for="poem3Checks">Choose the category (you can choose up to two)</label>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" name="poem3LinesCheck">
+              <label class="form-check-label" for="poem3LinesCheck">
+                25 lines or less
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" name="poem3CenturyCheck">
+              <label class="form-check-label" for="poem3CenturyCheck">
+                Before 20th Century
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" name="poem3FreeCheck">
+              <label class="form-check-label" for="poem3FreeCheck">
+                Free Selection
+              </label>
+            </div>
+          </div>
+        </div><!-- row ends -->
+      </div><!-- End of panel body -->
+    </div><!-- Poem 3 info ends -->
+
+    <!-- The following fields are hidden to users and should ONLY be visible and editable by a site admin-level user. -->
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        Administrators Only
+      </div>
+
+      <div class="panel-body">
+        <p>Sent Required Documents (currently {{poemRegistrations.poemRegistrationRequiredDocuments}})</p>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="poemRegistrationRequiredDocuments" name="yesSentPoemDocs" value="yes">
+          <label class="form-check-label" for="yesSentPoemDocs">Yes</label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="poemRegistrationRequiredDocuments" name="noSentPoemDocs" value="no">
+          <label class="form-check-label" for="noSentPoemDocs">No</label>
+        </div>
+      </div>
+    </div>
+    <!-- End of fields hidden to user -->
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div><!-- container -->
+
+{{> footer }}

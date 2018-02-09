@@ -6,6 +6,7 @@ const nodemailer = require('nodemailer');
 var User = require('../models/user');
 var CompetitionForm = require('../models/competition-form');
 var CompetitionResults = require('../models/competition-results');
+var PoemRegistrations = require('../models/poem-registrations');
 
 function ensureAuthenticated(req, res, next){
   if(req.isAuthenticated()){
@@ -20,6 +21,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
   User.find({}, function(err, users) {
     res.render('dashboard/index.hbs', {
       pageTitle: 'Dashboard',
+      total: users.length,
       users: users
     });
   });
@@ -176,7 +178,7 @@ router.get('/dashboard/users/forms/competition-form/:id', ensureAuthenticated, (
 
 // competition form details post
 router.post('/dashboard/users/forms/competition-form/:id', (req, res) => {
-  CompetitionForm.findOneAndUpdate({ _id: req.params.id }, req.body, {upsert:true}, (err, competition) => {
+  CompetitionForm.findByIdAndUpdate(req.params.id, req.body, {upsert:true}, (err, competition) => {
     if (err) {
       console.log(`Error saving data:  ${err}`);
       return res.send('Error saving data');
@@ -199,7 +201,7 @@ router.get('/dashboard/users/forms/competition-form/edit/:id' , ensureAuthentica
 
 // competition form edit
 router.post('/dashboard/users/forms/competition-form/edit/:id', (req, res) => {
-  CompetitionForm.findOneAndUpdate(req.params.id, req.body, (err, competition) => {
+  CompetitionForm.findByIdAndUpdate(req.params.id, req.body, (err, competition) => {
     if (err) {
       console.log(`Error saving data:  ${err}`);
       return res.send('Error saving data');
@@ -207,6 +209,15 @@ router.post('/dashboard/users/forms/competition-form/edit/:id', (req, res) => {
 
     res.redirect('/dashboard');
     console.log(req.body);
+  });
+});
+
+
+// delete competition form
+router.get('/dashboard/users/forms/competition-form/delete/:id', ensureAuthenticated, (req, res, next) => {
+  CompetitionForm.findByIdAndRemove(req.params.id, function(err, competition, user){
+    req.flash('success_msg', `The competition form from the school ${competition.schoolName} was removed successfully!`);
+    res.redirect('/dashboard');
   });
 });
 
@@ -234,7 +245,7 @@ router.post('/dashboard/users/forms/competition-results/:id', (req, res) => {
   });
 });
 
-// competition form edit
+// competition results form edit
 router.get('/dashboard/users/forms/competition-results/edit/:id' , ensureAuthenticated, (req, res) => {
   CompetitionResults.findById(req.params.id, function(err, competitionResult){
     res.render('dashboard/users/forms/competition-results-edit.hbs', {
@@ -244,7 +255,7 @@ router.get('/dashboard/users/forms/competition-results/edit/:id' , ensureAuthent
   });
 });
 
-// competition form edit
+// competition results form edit
 router.post('/dashboard/users/forms/competition-results/edit/:id', (req, res) => {
   CompetitionResults.findOneAndUpdate({ _id: req.params.id }, req.body, (err, competitionResult) => {
     if (err) {
@@ -254,6 +265,69 @@ router.post('/dashboard/users/forms/competition-results/edit/:id', (req, res) =>
 
     res.redirect('/dashboard');
     console.log(req.body);
+  });
+});
+
+// delete competition form
+router.get('/dashboard/users/forms/competition-results/delete/:id', ensureAuthenticated, (req, res, next) => {
+  CompetitionResults.findByIdAndRemove(req.params.id, function(err, competitionResult, user){
+    req.flash('success_msg', `The competition results form from the school ${competitionResult.schoolName} was removed successfully!`);
+    res.redirect('/dashboard');
+  });
+});
+
+// Poem Registrations
+// poem Registrations details
+router.get('/dashboard/users/forms/poem-registrations/:id', ensureAuthenticated, (req, res) => {
+  PoemRegistrations.findById(req.params.id, function(err, poemRegistration){
+    res.render('dashboard/users/forms/poem-registrations.hbs', {
+      pageTitle: 'Poem Registrations',
+      poemRegistrations: poemRegistration
+    });
+  });
+});
+
+// poem Registrations details post
+router.post('/dashboard/users/forms/poem-registrations/:id', (req, res) => {
+  PoemRegistrations.findByIdAndUpdate(req.params.id, req.body, {upsert:true}, (err, poemRegistration) => {
+    if (err) {
+      console.log(`Error saving data:  ${err}`);
+      return res.send('Error saving data');
+    }
+
+    res.redirect('/dashboard');
+    console.log(req.body);
+  });
+});
+
+// poem Registrations form edit
+router.get('/dashboard/users/forms/poem-registrations/edit/:id' , ensureAuthenticated, (req, res) => {
+  PoemRegistrations.findById(req.params.id, function(err, poemRegistration){
+    res.render('dashboard/users/forms/poem-registrations-edit.hbs', {
+      pageTitle: 'Poem Registrations Edit',
+      poemRegistrations: poemRegistration
+    });
+  });
+});
+
+// poem Registrations form post edit
+router.post('/dashboard/users/forms/poem-registrations/edit/:id', (req, res) => {
+  PoemRegistrations.findOneAndUpdate(req.params.id, req.body, (err, poemRegistration) => {
+    if (err) {
+      console.log(`Error saving data:  ${err}`);
+      return res.send('Error saving data');
+    }
+
+    res.redirect('/dashboard');
+    console.log(req.body);
+  });
+});
+
+// delete poem registrations form
+router.get('/dashboard/users/forms/poem-registrations/delete/:id', ensureAuthenticated, (req, res, next) => {
+  PoemRegistrations.findByIdAndRemove(req.params.id, function(err, poemRegistration){
+    req.flash('success_msg', `The competition results form from the school ${poemRegistration.schoolName} was removed successfully!`);
+    res.redirect('/dashboard');
   });
 });
 

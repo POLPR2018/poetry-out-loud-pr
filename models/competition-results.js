@@ -18,6 +18,7 @@ db.once('open', function() {
 });
 
 var CompetitionResultsSchema = mongoose.Schema({
+  schoolName: String,
   winnersName: String,
   winnersGrade: String,
   winnersAddress: String,

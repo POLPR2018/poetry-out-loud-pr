@@ -3,6 +3,16 @@
 <div class="container">
   <form action="/dashboard/users/forms/competition-results/{{user.id}}" method="post" class="competitionresultssubmit">
     <h2>Competition Results</h2>
+    <p>
+      <b>All fields with <span style="color: red">*</span> are required</b>
+    </p>
+
+    <div class="form-group">
+      <label for="schoolName">
+        School Name <span style="color:red;">*</span>
+      </label>
+      <input type="text" class="form-control" name="schoolName" placeholder="Enter the school's name" value="{{competitionResults.schoolName}}" required>
+    </div>
 
     <div class="panel panel-default">
       <div class="panel-heading">

@@ -25,7 +25,9 @@
             <a href="/dashboard/users/edit/{{users.id}}">
               <button class="btn">Edit</button>
             </a>
-            <button class="btn user-btn-danger">Delete</button>
+            <a href="/dashboard/users/delete/{{users.id}}">
+              <button class="btn user-btn-danger">Delete</button>
+            </a>
           </td>
         </tr>
         <tr>
@@ -38,7 +40,9 @@
             <a href="/dashboard/users/forms/competition-form/edit/{{users.id}}">
               <button class="btn">Edit</button>
             </a>
-            <button class="btn user-btn-danger">Delete</button>
+            <a href="/dashboard/users/forms/competition-form/delete/{{users.id}}">
+              <button class="btn user-btn-danger">Delete</button>
+            </a>
             {{/if}}
           </td>
         </tr><tr>
@@ -51,16 +55,24 @@
             <a href="/dashboard/users/forms/competition-results/edit/{{users.id}}">
               <button class="btn">Edit</button>
             </a>
-            <button class="btn user-btn-danger">Delete</button>
+            <a href="/dashboard/users/forms/competition-results/delete/{{users.id}}">
+              <button class="btn user-btn-danger">Delete</button>
+            </a>
             {{/if }}
           </td>
         </tr>
         <tr>
           <td>Poem Registration</td>
           <td>
-            <button class="btn">Open</button>
-            <button class="btn">Edit</button>
-            <button class="btn user-btn-danger">Delete</button>
+            <a href="/dashboard/users/forms/poem-registrations/{{users.id}}">
+              <button class="btn">Open</button>
+            </a>
+            <a href="/dashboard/users/forms/poem-registrations/edit/{{users.id}}">
+              <button class="btn">Edit</button>
+            </a>
+            <a href="/dashboard/users/forms/poem-registrations/delete/{{users.id}}">
+              <button class="btn user-btn-danger">Delete</button>
+            </a>
           </td>
         </tr>
       </tbody>

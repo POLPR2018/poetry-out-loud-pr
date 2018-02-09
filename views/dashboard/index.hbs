@@ -60,6 +60,8 @@
 			</tbody>
 		</table>
 	</div>
+
+	<p>Number of users: <b>{{total}}</b></p>
 </div><!-- Container ends -->
 {{else}}
 <div class="container">
@@ -151,7 +153,9 @@
 				<tr>
 					<td>Poem Registration</td>
 					<td>
-						<button class="btn">Open</button>
+						<a href="/dashboard/users/forms/poem-registrations/{{user.id}}">
+							<button class="btn">Open</button>
+						</a>
 					</td>
 				</tr>
 			</tbody>
