@@ -18,6 +18,7 @@ h3, h4 {
 }
 
 .container { padding: 80px 20px; }
+.hidden { display: none; }
 
 .person {
   border: 10px solid transparent;

@@ -85,3 +85,50 @@ $(document).ready(function(){
   $('#competitionDate').datepicker();
   $('#competitionTime').timepicker();
 }); // end document.ready
+
+// form lockdown
+localStorage.getItem('competitionformlockdown') || '0';
+localStorage.getItem('competitionResultsformlockdown') || '0';
+localStorage.getItem('poemRegistrationsformlockdown') || '0';
+
+var competitionformlockdown = document.getElementsByClassName('competitionformlockdown')[0];
+var competitionResultsformlockdown = document.getElementsByClassName('competitionResultsformlockdown')[0];
+var poemRegistrationsformlockdown = document.getElementsByClassName('poemRegistrationsformlockdown')[0];
+
+if (!!competitionformlockdown) {
+  competitionformlockdown.addEventListener('submit', function(e) {
+    localStorage.setItem('competitionformlockdown', '1');
+    return false;
+  });
+};
+
+if (!!competitionResultsformlockdown) {
+  competitionResultsformlockdown.addEventListener('submit', function(e) {
+    localStorage.setItem('competitionResultsformlockdown', '1');
+    return false;
+  });
+};
+
+if (!!poemRegistrationsformlockdown) {
+  poemRegistrationsformlockdown.addEventListener('submit', function(e) {
+    localStorage.setItem('poemRegistrationsformlockdown', '1');
+    return false;
+  });
+};
+
+if(localStorage.getItem('competitionformlockdown') == '1') {
+  $(".competitionformlockdown input").prop('disabled', true);
+  $(".competitionformlockdown input[type=submit]").prop('disabled', true);
+}
+
+if(localStorage.getItem('competitionResultsformlockdown') == '1') {
+  $(".competitionResultsformlockdown input").prop('disabled', true);
+  $(".competitionResultsformlockdown select").prop('disabled', true);
+  $(".competitionResultsformlockdown textarea").prop('disabled', true);
+  $(".competitionResultsformlockdown input[type=submit]").prop('disabled', true);
+}
+
+if(localStorage.getItem('poemRegistrationsformlockdown') == '1') {
+  $(".poemRegistrationsformlockdown input").prop('disabled', true);
+  $(".poemRegistrationsformlockdown input[type=submit]").prop('disabled', true);
+}
