@@ -18,13 +18,24 @@ function ensureAuthenticated(req, res, next){
 }
 
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
-  User.find({}, function(err, users) {
-    res.render('dashboard/index.hbs', {
-      pageTitle: 'Dashboard',
-      total: users.length,
-      users: users
+  if (req.query.search) {
+    const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+    User.find({ schoolName: regex }, function(err, users) {
+      res.render('dashboard/index.hbs', {
+        pageTitle: 'Dashboard',
+        total: users.length,
+        users: users
+      });
     });
-  });
+  } else {
+    User.find({}, function(err, users) {
+      res.render('dashboard/index.hbs', {
+        pageTitle: 'Dashboard',
+        total: users.length,
+        users: users
+      });
+    });
+  }
 });
 
 router.get('/dashboard/whats-new', ensureAuthenticated, (req, res) => {
@@ -330,5 +341,9 @@ router.get('/dashboard/users/forms/poem-registrations/delete/:id', ensureAuthent
     res.redirect('/dashboard');
   });
 });
+
+function escapeRegex(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports = router;
