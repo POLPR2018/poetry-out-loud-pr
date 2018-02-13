@@ -40,12 +40,22 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
 
 // all poems
 router.get('/dashboard/all-poems', ensureAuthenticated, (req, res) => {
-  PoemRegistrations.find({}, function(err, poemRegistrations) {
-    res.render('dashboard/all-poems.hbs', {
-      pageTitle: 'All Poems',
-      poemRegistrations: poemRegistrations,
+  if (req.query.search) {
+    const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+    PoemRegistrations.find({ schoolName: regex }, function(err, poemRegistrations) {
+      res.render('dashboard/all-poems.hbs', {
+        pageTitle: 'All poems',
+        poemRegistrations: poemRegistrations,
+      });
     });
-  });
+  } else {
+    PoemRegistrations.find({}, function(err, poemRegistrations) {
+      res.render('dashboard/all-poems.hbs', {
+        pageTitle: 'All poems',
+        poemRegistrations: poemRegistrations,
+      });
+    });
+  }
 });
 
 // whats new
