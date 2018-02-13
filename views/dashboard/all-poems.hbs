@@ -1,0 +1,85 @@
+{{> header }}
+
+{{#if user.admin}}
+<!-- This view should only be visible to Administrators -->
+<div class="container">
+	{{> flash }}
+
+	<h2>Admin Dashboard | {{user.email}}</h2>
+
+	<br>
+
+	<form action="/dashboard" class="navbar-form pull-right" role="search" method="GET">
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Search users" name="search" id="search">
+			<button class="btn btn-default btn-sm" type="submit">
+				<i class="glyphicon glyphicon-search"></i>
+			</button>
+		</div>
+	</form>
+
+	<h2>All Poems</h2>
+	<br>
+
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th scope="col">
+						<nobr>School</nobr>
+					</th>
+					<th scope="col">
+						<nobr>Winners Name</nobr>
+					</th>
+					<th scope="col">
+						<nobr>Poem #1 Url</nobr>
+					</th>
+					<th scope="col">
+						<nobr>Poem #2 Url</nobr>
+					</th>
+					<th scope="col">
+						<nobr>Poem #3 Url</nobr>
+					</th>
+					<th scope="col">
+						<nobr>Actions</nobr>
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{{#each poemRegistrations}}
+				<tr>
+					<td><a href="/dashboard/users/{{_id}}/progress">{{schoolName}}</a></td>
+					<td>{{winnersName}}</td>
+					<td>{{poem1Url}}</td>
+					<td>{{poem2Url}}</td>
+					<td>{{poem3Url}}</td>
+					<td>
+						<div class="btn-group">
+              <a href="/dashboard/users/forms/poem-registrations/{{_id}}">
+								<button class="btn">Show</button>
+							</a>
+              <a href="/dashboard/users/forms/poem-registrations/edit/{{_id}}">
+								<button class="btn">Edit</button>
+							</a>
+              <a href="/dashboard/users/forms/poem-registrations/delete/{{_id}}">
+								<button class="btn user-btn-danger">Delete</button>
+							</a>
+						</div>
+					</td>
+				</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div><!-- Container ends -->
+{{else}}
+<div class="container">
+  <div class="text-center">
+    <h3>This is not the page you are looking for.</h3>
+    <p>Only admins have access to this page.</p>
+  </div>
+</div>
+{{/if}}
+
+{{> footer }}

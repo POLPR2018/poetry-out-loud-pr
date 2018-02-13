@@ -38,6 +38,17 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
   }
 });
 
+// all poems
+router.get('/dashboard/all-poems', ensureAuthenticated, (req, res) => {
+  PoemRegistrations.find({}, function(err, poemRegistrations) {
+    res.render('dashboard/all-poems.hbs', {
+      pageTitle: 'All Poems',
+      poemRegistrations: poemRegistrations,
+    });
+  });
+});
+
+// whats new
 router.get('/dashboard/whats-new', ensureAuthenticated, (req, res) => {
   res.render('dashboard/whats-new.hbs', {
     pageTitle: 'What\'s mew'

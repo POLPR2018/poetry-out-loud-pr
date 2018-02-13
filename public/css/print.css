@@ -1,0 +1,39 @@
+@page {
+	size: landscape;
+	margin: 5%;
+}
+
+@page :left {
+	margin-left: 5cm;
+}
+
+@media print {
+	body {
+		font-size: 10px;
+		padding: 0px;
+	}
+
+	.container {
+		padding: 50px 0px;
+	}
+
+	.navbar-form {
+		display: none;
+	}
+
+	a {
+		word-wrap: break-word;
+	}
+
+	a[href]:after {
+	  content: none !important;
+	}
+
+	table td:last-child {
+		display:none;
+	}
+
+	table th:last-child {
+		display:none;
+	}
+}

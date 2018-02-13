@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const timestamps = require('mongoose-timestamp');
 
 var app = express();
 
@@ -19,7 +20,7 @@ db.once('open', function() {
 
 var PoemRegistrationsSchema = mongoose.Schema({
   schoolName: String,
-  competitionDate: String,
+  winnersName: String,
 
   // Poem 1
   poem1AuthorName: String,
@@ -51,5 +52,7 @@ var PoemRegistrationsSchema = mongoose.Schema({
   // admin fields
   poemRegistrationRequiredDocuments: Boolean
 });
+
+PoemRegistrationsSchema.plugin(timestamps);
 
 var PoemRegistrations = module.exports = mongoose.model('PoemRegistrations', PoemRegistrationsSchema);
