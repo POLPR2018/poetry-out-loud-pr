@@ -20,7 +20,14 @@ function ensureAuthenticated(req, res, next){
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
   if (req.query.search) {
     const regex = new RegExp(escapeRegex(req.query.search), 'gi');
-    User.find({ schoolName: regex }, function(err, users) {
+    User.find({
+      $or: [
+        { schoolName: regex },
+        { city: regex },
+        { schoolRepresentativeName: regex },
+        { schoolRepresentativeTutorMentor: regex }
+    ]
+    }, function(err, users) {
       res.render('dashboard/index.hbs', {
         pageTitle: 'Dashboard',
         total: users.length,
