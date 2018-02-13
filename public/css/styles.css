@@ -18,7 +18,6 @@ h3, h4 {
 }
 
 a { word-wrap: break-word; }
-td { max-width: 150px; }
 
 .container { padding: 80px 20px; }
 .hidden { display: none; }
