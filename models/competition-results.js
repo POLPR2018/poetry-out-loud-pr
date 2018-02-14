@@ -29,7 +29,7 @@ var CompetitionResultsSchema = mongoose.Schema({
   winnersParentName: String,
   winnersParentTelephone: String,
   winnersTShirtSize: String,
-  winnersAccommodation: Boolean,
+  winnersAccommodation: { type: Boolean, default: false },
   winnersAccommodationComments: String,
 
   // admin fields
@@ -46,7 +46,7 @@ var CompetitionResultsSchema = mongoose.Schema({
   runnerUpsParentName: String,
   runnerUpsParentTelephone: String,
   runnerUpsTShirtSize: String,
-  runnerUpsAccommodation: Boolean,
+  runnerUpsAccommodation: { type: Boolean, default: false },
   runnerUpsAccommodationComments: String,
 
   // admin comments
