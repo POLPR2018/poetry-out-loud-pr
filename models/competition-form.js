@@ -36,8 +36,8 @@ var CompetitionFormSchema = mongoose.Schema({
   competitionJudge3Email: String,
 
   // admin fields
-  competitionRequiredPhotos: Boolean,
-  competitionRequiredCertifications: Boolean
+  competitionRequiredPhotos: { type: Boolean, default: false },
+  competitionRequiredCertifications: { type: Boolean, default: false }
 });
 
 var CompetitionForm = module.exports = mongoose.model('CompetitionForm', CompetitionFormSchema);

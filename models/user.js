@@ -41,8 +41,8 @@ var UserSchema = mongoose.Schema({
   directorName: String,
   directorTelephone: String,
   directorEmail: String,
-  directorAttendanceRehersal: Boolean,
-  directorAttendanceEvent: Boolean,
+  directorAttendanceRehersal: { type: Boolean, default: false },
+  directorAttendanceEvent: { type: Boolean, default: false },
   schoolRepresentativeName: String,
   schoolRepresentativeTelephone: String,
   schoolRepresentativeEmail: String,
@@ -53,10 +53,10 @@ var UserSchema = mongoose.Schema({
   admin: { type: Boolean, default: false },
 
   // admin fields
-  directorAttendanceRehersal: Boolean,
-  directorCompetitionEvent: Boolean,
-  attendanceRehersal: Boolean,
-  attendanceEvent: Boolean,
+  directorAttendanceRehersal: { type: Boolean, default: false },
+  directorCompetitionEvent: { type: Boolean, default: false },
+  attendanceRehersal: { type: Boolean, default: false },
+  attendanceEvent: { type: Boolean, default: false },
 
   // reset password
   resetPasswordToken: String,

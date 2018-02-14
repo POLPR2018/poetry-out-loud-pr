@@ -27,27 +27,27 @@ var PoemRegistrationsSchema = mongoose.Schema({
   poem1Title: String,
   poem1Url: String,
   poem1AnthologyUrl: String,
-  poem1LinesCheck: Boolean,
-  poem1CenturyCheck: Boolean,
-  poem1FreeCheck: Boolean,
+  poem1LinesCheck: { type: Boolean, default: false },
+  poem1CenturyCheck: { type: Boolean, default: false },
+  poem1FreeCheck: { type: Boolean, default: false },
 
   // Poem 2
   poem2AuthorName: String,
   poem2Title: String,
   poem2Url: String,
   poem2AnthologyUrl: String,
-  poem2LinesCheck: Boolean,
-  poem2CenturyCheck: Boolean,
-  poem2FreeCheck: Boolean,
+  poem2LinesCheck: { type: Boolean, default: false },
+  poem2CenturyCheck: { type: Boolean, default: false },
+  poem2FreeCheck: { type: Boolean, default: false },
 
   // Poem 3
   poem3AuthorName: String,
   poem3Title: String,
   poem3Url: String,
   poem3AnthologyUrl: String,
-  poem3LinesCheck: Boolean,
-  poem3CenturyCheck: Boolean,
-  poem3FreeCheck: Boolean,
+  poem3LinesCheck: { type: Boolean, default: false },
+  poem3CenturyCheck: { type: Boolean, default: false },
+  poem3FreeCheck: { type: Boolean, default: false },
 
   // admin fields
   poemRegistrationRequiredDocuments: Boolean

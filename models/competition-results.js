@@ -33,9 +33,9 @@ var CompetitionResultsSchema = mongoose.Schema({
   winnersAccommodationComments: String,
 
   // admin fields
-  winnersAttendedRehersal: Boolean,
-  winnersAttendedMainCompetition: Boolean,
-  winnersReleaseForm: Boolean,
+  winnersAttendedRehersal: { type: Boolean, default: false },
+  winnersAttendedMainCompetition: { type: Boolean, default: false },
+  winnersReleaseForm: { type: Boolean, default: false },
 
   runnerUpsName: String,
   runnerUpsGrade: String,
@@ -50,9 +50,9 @@ var CompetitionResultsSchema = mongoose.Schema({
   runnerUpsAccommodationComments: String,
 
   // admin comments
-  runnerUpsAttendedRehersal: Boolean,
-  runnerUpsAttendedMainCompetition: Boolean,
-  runnerUpsReleaseForm: Boolean
+  runnerUpsAttendedRehersal: { type: Boolean, default: false },
+  runnerUpsAttendedMainCompetition: { type: Boolean, default: false },
+  runnerUpsReleaseForm: { type: Boolean, default: false }
 });
 
 var CompetitionResults = module.exports = mongoose.model('CompetitionResults', CompetitionResultsSchema);
