@@ -68,7 +68,7 @@ router.get('/dashboard/all-poems', ensureAuthenticated, (req, res) => {
 // whats new
 router.get('/dashboard/whats-new', ensureAuthenticated, (req, res) => {
   res.render('dashboard/whats-new.hbs', {
-    pageTitle: 'What\'s mew'
+    pageTitle: 'What\'s new'
   });
 });
 

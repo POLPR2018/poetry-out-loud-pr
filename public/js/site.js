@@ -43,14 +43,6 @@ $(document).ready(function(){
     }
   });
 
-  $("input[type=radio]").change(function() {
-    if($(this).prop('value') == 'yes'){
-      $(".participationYears-field").show();
-    } else {
-      $(".participationYears-field").hide();
-    }
-  });
-
   // todo save checkboxes
   $("input.todo-item").each(function() {
     var mycookie = $.cookie($(this).attr('name'));

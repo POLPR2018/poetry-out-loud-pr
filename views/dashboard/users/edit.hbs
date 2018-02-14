@@ -191,25 +191,23 @@
 
 					<div class="col-md-12">
 						<div class="form-check">
-							<input class="form-check-input" type="radio" name="participationRadio" id="yesRadio" value="yes" checked value="{{users.participationBefore}}">
+							<input class="form-check-input" type="radio" name="participationRadio" id="yesRadio" value="true" checked value="{{users.participationBefore}}">
 							<label class="form-check-label" for="yesRadio">
 								Yes
 							</label>
 						</div>
 
 						<div class="form-check">
-							<input class="form-check-input" type="radio" name="participationRadio" id="noRadio" value="no" value="{{users.participationBefore}}">
+							<input class="form-check-input" type="radio" name="participationRadio" id="noRadio" value="false" value="{{users.participationBefore}}">
 							<label class="form-check-label" for="noRadio">
 								No
 							</label>
 						</div>
 					</div>
 
-					<div class="participationYears-field">
-						<div class="form-group col-md-6">
-							<label for="years">How many years participating?</label>
-							<input type="text" class="form-control" id="years" placeholder="If your previous answer is YES, enter the number of years" name="participationYears" value="{{users.participationYears}}">
-						</div>
+					<div class="form-group col-md-6">
+						<label for="years">How many years participating?</label>
+						<input type="text" class="form-control" id="years" placeholder="If your previous answer is YES, enter the number of years" name="participationYears" value="{{users.participationYears}}">
 					</div>
 				</div><!-- form-row ends -->
 			</div><!-- Panel body -->
@@ -256,14 +254,14 @@
 				<p>Director Attended Rehersal <b>(currently {{users.directorAttendanceRehersal}})</b></p>
 
 				<div class="form-check">
-					<input class="form-check-input" type="radio" name="directorAttendanceRehersal" id="directorAttendanceRehersal" value="yes">
+					<input class="form-check-input" type="radio" name="directorAttendanceRehersal" id="directorAttendanceRehersal" value="true">
 					<label class="form-check-label" for="directorAttendanceRehersal">
 						Yes
 					</label>
 				</div>
 
 				<div class="form-check">
-					<input class="form-check-input" type="radio" name="directorAttendanceRehersal" id="directorAttendanceRehersal" value="no">
+					<input class="form-check-input" type="radio" name="directorAttendanceRehersal" id="directorAttendanceRehersal" value="false">
 					<label class="form-check-label" for="directorAttendanceRehersal">
 						No
 					</label>
@@ -272,14 +270,14 @@
 				<p>Director Attended the Competition Event <b>(currently {{users.directorCompetitionEvent}})</b></p>
 
 				<div class="form-check">
-					<input class="form-check-input" type="radio" name="directorCompetitionEvent" id="directorCompetitionEvent" value="yes">
+					<input class="form-check-input" type="radio" name="directorCompetitionEvent" id="directorCompetitionEvent" value="true">
 					<label class="form-check-label" for="directorCompetitionEvent">
 						Yes
 					</label>
 				</div>
 
 				<div class="form-check">
-					<input class="form-check-input" type="radio" name="directorCompetitionEvent" id="directorCompetitionEvent" value="no">
+					<input class="form-check-input" type="radio" name="directorCompetitionEvent" id="directorCompetitionEvent" value="false">
 					<label class="form-check-label" for="directorCompetitionEvent">
 						No
 					</label>
