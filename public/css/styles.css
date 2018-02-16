@@ -7,6 +7,13 @@ Darker shade of beige #A09682*/
 
 body {
   font: 400 15px/1.8 Lato, sans-serif;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-flex;
+  min-height: 100vh;
+  display: -ms-flex;
+  display: flex;
   color: #777;
 }
 
@@ -21,7 +28,11 @@ a { word-wrap: break-word; }
 .right { float: right; }
 .left { float: left; }
 
-.container { padding: 80px 20px; }
+.container {
+  padding: 80px 20px;
+  flex: 1 0 auto;
+}
+
 .hidden { display: none; }
 
 .person {
@@ -155,9 +166,10 @@ a { word-wrap: break-word; }
   filter: grayscale(100%);
 }
 
-.brand-logo {
-  position: relative;
-  left: -12px;
+.brand-logo { position: relative; }
+
+@media (min-width: 768px) {
+  .brand-logo { left: -12px;}
 }
 
 .navbar {
@@ -196,7 +208,12 @@ a { word-wrap: break-word; }
 .navbar-nav li.active a {
   color: #fff !important;
   background-color: #EB7725 !important;
-  height: 75px;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav li.active a {
+    height: 75px;
+  }
 }
 
 .navbar-default .navbar-toggle {
@@ -211,6 +228,8 @@ a { word-wrap: break-word; }
   color: #fff;
   background-color: #555 !important;
 }
+
+.login-margin { margin-top: 25px; }
 
 .dropdown-menu li a {
   color: #000 !important;
@@ -234,6 +253,7 @@ footer {
   background-color: #A09682;
   color: #f5f5f5;
   padding: 32px;
+  width: 100vw;
 }
 
 footer a {
